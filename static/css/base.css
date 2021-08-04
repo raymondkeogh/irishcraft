@@ -29,6 +29,17 @@ footer p:last-child {
     margin-bottom: 4rem;
 }
 
+.carousel-container, .carousel-container .col-md-6, .carousel-container .col-sm-12 {
+    padding: 0;
+    
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: transparent;
+    border: none;
+}
+
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 3rem;
