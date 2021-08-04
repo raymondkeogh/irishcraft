@@ -1,104 +1,377 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+[![homepage][1]][2]
 
-Welcome raymondkeogh,
+[1]:  static/images/siterender.png
+[2]:  Irishcraft.webaddress "Redirect to homepage"
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. The last update to this file was: **July 2, 2021**
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+**IrishCraft Website**
+==================
+Table of contents:
+-----------------
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
+ - [Description](#description)
+ - [User Experience](#user-experience)
+     - User Stories
+     - Strategy
+     - Scope
+     - Structure
+     - Skeleton
+     - Surface
+ - [Technologies](#technologies)
+ - [Testing](#testing)
+     - Acceptance Criteria
+     - Browser Compatibility
+     - OS Compatibility
+     - Devices Compatibility
+     - W3 HTML Validation
+     - W3 CSS Validation 
+     - CSS Lint Validation 
+     - JSHint Validation
+     - Python PEP8 Validation
+     - Lightspeed Performance Test
+     - Regression Testing
+     - User Testing
+     - Bugs
+ - [Deployment](#deployment)
+ - [Credits](#credits)
+     - Code Used
+     - Content
+     - Acknowledgements
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Description
+-----------
 
-A blue button should appear to click: _Make Public_,
+Irish Craft is an e-commerce website built using Python and Django. 
+The live site can be viewed [here](https://irishcraft.webaddress/).
 
-Another blue button should appear to click: _Open Browser_.
+User Experience
+--------------------
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+----------
 
-To log into the Heroku toolbelt CLI:
+**USER STORIES**
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+----------
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+| User Stories | As A/An                             | I want to be able to                                                           | So that I can                                                                 |   |   |   |
+|--------------|-------------------------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|---|---|---|
+|              ||****** **View Products**  ******                     |                                                                                |                                                                               |   |   |   |
+| 1            | Casual Shopper                      | View all products                                                              | products can be selected from list to purchase                                |   |   |   |
+| 2            | Casual Shopper                      | Select and view individual products details                                    | View larger image of product, description, price, sizes and a purchase option |   |   |   |
+| 3            | Casual Shopper                      | View list of items in basket and totals                                        | See my item count, price and subtotal/total                                   |   |   |   |
+| 4            | Casual Shopper                      | View a list of products by category                                            | See a range of items in the category I am interested in.                      |   |   |   |
+|              ||****** **Search and Sort Products** ******            |                                                                                |                                                                               |   |   |   |
+| 5            | Casual Shopper                      | Search for products by name or description                                     | Narrow down the list of items that I have to view                             |   |   |   |
+| 6            | Casual Shopper                      | See the number of results in a search that I have performed                    | Easily see how many products are available.                                   |   |   |   |
+| 7            | Casual Shopper                      | Sort the products based on price                                               | Better identify items that I would like to buy                                |   |   |   |
+|              ||**** **Registration & Account management** ****|                                                                                |                                                                               |   |   |   |
+| 8            | Return Shopper                      | Set up an account with the store                                               | Create an account to store my details such as purchase history and address.   |   |   |   |
+| 9            | Return Shopper                      | Login and logout functionality                                                 | Gain access to my account                                                     |   |   |   |
+| 10           | Return Shopper                      | Recover account if password forgotten                                          | Gain access to my account                                                     |   |   |   |
+| 11           | Return Shopper                      | Receive an confirmation email on registration                                  | Verify my account has been created                                            |   |   |   |
+| 12           ||****** **Checkout and Payment** ******                |                                                                                |                                                                               |   |   |   |
+| 13           | Return Shopper                      | Select a quantity of items and sizes if available                              | Add the items to my basket                                                    |   |   |   |
+| 14           | Return Shopper                      | Remove items from my basket                                                    | Ensure I am paying for only the products I want                               |   |   |   |
+| 15           | Return Shopper                      | Edit items in my basket                                                        | Ensure I am paying the correct quantity or size of product.                   |   |   |   |
+| 16           | Return Shopper                      | View a full list of all products in my basket with prices and subtotal/total.  | Ensure that I have everything in my basket that I wanted.                     |   |   |   |
+| 17           | Return Shopper                      | Enter my address and payment details for purchase                              | Pay for the items and have them delivered to the correct address              |   |   |   |
+| 18           | Return Shopper                      | Get a confirmation email of my purchase                                        | Be reassured that my purchase has gone through and is correct                 |   |   |   |
+| 19           | Return Shopper                      | Pay for my items in a manner that is secure and familiar                       | Be sure that my card details and payment are handled securely.                |   |   |   |
+| 20           | Return Shopper                      | Review a product that I have bought                                            | Let other people know what I think of the product                             |   |   |   |
+| 21           | Return Shopper                      | Add items to a Wishlist                                                        | Save items that I would like to buy at a future date.                         |   |   |   |
+|              ||****** **Site Administration** ******                 |                                                                                |                                                                               |   |   |   |
+| 22           | Site Owner                          | Add and remove products from the site                                          | Ensure my site is up to date.                                                 |   |   |   |
+| 23           | Site Owner                          | Edit product details                                                           | Have the ability to change product details, price, availability and images.   |   |   |   |
+|              |                                     |                                                                                |                                                                               |   |   |   |
+|              |                                     |                                                                                |                                                                               |   |   |   |
 
-------
+A pdf of the User Stories spreadsheet can ben view [here](/static/readme_files/user_stories_irish_craft.numbers)
 
-## Release History
+The mockup for this site was done on Balsamiq Wireframes 
+and can be viewed below 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- [Desktop Homepage](static/readme_files/wireframes/index_page.png).  
+- [Catagory Page](static/readme_files/wireframes/category_page.png).  
+- [Login Page](static/readme_files/wireframes/login.png).  
+- [Create Account Page](static/readme_files/wireframes/create_account.png).  
+- [Basket Page](static/readme_files/wireframes/basket.png).
+- [Account Page](static/readme_files/wireframes/account.png). 
+- [Review Item Page](static/readme_files/wireframes/review_item.png).  
+- [Wishlist Page](static/readme_files/wireframes/wishlist.png). 
+- [View Item Page](static/readme_files/wireframes/view_itme.png). 
+- [Admin Edit Item Page](static/readme_files/wireframes/admin_edit_item.png). 
+- [Admin Add Item Page](static/readme_files/wireframes/admin_add_item.png). 
+- [Checkout Page](static/readme_files/wireframes/checkout.png). 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+The full selection of wireframes including mobile layout can be viewed in PDF form [here](static/readme_files/wireframes/irish_craft_wireframes.pdf)
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+----------
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+**STRATEGY**
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+--------
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+ - **Focus:**  
+    The focus of this project will be the creation of a secure, navigable e-commerce site with ability to search and sort products. The site must make the shopping experience a positive one.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+ - **Definition:**  
+    Irish Craft is a solid, secure and friendly environment to search, save and purchase products.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+ - **Value:**   
+    The shopper will have a positive experience increasing the probablility of purchase and repeat business. 
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+----------
 
-------
+**SCOPE**
 
-## FAQ about the uptime script
+----------
 
-**Why have you added this script?**
+**Features:** 
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
 
-**How will this affect me?**
+- **Navigation menu** – The navigation menu will offer users a number of site locations depending on their user access. 
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- **Search Bar** – Search bar to query the database of products.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- **Account Page** – Displays shopper account details.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+- **Review Page** - Give the shopper an opportunity to share their experience with the product/company.
 
-**So….?**
+- **Wishlist** - Allows the shopper to save their favourite items for return visits to the site.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
+**STRUCTURE**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+----------
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+1. The shopper will first be presented with the main 'index' page where they will see a 
 
-**Anything more?**
+2. The Menu will display if not logged in "Home", "Login" and "SignUp" and if logged in will display "Add Location", "Profile" "Home and "Logout"
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
 
----
+3. The Profile page will Be broken into three sections. A profile card with some stats about the users activity. A section for posts that the user has created and section with posts that the user has liked. 
+    - As an external user I create a collection of my favourite camping locations.
 
-Happy coding!
+4. The View location page will be a simple card displaying the Name, Description, Rating, Location and Picture of the campsite. This card will display a like button to logged in users and edit or delete to the user who created the post.
+
+5. The Add Location page will have a simple form with fields for Name and Description, a star rating selection area, a map to search for the location and drop a pin, a button to upload a photo and a submit button. 
+    - As a site owner I want create a knowledge bank of good camping locations
+
+
+----------
+
+**SURFACE**
+
+----------
+
+
+**Colours:** 
+
+- 
+
+**Typography:** 
+
+- 
+
+**Effects:**
+
+ -  
+
+**Imagery:** 
+
+ - 
+
+**Deviations from design:**
+
+- 
+
+
+Technologies
+----------------
+
+ - [**HTML5**](https://en.wikipedia.org/wiki/HTML5) –  to create the websites main structures
+ - [**CSS3**](https://en.wikipedia.org/wiki/CSS) – to style the components created with HTML and
+   create the desired effects described in the ‘Surface’ section.
+ - [**Python**](https://www.python.org/download/releases/3.0/)
+ - [**Materialize**](https://materializecss.com/) – to create responsive elements on the page.
+ - [**FontAwesome**](https://fontawesome.com/)  - icons used throughout the site.
+ - [**Google Fonts**](https://fonts.google.com/) – Imported fonts.
+ - [**GitPod**](https://gitpod.io/) – IDE used for working on my code
+ - [**GitHub**](https://github.com/) – Used for hosting the files used for the website.
+ - [**Git**](https://git-scm.com/) – Version control used to track changes, commit and push code to
+   Github.
+ - [**Javascript**](https://www.javascript.com/)
+ - [**Flask**](https://flask.palletsprojects.com/en/2.0.x/)
+ - [**Lightspeed**](https://developers.google.com/speed/pagespeed/insights/) - Website performance testing utility
+ - [**DevTools**](https://developers.google.com/web/tools/chrome-devtools) - I used Chrome DevTools throughout the development of the site to modify elements on the screen live, testing screen responsiveness and debugging code.
+ - [**W3 HTML Validation**](https://validator.w3.org/) - Online HTML validation tool. 
+ - [**W3 CSS Validation**](https://jigsaw.w3.org/css-validator/) - Online CSS validation tool.
+ - **Gitpod extensions:**
+     - Auto Close Tag
+     - Bracket Pair Colorizer
+     - Code Spellchecker
+     - Prettier - Code Formatter
+     - Indent-Rainbow
+ - [**Techsini**](http://techsini.com/multi-mockup/index.php) - I used this website to create a multi mockup of the live website display at the head of my Readme file. 
+ - [**Brackets**](http://brackets.io/) - Local IDE.
+ - [**Autoprefixer**](https://autoprefixer.github.io/) - Parses CSS and adds vendor prefixes.
+ - [**Google mobile-friendly Test**](https://search.google.com/test/mobile-friendly?id=PM7sy6dG9tEXLsvHooNW6Q) - Tests for mobile compatibility. 
+ - [**Xcode simulator**](https://developer.apple.com/documentation/xcode) - suite of tools used for build or testing apps for Apple platform.
+ - [**BeautifyTools Javascript Validator**](https://beautifytools.com/javascript-validator.php) - Online Javascript validation tool. 
+ - [**JSHint Validation**](https://jshint.com/) - Online Javascript validation tool. 
+ - [**JSON Valdiation**](https://jsonlint.com/) - Debug JSON object structure used in MongoDB and Javascript
+ - [**Django**](https://www.djangoproject.com/) - High-level Python Web framework
+
+
+Testing
+-------
+
+----
+**Acceptance Criteria:**
+
+1. All links on the website must connect to the correct location.
+2. All images and elements on website must load correctly.
+3. All fallback fonts must work visually should the first choice fonts be unavailable.
+4. All elements on the website must be responsive, resizing for different screen sizes and maintaining their integrity with no overlapping.
+5. All external links direct to the correct website.
+6. The website loads correctly and functions on Chrome, Internet Explorer, Safari and Firefox browsers.
+7. The website performs as required as outlined in User Stories for external users and the site owner.
+
+All testing is documented and can be viewed in the following formats. [Mac Numbers](atesting/irishcrafttesting.numbers), [Excel](testing/irishcrafttesting.xlsx) and [PDF](testing/irishcrafttesting.pdf).
+
+----
+**Browser Compatibility**
+
+
+| Screen Size/Browser  | Chrome  | Internet Explorer  | Safari  |  Firefox |
+|---|---|---|---|---|
+|  Mobile |✅   | ✅  | ✅| ✅ |
+|  Desktop | ✅  | ✅  | ✅  | ✅  | 
+|  Tablet | ✅  | ✅  | ✅  |  ✅ | 
+
+
+**OS Compatibility** 
+
+
+The OS used during testing were: 
+The OS used during testing were: 
+- Mac OS 11.0.1 
+- Windows 10
+- Android (OxygenOS Version 9.0.6)
+- iOS 14.4.1
+- Xcode Simulator - iPhone 12 Pro Max, iPad Pro 12.9inch
+- Chrome OS (release 89.0.4389.95)
+
+Further testing yet to be carried out on Linux and Unix.
+
+----
+**Device Compatibility** 
+
+
+The devices used during testing were: 
+- MacBook Air 13inch 2017
+- Acer Chromebook cb3-431
+- OnePlus 3T 
+- OnePlus 5T
+- Pixel 4a
+- iPhone X 
+- iPhone SE 
+- HP Elitebook G5 
+- iPad 10.2
+- Dell OptiPlex 7480 
+- Samsung Galaxy s20
+
+
+----
+**W3 HTML Validation** 
+
+HTML Validation with [https://validator.w3.org/](https://validator.w3.org/).
+
+
+
+
+----
+**W3C CSS Validation** 
+
+
+CSS validation with [https://jigsaw.w3.org/css-validator/](https://jigsaw.w3.org/css-validator/)
+
+
+
+----
+**CSS Lint Validation**
+
+
+CSS also validated via http://csslint.net/
+
+
+----
+**BeautifyTools Javascript Validation** 
+
+https://beautifytools.com/javascript-validator.php
+
+
+----
+**Lightspeed Performance Test** 
+
+The performance of the site on Lighthouse can be viewed [here](testing/lightspeedtest.pdf)
+
+----
+**Regression Testing**
+
+Any new features and bug fixes were submitted to regression testing of all functional and non functional aspects of the project to ensure that previously developed and tested software still performed following changes.
+
+----
+**User Testing**
+
+
+
+
+----
+**Bugs**
+
++ **Bug:**    
+**Fix:** 
+
+
+
+
+Deployment
+----------
+
+**Local Deployment**
+
+
+
+
+
+**Remote**
+
+
+
+
+
+Credits
+-------
+
+**Code used**
+
+
+
+
+**Content**
+
+
+**Acknowledgements**
+
+
+
+
