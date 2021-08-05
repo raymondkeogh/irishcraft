@@ -1,9 +1,19 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.forms import ModelForm      
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
+
+
+class Photo(models.Model):
+  image = CloudinaryField('image')
+
+class PhotoForm(ModelForm):
+  class Meta:
+    model = Photo
+    fields = '__all__'
 
 
 class Category(models.Model):

@@ -1,9 +1,5 @@
 from django.shortcuts import render
-from django import forms
-from django.http import HttpResponse
-from cloudinary.forms import cl_init_js_callbacks
-from .models import Photo
-from .forms import PhotoForm
+from .models import Product, PhotoForm
 
 
 def upload(request):
@@ -16,3 +12,13 @@ def upload(request):
             form.save()
 
     return render(request, 'upload.html', context)
+
+
+def all_products(request):
+    """ A view to show all products """
+    products = Product.objects.all()
+    context = {
+        'products': products,
+    }
+
+    return render(request, 'products/products.html', context)
