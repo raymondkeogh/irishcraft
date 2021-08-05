@@ -26,16 +26,15 @@
 
   {% block corejs %}
   <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
     integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-   </script>
-   
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
   {% endblock %}
 
   {% block extra_js %}
@@ -43,18 +42,16 @@
 
   <title>Irish Craft {% block extra_title %}{% endblock %}</title>
 </head>
-
 <body>
   <header class="container-fluid fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Irish Craft</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto mb-2 mb-md-0 d-lg-flex align-items-center">
             <li class="nav-item h-100">
               <form class="d-flex">
@@ -63,7 +60,7 @@
               </form>
             </li>
             <li class="nav-item h-100">
-              <a class="nav-link active" aria-current="page" href="#">Products</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'products' %}">Products</a>
             </li>
             <li class="nav-item h-100">
               <a class="nav-link" href="#">About</a>
@@ -75,9 +72,9 @@
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
                     {% if grand_total %}
-                    ${{ grand_total|floatformat:2 }}
+                      ${{ grand_total|floatformat:2 }}
                     {% else %}
-                    $0.00
+                      $0.00
                     {% endif %}
                   </p>
                 </div>
@@ -93,9 +90,9 @@
               </a>
               <div class="dropdown-menu border-0" aria-labelledby="user-options">
                 {% if request.user.is_authenticated %}
-                {% if request.user.is_superuser %}
-                <a href="" class="dropdown-item">Product Management</a>
-                {% endif %}
+                  {% if request.user.is_superuser %}
+                  <a href="" class="dropdown-item">Product Management</a>
+                  {% endif %}
                 <a href="" class="dropdown-item">My Profile</a>
                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                 {% else %}
@@ -109,7 +106,6 @@
       </div>
     </nav>
   </header>
-
   {% if messages %}
   <div class="message-container"></div>
   {% endif %}
@@ -124,7 +120,9 @@
 
   {% endblock %}
 
-
+  <footer>
+    <p><a href="#">Back to top</a></p><br>
+    <p>© 2017–2021 Company, Inc.<br> <a href="#">Privacy</a><br> <a href="#">Terms</a></p>
+  </footer>
 </body>
-
 </html>
