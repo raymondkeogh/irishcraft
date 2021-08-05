@@ -14,6 +14,11 @@ from pathlib import Path
 
 import environ
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
 env = environ.Env()
 # read the .env file
 environ.Env.read_env()
@@ -48,6 +53,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'products',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +81,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                # .request required by allauth 
+                # .request required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -163,3 +170,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+cloudinary.config(
+  cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+  api_key=os.environ.get("CLOUDINARY_API_KEY"),
+  api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+  secure="true",
+)
