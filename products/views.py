@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Product, PhotoForm
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 
 def upload(request):
@@ -17,8 +19,13 @@ def upload(request):
 def all_products(request):
     """ A view to show all products """
     products = Product.objects.all()
+    paginator = Paginator(products, 25)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
         'products': products,
+        'page_obj': page_obj,
     }
 
     return render(request, 'products/products.html', context)
+    

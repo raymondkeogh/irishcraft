@@ -6,6 +6,8 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
     color: #5a5a5a;
+    height: calc(100vh - 164px);
+
 }
 
 footer {
@@ -94,6 +96,10 @@ footer p:last-child {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+  }
+
+  .page-item {
+    display: inline-block;
   }
 
  

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="main">
+    <div class="container marketing">
+        <div class="row">
+            {% for product in page_obj %}
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    {% if product.image %}
+                    <img class="card-img-top img-fluid" src="{{ product.image_url }}" alt="{{product.name}}">
+                    {% else %}
+                    <img class="card-img-top img-fluid" src="#" alt="{{product.name}}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h2>{{product.name}}</h2>
+                        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <nav aria-label="Products list">
+            <div class="pagination justify-content-center">
+                <ul class="step-links list-inline">
+                    {% if page_obj.has_previous %}
+
+                    <li class="page-item"> <a class="page-link" href="?page=1">&laquo; first</a></li>
+                    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                    {% endif %}
+                    
+                    <li class="page-item"> 
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    </li>
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                        <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
+                    {% endif %}
+                    </ul>
+                </div>
+            </nav>
+    </div>
+    
+
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Ceramics</h2>
+            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
+                prose here.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title></title>
+                <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                    dy=".3em">image</text>
+            </svg>
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Glassware</h2>
+            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how
+                this layout would work with some actual real-world content in place.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                    dy=".3em">500x500</text>
+            </svg>
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Jewellery</h2>
+            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
+                intended to be actually read, simply here to give you a better view of what this would look like
+                with some actual content. Your content.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                    dy=".3em">500x500</text>
+            </svg>
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Clothing</h2>
+            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how
+                this layout would work with some actual real-world content in place.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                    dy=".3em">500x500</text>
+            </svg>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+
+</div><!-- /.container -->
+</div>
+
+{% endblock %}
+
+
+{% block postloadjs %}
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
