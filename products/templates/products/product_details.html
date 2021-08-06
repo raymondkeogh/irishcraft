@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+            <div class="col-sm">
+                <div class="product-image">
+                    {% if product.image_url %}
+                    <img src="{{ product.image_url }}" alt="{{product.name}}">
+                    {% else %}
+                    <img src="{{MEDIA_URL}}no_image_placeholder.svg" alt="{{product.name}}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="product-details">
+                    <h5>{{product.name}}</h5>
+                    <p>{{product.description}}</p>
+                    {% if product.category %}
+                    <p class="text-muted">{{ product.category }}</p>
+                    {% endif %}
+                    <p>€ {{ product.price }}</p>
+                    <a href="#" class="btn btn-primary btn active" role="button" aria-pressed="true">Buy</a>
+                    <a href="#" class="btn btn-secondary btn active" role="button" aria-pressed="true">Add to Basket</a>
+                </div>
+            </div> 
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

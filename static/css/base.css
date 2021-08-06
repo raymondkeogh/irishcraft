@@ -3,11 +3,11 @@
 /*-------------------------------------------------- */
 
 body {
-    padding-top: 3rem;
+    /* padding-top: 3rem; */
     padding-bottom: 3rem;
     color: #5a5a5a;
     height: calc(100vh - 164px);
-
+    padding-top: 160px; 
 }
 
 footer {
@@ -102,6 +102,15 @@ footer p:last-child {
     display: inline-block;
   }
 
+
+/* PRODUCT DETAILS
+  -------------------------------------------------- */
+
+  .product-details, .product-image{
+    box-sizing: border-box; 
+    padding:30px;
+    padding-bottom: 100px; 
+  }
  
 
 /* RESPONSIVE CSS
