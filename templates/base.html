@@ -46,7 +46,7 @@
   <header class="container-fluid fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Irish Craft</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Irish Craft</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -54,8 +54,8 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto mb-2 mb-md-0 d-lg-flex align-items-center">
             <li class="nav-item h-100">
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <form method="GET" action="{% url 'products' %}" class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
             </li>
@@ -91,7 +91,7 @@
               <div class="dropdown-menu border-0" aria-labelledby="user-options">
                 {% if request.user.is_authenticated %}
                   {% if request.user.is_superuser %}
-                  <a href="" class="dropdown-item">Product Management</a>
+                  <a href="" class="dropdown-item">Product Management</a>  
                   {% endif %}
                 <a href="" class="dropdown-item">My Profile</a>
                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
