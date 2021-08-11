@@ -229,6 +229,7 @@ Technologies
  - [**JSHint Validation**](https://jshint.com/) - Online Javascript validation tool. 
  - [**JSON Valdiation**](https://jsonlint.com/) - Debug JSON object structure used in MongoDB and Javascript
  - [**Django**](https://www.djangoproject.com/) - High-level Python Web framework
+ - [**Cloudinary**](https://cloudinary.com/) - Cloud storage for website media files
 
 
 Testing
@@ -338,6 +339,18 @@ Any new features and bug fixes were submitted to regression testing of all funct
 ----
 **Bugs**
 
++ **Bug001:** "django.db.utils.OperationalError: no such column:" Error after altering model item 'image' to change its definition to cloudinary parameters. 
+**Fix:** The field had to be deleted entirely then running 'python3 manage.py makemigrations' and 'python3 manage.py migrate'. I then put in the altered field and ran migrations again to update the table. 
+
++ **Bug:**    
+**Fix:** 
+
++ **Bug:**    
+**Fix:** 
+
++ **Bug:**    
+**Fix:** 
+
 + **Bug:**    
 **Fix:** 
 
@@ -351,11 +364,17 @@ Deployment
 
 
 
-
-
 **Remote**
 
+1. Open repository in gitpod
+2. Create a file got .env inside the directory irishcraft at the same level as settings.py
+3. Add .env to .gitignore
+4. Generate a random key, I used https://randomkeygen.com/ but you can just google any random key generator. 
+5. Inside the .env file add the following....
+    SECRET_KEY=insert-your-random-key-here. eg. SECRET_KEY=12345678abcdefg
 
+
+6. Set up a cloudinary account and follow directions in the following link https://www.section.io/engineering-education/uploading-images-to-cloudinary-from-django-application/\
 
 
 
@@ -364,14 +383,17 @@ Credits
 
 **Code used**
 
+Generate random selection from Products database
+https://stackoverflow.com/questions/32389519/django-get-10-random-instances-from-a-queryset-and-order-them-into-a-new-querys#:~:text=to%20show%0Anum_entities%20%3D-,Entity.objects,-.all().count()%0Arand_entities
 
+
+Setting active item in carousel loop - 
+https://stackoverflow.com/questions/52870493/carousel-set-first-loop-image-as-active-item/52870679
 
 
 **Content**
 
+No image placeholder -  https://sirv.com/help/articles/customized-error-images/
+
 
 **Acknowledgements**
-
-
-
-
