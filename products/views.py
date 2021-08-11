@@ -1,8 +1,10 @@
+""" Products view, handles image upload to cloudinary,
+all products view and product details view """
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Product, PhotoForm
+from .models import Product, PhotoForm, Category
 
 
 def upload(request):
@@ -22,15 +24,23 @@ def all_products(request):
     """ A view to show all products """
     products = Product.objects.all().order_by('name')
     query = None
+    categories = None
+    if request.GET:
+        if 'category' in request.GET:
+            categories = request.GET['category'].split(',')
+            products = products.filter(category__name__in=categories)
+            categories = Category.objects.filter(name__in=categories)
 
-    if 'q' in request.GET:
-        query = request.GET['q']
-        if not query:
-            messages.error(request, "You didn't enter any search criteria!")
-            return redirect(reverse('products'))
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request,
+                               "You didn't enter any search criteria!")
+                return redirect(reverse('products'))
 
-        queries = Q(name__icontains=query) | Q(description__icontains=query)
-        products = products.filter(queries)
+            queries = (Q(name__icontains=query) |
+                       Q(description__icontains=query))
+            products = products.filter(queries)
 
     paginator = Paginator(products, 25)
     page_number = request.GET.get('page')
@@ -40,11 +50,13 @@ def all_products(request):
         'products': products,
         'page_obj': page_obj,
         'search': query,
+        'category_selected': categories,
     }
     return render(request, 'products/products.html', context)
 
 
 def product_details(request, product_id):
+    """ A view to show products details """
     product = get_object_or_404(Product, pk=product_id)
     context = {
         'product': product,
