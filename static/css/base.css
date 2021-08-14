@@ -44,6 +44,9 @@ footer p:last-child {
     border-top: 1px solid rgb(68, 68, 68) !important; 
 }
 
+.pointer {
+    cursor: pointer;
+}
 /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
 
