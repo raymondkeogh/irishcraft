@@ -20,9 +20,11 @@ def basket_contents(request):
             'item_id': item_id,
             'quantity': quantity,
             'product': product,
+            'item_total': product.price * quantity,
         })
-        
-    delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)    
+    
+    
+    delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
     grand_total = delivery + total
 

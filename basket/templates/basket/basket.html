@@ -36,7 +36,7 @@
                                     <p class=""><strong>{{ item.product.name }}</strong></p>
                                 </td>
                                 <td class="p-3">
-                                    <p class="my-0 text-right">€{{ item.product.price }}</p>  
+                                    <p class="my-0 text-right">€{{ item.product.price }}</p> x  {{item.quantity}}
                                 </td>
                                 <td class="p-3 w-25">
                                    <form action="{% url 'adjust_basket' item.item_id %}" class="form update-form" method="POST">
@@ -74,7 +74,7 @@
                                     </a>
                                 </td>
                                 <td class="p-3 text-right">
-                                    <p class="my-0">€{{ item.product.price }}</p>
+                                    <p class="my-0">€{{item.item_total}}</p>
                                 </td>
                             </tr>
                        {% endfor %}
