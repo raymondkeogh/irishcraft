@@ -31,8 +31,28 @@
                     {% csrf_token  %}
                     <div class="row">
                         <div class="col-12">
-                            <p>Quatntity: </p>
-                            <input type="number" class="form-control mt-1 w-25 p-3" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{product.id}}" >
+                            <p><strong>Quantity: </strong></p>
+                            <div class="form-group w-575">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-black rounded-0" 
+                                            data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>   
+                                    <input type="number" class="form-control   qty_input mt-1 p-3" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{product.id}}" >
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-black rounded-0"
+                                            data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
@@ -49,5 +69,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+{{ block.super }}
+{% include 'products/includes/quantity_script.html' %}
 {% endblock %}
