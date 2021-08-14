@@ -39,7 +39,7 @@
                                     <p class="my-0 text-right">€{{ item.product.price }}</p>  
                                 </td>
                                 <td class="p-3 w-25">
-                                   <form action="" class="form" method="POST">
+                                   <form action="{% url 'adjust_basket' item.item_id %}" class="form update-form" method="POST">
                                        {% csrf_token %}
                                        <div class="form-group">
                                         <div class="input-group">
@@ -126,7 +126,7 @@
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         // var size = $(this).data('size');
-        var url = `/bag/remove/${itemId}`;
+        var url = `/basket/remove/${itemId}`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
