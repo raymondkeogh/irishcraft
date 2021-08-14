@@ -3,7 +3,6 @@ all products view and product details view """
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
-from django.db.models.functions import Lower
 from django.core.paginator import Paginator
 from .models import Product, PhotoForm, Category
 
@@ -48,9 +47,6 @@ def all_products(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == "name":
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower("name"))
             if sortkey == 'category':
                 sortkey = 'category__name'
             if 'direction' in request.GET:
