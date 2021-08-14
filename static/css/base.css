@@ -32,6 +32,17 @@ footer p:last-child {
     margin-bottom: 0;
 }
 
+.text-heading {
+    font-weight: bolder;
+}
+
+.img-thumbnail {
+    border: 0 none;
+}
+
+.table-total {
+    border-top: 1px solid rgb(68, 68, 68) !important; 
+}
 
 /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */

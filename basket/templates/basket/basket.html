@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>Your Basket  <i class="fas fa-shopping-basket"></i></h2>
+            <h2>Your Basket  <i class="fas fa-shopping-basket fa-xs"></i></h2>
             <hr>
         </div>
     </div>
@@ -15,7 +15,55 @@
         <div class="col">
             {% if basket_items %}
                 <div class="table-responsive">
-                    {{ basket_items }}
+                   <table class="table table-sm table-borderless">
+                       <thead class="text-heading">
+                           <tr>
+                               <th class="px-3" scope="col">Product Info</th>
+                               <th class="px-3"scope="col"></th>
+                               <th class="px-3"scope="col">Price</th>
+                               <th class="px-3"scope="col">Quantity</th>
+                               <th class="px-3"scope="col">Subtotal</th>
+                           </tr>
+                        
+                       </thead>
+                       
+                       {% for item in basket_items %}
+                            <tr>
+                                <td class="p-3 w-25">
+                                    <img class="img-thumbnail" src="{{ item.product.image_url}}" alt="{{ item.product.name }}">
+                                </td>
+                                <td class="">
+                                    <p class=""><strong>{{ item.product.name }}</strong></p>
+                                </td>
+                                <td class="p-3">
+                                    <p class="my-0 text-right">€{{ item.product.price }}</p>  
+                                </td>
+                                <td class="p-3 w-25">
+                                    <p class="my-0">{{ item.quantity }}</p>
+                                </td>
+                                <td class="p-3 text-right">
+                                    <p class="my-0">€{{ item.product.price }}</p>
+                                </td>
+                            </tr>
+                       {% endfor %}
+                       <tr>
+                           <td colspan="5" class="text-right px-3 table-total">
+                               <p><strong>Basket Total: €{{ total|floatformat:2}} </strong></p>
+                               <p>Delivery: €{{ delivery|floatformat:2}}</p>
+                               <p>Grand Total: €{{ grand_total|floatformat:2}}</p>
+                           </td>
+                       </tr>
+                       <tr>
+                        <td colspan="5" class="text-right">
+                        <div class="col-12 text-right">
+                            <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
+                            <input type="submit" class="btn btn-secondary btn active mt-2" value="Checkout">
+                            <input type="hidden" name="redirect_url" value="{{ request.path  }}">
+                        </div>
+                    </td>
+                    </tr>
+                   </table>
+                   <hr>
                 </div>
             {% else %}
                 <p class="m-5">You have nothing in your basket. </p>
