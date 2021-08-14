@@ -85,6 +85,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'basket.contexts.basket_contents',
             ],
         },
     },
@@ -178,3 +179,5 @@ cloudinary.config(
   api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
   secure="true",
 )
+
+STANDARD_DELIVERY_PERCENTAGE = 10
