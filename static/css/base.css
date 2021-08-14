@@ -9,6 +9,9 @@ body {
     color: #5a5a5a;
     font-family: Work Sans,sans-serif;
     margin-top: 80px;
+    display: flex;
+    flex-direction:column;
+    height:100vh; 
 }
 
 header {
@@ -21,6 +24,8 @@ footer {
     text-align: center;
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
+    margin-top:auto; 
+    min-height:50px;
 }
 
 footer p:last-child {
@@ -108,6 +113,17 @@ footer p:last-child {
     display: inline-block;
   }
 
+
+
+  .overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
 
 /* PRODUCT DETAILS
   -------------------------------------------------- */
