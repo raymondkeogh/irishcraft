@@ -8,8 +8,7 @@
     overflow: hidden;
     position: fixed;
     top: 100px;
-    right: 25px;
-   
+    right: 74px;
 }
 
 .js-snackbar-container--top-left {
@@ -73,11 +72,11 @@
     display: inline-flex;
     box-sizing: border-box;
     border-radius: 3px;
-    color: #eee;
+    color: #242424;
     font-size: 16px;
-    background-color: #262626b7;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     vertical-align: bottom;
-    box-shadow: 0 0 4px 0 black;
     margin: 0 10px;
     flex-grow: 1;
 }
@@ -91,6 +90,7 @@
 .js-snackbar__message-wrapper {
     flex: 1;
     padding: 12px;
+   
 }
 
 .js-snackbar__message {
@@ -112,6 +112,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.success-arrow {
+    content: "";
+    position: fixed;
+    top: 68px;
+    right: 85px;
+    width: 40px;
+    height: 52px;
+    background: radial-gradient(circle at top left, transparent 58%, white 60%);
+    z-index: 999999999;
 }
 
 .js-snackbar__status.js-snackbar--success  {

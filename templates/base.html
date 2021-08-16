@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-
   {% block meta %}
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
@@ -36,7 +35,6 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
   <script src="{% static '/js/js-snackbar.js' %}"></script>
-
   
   {% endblock %}
 
@@ -112,7 +110,6 @@
               </div>
             </li>
             <li class="nav-item h-100 basket-dropdown-zone">
-          
               <a class="{% if grand_total %}text-info font-weight-bold{% else %}{% endif %} nav-link"
                 href="{% url 'view_basket' %}">
                 <div class="text-center myDIV">

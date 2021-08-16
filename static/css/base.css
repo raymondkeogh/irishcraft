@@ -57,15 +57,13 @@ footer p:last-child {
 }
 
 .carousel-container, .carousel-container .col-md-6, .carousel-container .col-sm-12 {
-    padding: 0;
-    
+    padding: 0; 
 }
 
 .carousel-control-prev, .carousel-control-next {
     background-color: transparent;
     border: none;
 }
-
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {

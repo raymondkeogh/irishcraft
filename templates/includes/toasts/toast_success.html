@@ -1,6 +1,9 @@
+
 <script>
  new SnackBar({
-    message: "{{message}}<i class='fas fa-arrow-up></i> ",
+    message: "{{message}}<i class='fas fa-arrow-up></i>",
     status: "success",
     });
+
+$( "span.js-snackbar--success").parent().css( "border-bottom", "3px solid #4caf50" );
 </script>
