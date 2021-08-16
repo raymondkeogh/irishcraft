@@ -19,6 +19,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/js-snackbar.css' %}">
   {% endblock %}
 
   {% block extra_css %}
@@ -34,6 +35,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
+  <script src="{% static '/js/js-snackbar.js' %}"></script>
+
+  
   {% endblock %}
 
   {% block extra_js %}
@@ -41,7 +45,6 @@
 
   <title>Irish Craft {% block extra_title %}{% endblock %}</title>
 </head>
-
 <body>
   <header class="container-fluid fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -133,8 +136,28 @@
       </nav>
     </div>
   </header>
+
+<!-- Snackbar script used to create toast messages alerts
+  https://www.cssscript.com/snackbar-toast-notification/ -->
+  
   {% if messages %}
-  <div class="message-container"></div>
+  <div class="message-container">
+    {% for message in messages %}
+      {% for message in messages %}
+        {% with message.level as level %}
+            {% if level == 25 %}      
+              {% include 'includes/toasts/toast_success.html' %}
+            {% elif level == 40 %}
+                {% include 'includes/toasts/toast_error.html' %}
+            {% elif level == 30 %}
+                {% include 'includes/toasts/toast_warning.html' %}
+            {% else %}
+                {% include 'includes/toasts/toast_info.html' %}
+            {% endif %}
+        {% endwith %}
+      {% endfor %}
+    {% endfor %}
+  </div>
   {% endif %}
 
   {% block page_header %}
@@ -142,9 +165,8 @@
 
   {% block content %}
   {% endblock %}
-
+  
   {% block postloadjs %}
-
   {% endblock %}
 
   <footer>

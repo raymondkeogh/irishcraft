@@ -86,7 +86,8 @@ footer p:last-child {
     object-fit: cover;
 }
 
-/* Center align the text within the three columns below the carousel */
+/* 
+Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
     margin-bottom: 1.5rem;
     text-align: center;
@@ -127,8 +128,6 @@ footer p:last-child {
     display: inline-block;
   }
 
-
-
   .overlay {
 	height: 100%;
 	width: 100%;
@@ -147,7 +146,6 @@ footer p:last-child {
     padding:30px;
     padding-bottom: 100px; 
   }
- 
 
 /* RESPONSIVE CSS
   -------------------------------------------------- */

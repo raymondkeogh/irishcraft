@@ -390,6 +390,9 @@ https://stackoverflow.com/questions/32389519/django-get-10-random-instances-from
 Setting active item in carousel loop - 
 https://stackoverflow.com/questions/52870493/carousel-set-first-loop-image-as-active-item/52870679
 
+Snackbar script used to create toast messages alerts
+https://www.cssscript.com/snackbar-toast-notification/
+
 
 **Content**
 
