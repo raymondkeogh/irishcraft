@@ -15,7 +15,7 @@
         <div class="col">
             {% if basket_items %}
                 <div class="table-responsive">
-                   <table class="table table-sm table-borderless">
+                   <table class="table table-sm table-borderless basket">
                        <thead class="text-heading">
                            <tr>
                                <th class="px-3" scope="col">Product Info</th>
@@ -28,7 +28,7 @@
                        </thead>
                        
                        {% for item in basket_items %}
-                            <tr>
+                            <tr class="basket-body">
                                 <td class="p-3 w-25">
                                     <img class="img-thumbnail" src="{{ item.product.image_url}}" alt="{{ item.product.name }}">
                                 </td>
@@ -45,7 +45,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button class="decrement-qty btn btn-black rounded-0" 
-                                                    data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id}}">
+                                                    data-item_id="{{ item.xitem_id }}" id="decrement-qty_{{ item.item_id}}">
                                                     <span>
                                                         <i class="fas fa-minus fa-xs"></i>
                                                     </span>
@@ -89,10 +89,10 @@
                         <td colspan="5" class="text-right">
                         <div class="col-12 text-right">
                             <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
-                            <input type="submit" class="btn btn-secondary btn active mt-2" value="Checkout">
-                            <input type="hidden" name="redirect_url" value="{{ request.path  }}">
+                            <a href="{% url 'checkout' %}" class="btn btn active mt-2 checkout" role="button" aria-pressed="true">Checkout <i class="fas fa-shield-alt"></i></a>
+                            
                         </div>
-                    </td>
+                    </td> 
                     </tr>
                    </table>
                    <hr>

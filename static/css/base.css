@@ -151,13 +151,21 @@ Center align the text within the three columns below the carousel */
   
   .basket-dropdown-zone{
     position:relative;
+  }
 
+  .basket-body, .basket{
+    font-size: .8rem ;
   }
   .basket-dropdown-zone:hover .basket-dropdown{
     display: block;
   } 
 
+  .basket-dropdown .toast-body {
+    font-size: 15px;
+  }
+
   .basket-dropdown {
+    background-color: white;
     display: none;
     width: 300px;
     position: absolute;
