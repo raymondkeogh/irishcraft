@@ -30,6 +30,7 @@ footer {
 
 footer p:last-child {
     margin-bottom: 0;
+    background-color: #f9f9f9;
 }
 
 .text-heading {
@@ -115,7 +116,6 @@ Center align the text within the three columns below the carousel */
     letter-spacing: -.05rem;
 }
 
-
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -145,6 +145,51 @@ Center align the text within the three columns below the carousel */
     box-sizing: border-box; 
     padding:30px;
     padding-bottom: 100px; 
+  }
+
+  .text-black {
+    color: black !important;
+  }
+  
+  .basket-dropdown-zone{
+    position:relative;
+
+  }
+  .basket-dropdown-zone:hover .basket-dropdown{
+    display: block;
+  } 
+
+  .basket-dropdown {
+    display: none;
+    width: 300px;
+    position: absolute;
+    z-index: 9999999;
+    right: 49px;
+    top: 82px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .basket-dropdown-zone:hover + .basket-dropdown {
+      display:block;    
+  }
+
+  .checkout {
+    background-color: rgb(255, 181, 43);
+  }
+
+  .qty_input {
+    min-width: 50px;
+  }
+
+  .dropdown-arrow:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    right: 0;
+    width: 26px;
+    height: 33px;
+    background:
+    radial-gradient(circle at top left, transparent 58%, #ffffff 60%);
   }
 
 /* RESPONSIVE CSS

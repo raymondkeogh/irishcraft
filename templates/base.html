@@ -63,7 +63,7 @@
               </form>
             </li>
             <li class="nav-item h-100 dropdown">
-              <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <div class="text-center">
                   <div></div>
@@ -92,7 +92,7 @@
               <a class="nav-link" href="#">About</a>
             </li>
              <li class="nav-item h-100 dropdown">
-              <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <div class="text-center">
                   <p class="my-0">My Account</p>
@@ -111,10 +111,11 @@
                 {% endif %}
               </div>
             </li>
-            <li class="nav-item h-100">
-              <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+            <li class="nav-item h-100 basket-dropdown-zone">
+          
+              <a class="{% if grand_total %}text-info font-weight-bold{% else %}{% endif %} nav-link"
                 href="{% url 'view_basket' %}">
-                <div class="text-center">
+                <div class="text-center myDIV">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
                     {% if grand_total %}
@@ -125,9 +126,12 @@
                   </p>
                 </div>
               </a>
-            </li>
-          </ul>
-        </div>
+              <div class="basket-dropdown">
+                {% include 'includes/shopping_basket_dropdown.html' %}
+              </div>
+            </li>  
+          </ul>     
+        </div>   
       </div>
     </nav>
     <div class="row bg-white">
@@ -170,9 +174,8 @@
   {% endblock %}
 
   <footer>
-    <p><a href="#">Back to top</a></p><br>
-    <p>© 2017–2021 Company, Inc.<br> <a href="#">Privacy</a><br> <a href="#">Terms</a></p>
+    <p><a href="#">Back to top</a></p>
+    <p>© 2017–2021 Irish Craft, Inc.<br> <a href="#">Privacy</a><br> <a href="#">Terms</a></p>
   </footer>
 </body>
-
 </html>
