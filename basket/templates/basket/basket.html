@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
 <div class="overlay"></div>
 <div class="container">
@@ -24,9 +23,7 @@
                                <th class="px-3"scope="col">Quantity</th>
                                <th class="px-3"scope="col">Subtotal</th>
                            </tr>
-                        
                        </thead>
-                       
                        {% for item in basket_items %}
                             <tr class="basket-body">
                                 <td class="p-3 w-25">
@@ -112,6 +109,7 @@
 
 {% block postloadjs %}
 {{ block.super }}
+
 {% include 'products/includes/quantity_script.html' %}
 
 <script type="text/javascript">

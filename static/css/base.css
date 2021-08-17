@@ -48,10 +48,90 @@ footer p:last-child {
 .pointer {
     cursor: pointer;
 }
-/* CUSTOMIZE THE CAROUSEL
-  -------------------------------------------------- */
 
-/* Carousel base class */
+.category-nav li:last-child:after {
+  mix-blend-mode: multiply;
+  background: #aaafc3;
+}
+
+.category-nav li:last-child:before {
+  backdrop-filter: grayscale(100%) blur(2px);
+  -webkit-backdrop-filter: grayscale(100%) blur(2px);
+}
+
+.navbar-container{
+  padding: 0 ;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+
+.category-nav li:nth-child(1){
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top, #767aa1a4 50%, transparent 50%);
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s;
+}
+
+.category-nav li:nth-child(1):hover{
+  background-position: 0 -100%;
+}
+
+/* 
+.category-nav li:nth-child(1):hover {
+  background: #1A237E;
+} */
+.category-nav li:nth-child(2):hover{
+  background-position: 0 -100%;
+}
+
+.category-nav li:nth-child(2){
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top, #f7c7fc 50%, transparent 50%);
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s;
+}
+
+.category-nav li:nth-child(3):hover{
+  background-position: 0 -100%;
+}
+
+.category-nav li:nth-child(3){
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top, #aaafc3 50%, transparent 50%);
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s;
+}
+
+.category-nav li:nth-child(4):hover{
+  background-position: 0 -100%;
+}
+
+.category-nav li:nth-child(4){
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top, #daa384 50%, transparent 50%);
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s;
+}
+
+.category-nav li:nth-child(5):hover{
+  background-position: 0 -100%;
+}
+
+.category-nav li:nth-child(5){
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top,  #A5D6A7 50%, transparent 50%);
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s;
+}
+
+/* Carousel */
 .carousel {
     margin-bottom: 4rem;
 }
