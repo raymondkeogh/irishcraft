@@ -393,6 +393,9 @@ https://stackoverflow.com/questions/52870493/carousel-set-first-loop-image-as-ac
 Snackbar script used to create toast messages alerts
 https://www.cssscript.com/snackbar-toast-notification/
 
+SCSS used to create hover/color effect on index page
+https://freefrontend.com/css-hover-effects/
+
 
 **Content**
 
