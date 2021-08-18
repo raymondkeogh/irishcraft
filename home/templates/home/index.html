@@ -8,12 +8,6 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="">
-                        </button>
-                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-                    </div>
                     <div class="carousel-inner">
                         {% for product in random_product %}
                             {% if product.id|divisibleby:2 == 0%}
@@ -46,11 +40,6 @@
             </div>
             <div class="col-sm-12 col-md-6">
                 <div id="myCarousel2" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#myCarousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#myCarousel2" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-                        <button type="button" data-bs-target="#myCarousel2" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-                    </div>
                     <div class="carousel-inner">
                         {% for product in random_product %}
                             {% if product.id|divisibleby:2 != 0 and product.image.url != None %}
@@ -83,9 +72,9 @@
             </div>
         </div>
     </div>
+        <hr class="featurette-divider">
 
     <div class="container-fluid marketing">
-        <hr class="featurette-divider">
         <h1 class="text-center">Handcrafted in Ireland</h1>
         {% include 'includes/category-grid.html' %}
         <hr class="featurette-divider">

@@ -103,7 +103,7 @@
                 {% if request.user.is_superuser %}
                 <a href="" class="dropdown-item">Product Management</a>
                 {% endif %}
-                <a href="" class="dropdown-item">My Profile</a>
+                <a href="{% url 'customer_account' %}" class="dropdown-item">My Profile</a>
                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                 {% else %}
                 <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -118,9 +118,9 @@
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
                     {% if total %}
-                    ${{ total|floatformat:2 }}
+                    €{{ total|floatformat:2 }}
                     {% else %}
-                    $0.00
+                    €0.00
                     {% endif %}
                   </p>
                 </div>

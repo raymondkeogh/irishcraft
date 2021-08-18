@@ -18,6 +18,17 @@ header {
     padding-top: 100px;
 }
 
+.btn-outline-success {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline-success:hover {
+  color:  #343a40;
+  background-color: #fff;
+  border-color: #fff;
+} 
+
 footer {
     padding: 2.5rem 0;
     color: #999;
@@ -49,86 +60,43 @@ footer p:last-child {
     cursor: pointer;
 }
 
-.category-nav li:last-child:after {
-  mix-blend-mode: multiply;
-  background: #aaafc3;
-}
-
-.category-nav li:last-child:before {
-  backdrop-filter: grayscale(100%) blur(2px);
-  -webkit-backdrop-filter: grayscale(100%) blur(2px);
-}
-
 .navbar-container{
   padding: 0 ;
 }
 
-.grow { transition: all .2s ease-in-out; }
-.grow:hover { transform: scale(1.1); }
-
-
-.category-nav li:nth-child(1){
+.category-nav li{
   background-size: 100% 200%;
-  background-image: linear-gradient(to top, #767aa1a4 50%, transparent 50%);
   -webkit-transition: background-position 1s;
   -moz-transition: background-position 1s;
   transition: background-position 1s;
 }
 
-.category-nav li:nth-child(1):hover{
+.category-nav li:hover{
   background-position: 0 -100%;
 }
 
-/* 
-.category-nav li:nth-child(1):hover {
-  background: #1A237E;
-} */
-.category-nav li:nth-child(2):hover{
-  background-position: 0 -100%;
+.category-nav li:nth-child(1){
+  background-image: linear-gradient(to top, #767aa1a4 50%, transparent 50%);
 }
 
 .category-nav li:nth-child(2){
-  background-size: 100% 200%;
   background-image: linear-gradient(to top, #f7c7fc 50%, transparent 50%);
-  -webkit-transition: background-position 1s;
-  -moz-transition: background-position 1s;
-  transition: background-position 1s;
-}
-
-.category-nav li:nth-child(3):hover{
-  background-position: 0 -100%;
 }
 
 .category-nav li:nth-child(3){
-  background-size: 100% 200%;
   background-image: linear-gradient(to top, #aaafc3 50%, transparent 50%);
-  -webkit-transition: background-position 1s;
-  -moz-transition: background-position 1s;
-  transition: background-position 1s;
-}
-
-.category-nav li:nth-child(4):hover{
-  background-position: 0 -100%;
 }
 
 .category-nav li:nth-child(4){
-  background-size: 100% 200%;
   background-image: linear-gradient(to top, #daa384 50%, transparent 50%);
-  -webkit-transition: background-position 1s;
-  -moz-transition: background-position 1s;
-  transition: background-position 1s;
-}
-
-.category-nav li:nth-child(5):hover{
-  background-position: 0 -100%;
 }
 
 .category-nav li:nth-child(5){
-  background-size: 100% 200%;
   background-image: linear-gradient(to top,  #A5D6A7 50%, transparent 50%);
-  -webkit-transition: background-position 1s;
-  -moz-transition: background-position 1s;
-  transition: background-position 1s;
+}
+
+.category-nav li:active a{
+  color:#fff;
 }
 
 /* Carousel */
@@ -144,6 +112,14 @@ footer p:last-child {
     background-color: transparent;
     border: none;
 }
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+ }
+ 
+ .carousel-control-next-icon {
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+ }
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -187,7 +163,7 @@ Center align the text within the three columns below the carousel */
   ------------------------- */
 
 .featurette-divider {
-    margin: 5rem 0;
+    margin: 1rem 0;
 }
 
 .featurette-heading {
@@ -221,64 +197,76 @@ Center align the text within the three columns below the carousel */
 /* PRODUCT DETAILS
   -------------------------------------------------- */
 
-  .product-details, .product-image{
-    box-sizing: border-box; 
-    padding:30px;
-    padding-bottom: 100px; 
-  }
+.product-details, .product-image{
+  box-sizing: border-box; 
+  padding:30px;
+  padding-bottom: 100px; 
+}
 
-  .text-black {
-    color: black !important;
-  }
-  
-  .basket-dropdown-zone{
-    position:relative;
-  }
+.text-black {
+  color: black !important;
+}
 
-  .basket-body, .basket{
-    font-size: .8rem ;
-  }
-  .basket-dropdown-zone:hover .basket-dropdown{
-    display: block;
-  } 
+.basket-dropdown-zone{
+  position:relative;
+}
 
-  .basket-dropdown .toast-body {
-    font-size: 15px;
-  }
+.basket-dropdown-zone a.text-info{
+  color: #77cc7a !important;
+}
 
-  .basket-dropdown {
-    background-color: white;
-    display: none;
-    width: 300px;
-    position: absolute;
-    z-index: 9999999;
-    right: 49px;
-    top: 82px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+.basket-dropdown-zone a.text-info:focus, .basket-dropdown-zone a.text-info:hover {
+  color: #1e7140!important;
+}
 
-  .basket-dropdown-zone:hover + .basket-dropdown {
-      display:block;    
-  }
+.basket-dropdown-zone:hover{
+  color: #4750479a ;
+}
 
-  .checkout {
-    background-color: rgb(255, 181, 43);
-  }
+.basket-body, .basket{
+  font-size: .8rem ;
+}
+.basket-dropdown-zone:hover .basket-dropdown{
+  display: block;
+} 
 
-  .qty_input {
-    min-width: 50px;
-  }
+.basket-dropdown .toast-body {
+  font-size: 15px;
+}
 
-  .dropdown-arrow:before {
-    content: "";
-    position: absolute;
-    top: -24px;
-    right: 0;
-    width: 26px;
-    height: 33px;
-    background:
-    radial-gradient(circle at top left, transparent 58%, #ffffff 60%);
-  }
+.basket-dropdown {
+  background-color: white;
+  display: none;
+  width: 300px;
+  position: absolute;
+  z-index: 9999999;
+  right: 49px;
+  top: 82px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.basket-dropdown-zone:hover + .basket-dropdown {
+    display:block;    
+}
+
+.checkout {
+  background-color: rgb(255, 181, 43);
+}
+
+.qty_input {
+  min-width: 50px;
+}
+
+.dropdown-arrow:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  right: 0;
+  width: 26px;
+  height: 33px;
+  background:
+  radial-gradient(circle at top left, transparent 58%, #ffffff 60%);
+}
 
 /* RESPONSIVE CSS
   -------------------------------------------------- */

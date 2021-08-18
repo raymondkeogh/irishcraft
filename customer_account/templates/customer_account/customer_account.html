@@ -1,0 +1,96 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Your Account</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <p class="text-muted">Your Details</p>
+                    <div class="rounded px-3 mb-5">
+                        <h6>Account Details</h6>
+                        <p>Full Name</p>
+                        <p>{{user.username}}</p>
+                        <p>Email Address</p>
+                        <p>Phone Number</p>
+                    </div>
+                    <hr>
+                    <div class="px-3 mb-5">
+                        <h6>Delivery Address</h6>
+                        <p>Street Address 1</p>
+                        <p>Street Address 2</p>
+                        <p>Town or City</p>
+                        <p>County</p>
+                        <p>Postcode</p>
+                        <p>Country</p>
+                    </div>
+                    <div class="text-right mt-5 mb-2">                    
+                        <a href="" class="btn btn-outline-black rounded-0">
+                            <span class="icon">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                            <span class="font-weight-bold">Change Delivery Address</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-6 order-lg-last mb-5">
+                <p class="text-muted">Order History ({{ order_history.count }})</p>
+                <div class="row">
+                    <div class="col-7">Order No. </div>
+                    <div class="col-7 offset-2">
+                        <p class="mb-1 mt-0 small text-muted">Item</p>
+                    </div>
+                    <div class="col-3 text-right">
+                        <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                    </div>
+                </div>
+                {% for item in basket_items %}
+                    <div class="row">
+                        <div class="col-2 mb-1">
+                            sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo
+                        </div>
+                        <div class="col-7">
+                            Text
+                        </div>
+                        <div class="col-3 text-right">
+                            <p class="my-0 small text-muted">More Text</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <hr class="my-0">
+                <div class="row text-black text-right">
+                    <div class="col-7 offset-2">
+                    
+                        <p class="my-0">Grand Total:</p>
+                    </div>
+                    <div class="col-3">
+            
+                        <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
+                    </div>
+                </div>
+            </div>         
+        </div>
+    </div>
+{% endblock %} 
