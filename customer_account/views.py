@@ -36,3 +36,32 @@ def customer_account(request):
     }
 
     return render(request, template, context)
+
+
+def edit_account(request):
+    """A view to allow user to edit their account"""
+
+    customer = get_object_or_404(CustomerAccount, user=request.user)
+
+    if request.method == 'POST':
+        form = CustomerAccountForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Details Saved')
+        else:
+            messages.error(request,
+                           'There"s a problem saving your account details,'
+                           'Please check to see all the fields are filled out'
+                           'correctly')
+    else:
+        form = CustomerAccountForm(instance=customer)
+    orders = customer.orders.all()
+
+    template = 'customer_account/edit_account.html'
+    context = {
+        'form': form,
+        'orders': orders,
+        'on_profile_page': True
+    }
+
+    return render(request, template, context)

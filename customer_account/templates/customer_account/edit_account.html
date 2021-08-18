@@ -1,0 +1,59 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">HEADER CONTAINER</div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Your Account Details</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-8">   
+                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                        {% csrf_token %}
+                        <fieldset class="rounded px-3 mb-5">
+                            <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                            {{ form.full_name | as_crispy_field }}
+                            {{ form.email | as_crispy_field }}
+                        </fieldset>
+                        <fieldset class="rounded px-3 mb-5">
+                            <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                            {{ form.phone_number | as_crispy_field }}
+                            {{ form.country | as_crispy_field }}
+                            {{ form.postcode | as_crispy_field }}
+                            {{ form.town_or_city | as_crispy_field }}
+                            {{ form.street_address1 | as_crispy_field }}
+                            {{ form.street_address2 | as_crispy_field }}
+                            {{ form.county | as_crispy_field }}
+                        </fieldset>
+                        <div class="submit-button text-right mt-5 mb-2">                    
+                            <button id="submit-button" class="btn btn-black rounded-0">
+                                <span class="font-weight-bold">Save Changes</span>
+                                <span class="icon">
+                                    <i class="fas fa-save"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+            </div>    
+        </div>
+    </div>
+{% endblock %} 
