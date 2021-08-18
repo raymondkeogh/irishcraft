@@ -6,10 +6,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>Your Basket  <i class="fas fa-shopping-basket fa-xs"></i></h2>
+            <h3>Your Basket  <i class="fas fa-shopping-basket fa-xs"></i></h3>
             <hr>
         </div>
     </div>
+
+    <!-- Shopping Basket details and prices -->
     <div class="row">
         <div class="col">
             {% if basket_items %}
@@ -27,7 +29,19 @@
                        {% for item in basket_items %}
                             <tr class="basket-body">
                                 <td class="p-3 w-25">
-                                    <img class="img-thumbnail" src="{{ item.product.image_url}}" alt="{{ item.product.name }}">
+                                    {% if item.product.image_url != None %}
+                                        <a href="{% url 'product_details' item.product.id %}">
+                                            <img class="img-thumbnail"  src="{{ item.product.image_url }}" alt="{{item.product.name}}">
+                                        </a>    
+                                    {% elif "No%20Image" not in item.product.image.url %}
+                                        <a href="{% url 'product_details' item.product.id %}">
+                                            <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
+                                        </a>
+                                    {% else %} 
+                                        <a href="{% url 'product_details' item.product.id %}">
+                                            <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
+                                        </a>
+                                    {% endif %}
                                 </td>
                                 <td class="">
                                     <p class=""><strong>{{ item.product.name }}</strong></p>
@@ -86,8 +100,7 @@
                         <td colspan="5" class="text-right">
                         <div class="col-12 text-right">
                             <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
-                            <a href="{% url 'checkout' %}" class="btn btn active mt-2 checkout" role="button" aria-pressed="true">Checkout <i class="fas fa-shield-alt"></i></a>
-                            
+                            <a href="{% url 'checkout' %}" class="btn btn active mt-2 checkout" role="button" aria-pressed="true">Checkout <i class="fas fa-shield-alt"></i></a>        
                         </div>
                     </td> 
                     </tr>

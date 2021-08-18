@@ -1,4 +1,4 @@
-
+<!-- Basket dropdown menu item -->
 <span class="dropdown-arrow"></span>
 <div class="toast-header bg-white text-black">
     <strong class="mr-auto">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
@@ -9,7 +9,15 @@
             {% for item in basket_items %}
                 <div class="row">
                     <div class="col-3 my-1">
-                        <img class="img-thumbnail" src="{{ item.product.image_url}}" alt="{{ item.product.name }}">
+                        {% if item.product.image_url != None %}
+                                        <img class="img-thumbnail"  src="{{ item.product.image_url }}" alt="{{item.product.name}}">
+                                    {% elif "No%20Image" not in item.product.image.url %}
+                                            <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
+                                
+                                    {% else %} 
+                                            <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
+                                    
+                                    {% endif %}
                     </div>
                     <div class="col-9">
                         <p class="my-0 text-black"><strong>{{ item.product.name }}</strong></p>

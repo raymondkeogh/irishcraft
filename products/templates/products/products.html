@@ -37,26 +37,19 @@
             <div class="col-sm-6 col-lg-4">
                 <div class="card-deck">
                     <div class="card">
-                        {% if product.image.url == None %}
-                        <a href="{% url 'product_details' product.id %}">
-                            <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
-                        </a>
-                        {% elif product.image_url %}
-                        <a href="{% url 'product_details' product.id %}">
-                            <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_details' product.id %}">
-                            <img class="card-img-top"
-                                src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
-                                alt="{{product.name}}">
-                        </a>
+                        {% if product.image_url != None %}
+                            <a href="{% url 'product_details' product.id %}">
+                                <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
+                            </a>    
+                        {% elif "No%20Image" not in product.image.url %}
+                            <a href="{% url 'product_details' product.id %}">
+                                <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
+                            </a>
+                        {% else %} 
+                            <a href="{% url 'product_details' product.id %}">
+                                <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
+                            </a>
                         {% endif %}
-                        <!-- {% if product.image_url %}
-                            <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
-                            {% else %}
-                            <img class="card-img-top img-fluid" src="{{MEDIA_URL}}no_image_placeholder.svg" alt="{{product.name}}">
-                            {% endif %} -->
                         <div class="card-body">
                             <p class="card-text">{{product.name}}</p>
                             <p class="small mt-1 mb-0" >
@@ -69,6 +62,8 @@
                             <p class="card-text">€ {{product.price}}</p>
                             <p><a class="btn btn-secondary" href="{% url 'product_details' product.id %}">View details
                                     »</a></p>
+
+
                         </div>
                     </div>
                 </div>

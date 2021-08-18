@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
@@ -40,6 +39,20 @@
                     <div class="row">
                         <div class="col-2 mb-1">
                             <a href="{% url 'product_details' item.product.id %}">
+                                {% if item.product.image.url and item.product.image.url != "https://res.cloudinary.com/ddmhcc5mk/image/upload/No%20Image" %}
+                                <a href="{% url 'product_details' item.product.id %}">
+                                <img class="w-100 card-img-top" src="{{ product.image.url }}" alt="{{item.product.name}}">
+                                </a>
+                            {% elif item.product.image_url %}
+                                <a href="{% url 'product_details' item.product.id %}">
+                                    <img class="w-100 card-img-top" src="{{ item.product.image_url }}" alt="{{product.name}}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'product_details' item.product.id %}">
+                                    <img class="w-100 card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
+                                        alt="{{product.name}}">
+                                </a>
+                            {% endif %}
                                 {% if item.product.image %}
                                     <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
@@ -49,7 +62,6 @@
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
