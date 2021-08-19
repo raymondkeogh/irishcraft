@@ -32,6 +32,7 @@ def customer_account(request):
     context = {
         'form': form,
         'orders': orders,
+        'customer': customer,
         'on_profile_page': True
     }
 
@@ -53,6 +54,10 @@ def edit_account(request):
                            'There"s a problem saving your account details,'
                            'Please check to see all the fields are filled out'
                            'correctly')
+        template = 'customer_account/customer_account.html'
+        context = {'customer': customer, }
+        return render(request, template, context)
+
     else:
         form = CustomerAccountForm(instance=customer)
     orders = customer.orders.all()
@@ -60,6 +65,7 @@ def edit_account(request):
     template = 'customer_account/edit_account.html'
     context = {
         'form': form,
+        'customer': customer,
         'orders': orders,
         'on_profile_page': True
     }

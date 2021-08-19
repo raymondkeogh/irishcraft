@@ -27,23 +27,21 @@
 
         <div class="row">
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Your Details</p>
                     <div class="rounded px-3 mb-5">
-                        <h6>Account Details</h6>
-                        <p>Full Name</p>
-                        <p>{{user.username}}</p>
-                        <p>Email Address {{user.email}}</p>
-                        <p>Phone Number</p>
+                        <p>Full Name: {{customer.full_name}}</p>
+                        <p>Username: {{customer.user}}</p>
+                        <p>Email Address: {{customer.email}}</p>
+                        <p>Phone Number: {{customer.phone_number}}</p>
                     </div>
                     <hr>
                     <div class="px-3 mb-5">
-                        <h6>Delivery Address</h6>
-                        <p>Street Address 1</p>
-                        <p>Street Address 2</p>
-                        <p>Town or City</p>
-                        <p>County</p>
-                        <p>Postcode</p>
-                        <p>Country</p>
+                        <h6 class="mb-4">DELIVERY ADDRESS</h6>
+                        <p>Street Address 1: {{customer.street_address1}} </p>
+                        <p>Street Address 2: {{customer.street_address2}}</p>
+                        <p>Town or City: {{customer.town_or_city}}</p>
+                        <p>County: {{customer.county}}</p>
+                        <p>Postcode: {{customer.postcode}}</p>
+                        <p>Country: {{customer.country}}</p>
                     </div>
                     <div class="text-right mt-5 mb-2">                    
                         <a href="{% url 'edit_account' %}" class="btn btn-outline-black rounded-0">
@@ -57,8 +55,9 @@
             </div>
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 <p class="text-muted">Order History ({{ order_history.count }})</p>
+                {% for order in orders %}
                 <div class="row">
-                    <div class="col-7">Order No. </div>
+                    <div class="col-7">Order No: {{order.order_no}} </div>
                     <div class="col-7 offset-2">
                         <p class="mb-1 mt-0 small text-muted">Item</p>
                     </div>
@@ -66,7 +65,8 @@
                         <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                     </div>
                 </div>
-                {% for item in basket_items %}
+                {% endfor %}
+                {% for order in orders %}
                     <div class="row">
                         <div class="col-2 mb-1">
                             sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo
