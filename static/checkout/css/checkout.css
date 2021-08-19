@@ -36,3 +36,8 @@
     border-color: rgb(134, 134, 134);
     
 }
+
+.hidden {
+  display: none;
+}
+

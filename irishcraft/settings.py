@@ -192,3 +192,9 @@ cloudinary.config(
 )
 
 STANDARD_DELIVERY_PERCENTAGE = 10
+
+# Stripe
+
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
