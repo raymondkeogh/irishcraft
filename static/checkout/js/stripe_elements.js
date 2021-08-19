@@ -46,11 +46,11 @@ card.addEventListener('change', function (event) {
 var loading = function(isLoading) {
     if (isLoading) {
       // Disable the button and show a spinner
-      document.querySelector("submit-button").disabled = true;
+      document.querySelector("#submit-button").disabled = true;
       document.querySelector("#spinner").classList.remove("hidden");
       document.querySelector("#button-text").classList.add("hidden");
     } else {
-      document.querySelector("submit-button").disabled = false;
+      document.querySelector("#submit-button").disabled = false;
       document.querySelector("#spinner").classList.add("hidden");
       document.querySelector("#button-text").classList.remove("hidden");
     }
