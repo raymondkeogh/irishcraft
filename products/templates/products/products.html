@@ -40,11 +40,13 @@
                         {% if product.image_url != None %}
                             <a href="{% url 'product_details' product.id %}">
                                 <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
-                            </a>    
+                            </a>   
+                            {{ product.image_url }}product.image_url
                         {% elif "No%20Image" not in product.image.url %}
                             <a href="{% url 'product_details' product.id %}">
                                 <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
                             </a>
+                            {{ product.image.url }} product.image.url 
                         {% else %} 
                             <a href="{% url 'product_details' product.id %}">
                                 <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
