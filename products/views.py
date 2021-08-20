@@ -110,3 +110,36 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def edit_product(request, product_id):
+    """ A view to edit product details """
+    if not request.user.is_superuser:
+        messages.error(request, 'You need to have the correct '
+                       'permissions to edit product details, please contact'
+                       ' you web administrator for more information')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Product Updated!')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(request, 'There was a problem updating.'
+                           'the product, please check to see if all'
+                           'the details have been filled in correctly')
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
