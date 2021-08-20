@@ -26,7 +26,38 @@
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col-7">
+            <div class="basket-notification-wrapper">
+                {% for item in order.lineitems.all %}
+                    <div class="row">
+                        <div class="col-2 my-1">
+                            {% if item.product.image_url != None %}
+                                <img class="checkout-thumbnail"  src="{{ item.product.image_url }}" alt="{{item.product.name}}">
+                            {% elif "No%20Image" not in item.product.image.url %}
+                                <img class="checkout-thumbnail" src="{{ item.product.image.url }}" alt="{{item.product.name}}">
+  
+                            {% else %} 
+                                <img class="checkout-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">          
+                            {% endif %}
+                        </div>
+                        <div class="col-5">
+                            <p class="my-1 text-black"><strong>{{ item.product.name }}</strong></p>
+                            <p class="my-1 small text-muted">Qty: {{ item.quantity }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="row">
+                    <div class="col">
+                        <p class="my-1 text-black"><strong>{{ order.full_name}}</strong></p>
+                        <p class="my-1 small text-muted"></p>
+                    </div>
+            </div>
+            </div>
+      
 
         </div>
     

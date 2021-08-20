@@ -53,44 +53,47 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <p class="text-muted">Order History ({{ order_history.count }})</p>
-                {% for order in orders %}
-                <div class="row">
-                    <div class="col-7">Order No: {{order.order_no}} </div>
-                    <div class="col-7 offset-2">
-                        <p class="mb-1 mt-0 small text-muted">Item</p>
-                    </div>
-                    <div class="col-3 text-right">
-                        <p class="mb-1 mt-0 small text-muted">Subtotal</p>
-                    </div>
+
+
+            <div class="col-12 col-lg-6">
+                <p class="text-muted">Order History</p>
+                <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Order Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a class="small" href=""
+                                        title="{{ order.order_number }}">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td><p class="small">{{ order.date|date:"d M Y" }}</p></td> 
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                                <li class="small">
+                                                    {{ item.product.name }} x{{ item.quantity }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>€{{ order.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                {% endfor %}
-                {% for order in orders %}
-                    <div class="row">
-                        <div class="col-2 mb-1">
-                            sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo
-                        </div>
-                        <div class="col-7">
-                            Text
-                        </div>
-                        <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">More Text</p>
-                        </div>
-                    </div>
-                {% endfor %}
-                <hr class="my-0">
-                <div class="row text-black text-right">
-                    <div class="col-7 offset-2">
-                    
-                        <p class="my-0">Grand Total:</p>
-                    </div>
-                    <div class="col-3">
-            
-                        <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
-                    </div>
-                </div>
-            </div>         
+            </div>
+               
         </div>
     </div>
 {% endblock %} 

@@ -25,7 +25,7 @@ class CustomerAccount(models.Model):
         max_length=40, null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(max_length=70, blank=True, unique=True)
-  
+
     def __str__(self):
         return self.user.username
 
