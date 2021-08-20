@@ -2,8 +2,10 @@
 all products view and product details view """
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
+from .forms import ProductForm
 from .models import Product, PhotoForm, Category
 
 
@@ -77,3 +79,34 @@ def product_details(request, product_id):
         'product': product,
     }
     return render(request, 'products/product_details.html', context)
+
+
+@login_required
+def add_product(request):
+    """ upoad a product to the site """
+    if not request.user.is_superuser:
+        messages.error(
+            request, "You must have shop Superuser access in order to"
+            "add a product, please contact you web adminstrator in"
+            "order to set up the correct permissions to access this function")
+        return redirect(reverse('home'))
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 'Product uploaded!')
+            return redirect(reverse('product_details', args=[product.id]))
+        else:
+            messages.error(
+                request, 'Failed to upload product.'
+                'Please ensure the form is valid.')
+    else:
+        form = ProductForm()
+      
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

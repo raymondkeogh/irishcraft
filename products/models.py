@@ -8,12 +8,13 @@ import os
 
 
 class Photo(models.Model):
-  image = CloudinaryField('image')
+    image = CloudinaryField('image')
+
 
 class PhotoForm(ModelForm):
-  class Meta:
-    model = Photo
-    fields = '__all__'
+    class Meta:
+        model = Photo
+        fields = '__all__'
 
 
 class Category(models.Model):

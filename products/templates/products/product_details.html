@@ -7,11 +7,11 @@
             <div class="col-sm">
                 <div class="product-image">
                     {% if product.image_url != None %}
-                    <a href="{% url 'product_details' product.id %}">
+                    <a href="{{ product.image_url }}">
                         <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
                     </a>    
                 {% elif "No%20Image" not in product.image.url %}
-                    <a href="{% url 'product_details' product.id %}">
+                    <a href="{{ product.image.url }}">
                         <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
                     </a>
                 {% else %} 

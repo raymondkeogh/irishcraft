@@ -41,12 +41,10 @@
                             <a href="{% url 'product_details' product.id %}">
                                 <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
                             </a>   
-                            {{ product.image_url }}product.image_url
                         {% elif "No%20Image" not in product.image.url %}
                             <a href="{% url 'product_details' product.id %}">
                                 <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
                             </a>
-                            {{ product.image.url }} product.image.url 
                         {% else %} 
                             <a href="{% url 'product_details' product.id %}">
                                 <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
@@ -62,9 +60,6 @@
                         </div>
                         <div class="card-footer">
                             <p class="card-text">€ {{product.price}}</p>
-                            <p><a class="btn btn-secondary" href="{% url 'product_details' product.id %}">View details
-                                    »</a></p>
-
 
                         </div>
                     </div>
@@ -96,6 +91,5 @@
 {% endblock %}
 
 {% block postloadjs %}
-<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-<script src="{% static 'js/script.js' %}"></script>
+
 {% endblock %}
