@@ -27,10 +27,6 @@ def customer_account(request):
     else:
         form = CustomerAccountForm(instance=customer)
     orders = customer.orders.all()
-    print("DdddddDDDDDDDDDDDDDD")
-    for order in orders:
-        print("DdddddDDDDDDDDDDDDDD")
-        print(order)
     template = 'customer_account/customer_account.html'
     context = {
         'form': form,
@@ -38,7 +34,6 @@ def customer_account(request):
         'customer': customer,
         'on_profile_page': True
     }
-
     return render(request, template, context)
 
 

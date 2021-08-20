@@ -17,13 +17,20 @@ def add_to_basket(request, item_id):
     redirect_url = request.POST.get('redirect_url')
 
     basket = request.session.get('basket', {})
-
+    if quantity > 1:
+        plural_string = "s"
+    else:
+        plural_string = ""
     if item_id in list(basket.keys()):
         basket[item_id] += quantity
-        messages.success(request, f'Added {product.name} to your bag')
+        messages.success(
+            request,
+            f'Added {quantity} "{product.name}{plural_string}" to your basket')
     else:
         basket[item_id] = quantity
-        messages.success(request, f'Added {product.name} to your bag')
+        messages.success(
+            request,
+            f'Added {quantity} "{product.name}{plural_string}" to your basket')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
@@ -47,7 +54,6 @@ def adjust_basket(request, item_id):
 
 def remove_from_basket(request, item_id):
     """Remove an item from the basket"""
-    
     basket = request.session.get('basket', {})
 
     try:
