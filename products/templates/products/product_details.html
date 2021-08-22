@@ -28,7 +28,9 @@
                         {{product.description}}
                     </p>
                     {% if product.category %}
-                    <p class="text-muted">{{ product.category }}</p>
+                    <a class="text-muted my-4 small" href="{% url 'products' %}?category={{ product.category.name }}">
+                        <i class="fas fa-tag mr-1" ></i>{{ product.category.friendly_name }}
+                    </a>
                     {% endif %}
                     <p>€ {{ product.price }}</p>
                 <form action="{% url 'add_to_basket' product.id %}" method="POST" class="form">
@@ -62,11 +64,14 @@
                             <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
                             <input type="submit" class="btn btn-secondary btn active mt-2" value="Add to basket">
                             <input type="hidden" name="redirect_url" value="{{ request.path  }}">
+                        
                             {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Edit Product</a>
-                                {% endif %}
+                            {% if request.user.is_superuser %}
+                                <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Edit Product</a>
+                                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn active mt-2" role="button" aria-pressed="true">Delete Product</a>
                             {% endif %}
+                        {% endif %}
+                
                         </div>
                     </div>
                 </form>

@@ -1,7 +1,10 @@
+{% load static %}
+
 <!-- Basket dropdown menu item -->
 <span class="dropdown-arrow"></span>
 <div class="toast-header bg-white text-black">
-    <strong class="mr-auto">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
+    <strong class="mr-auto">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong><a class="text-muted small"
+    href="{% url 'view_basket' %}">view</a>
 </div>
 <div class="toast-body bg-white">
     {% if grand_total %}
@@ -20,14 +23,17 @@
                                     {% endif %}
                     </div>
                     <div class="col-9">
-                        <p class="my-0 text-black"><strong>{{ item.product.name }}</strong></p>
+
+                        <p class="my-0 text-black"><strong>{{ item.product.name }}</strong></p><a class="remove-item text-danger float-right pointer" id="remove_{{ item.item_id }}">
+                            <small>X</small>
+                        </a>
                         <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                     </div>
                 </div>
             {% endfor %}
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col checkout-button-dropdown">
                 <strong><p class="mt-3 mb-1 text-black">
                     Total: 
                     <span class="float-right">€{{ total|floatformat:2 }}</span>
@@ -45,3 +51,21 @@
         <p class="m-5">Your basket is empty </p>
     {% endif %}
 </div>
+
+{% block postloadjs %}
+
+<script type="text/javascript">
+// Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/basket/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
+{% endblock %}

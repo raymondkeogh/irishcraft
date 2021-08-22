@@ -64,6 +64,16 @@ footer p:last-child {
   padding: 0 ;
 }
 
+.navbar-brand img {
+  max-height: 89px;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 8px;
+  left: 22px;
+}
+
 .category-nav li{
   background-size: 100% 200%;
   -webkit-transition: background-position 1s;
@@ -104,6 +114,11 @@ footer p:last-child {
     margin-bottom: 4rem;
 }
 
+.carousel-container{
+  height: 80vh;
+  overflow: hidden;
+}
+
 .carousel-container, .carousel-container .col-md-6, .carousel-container .col-sm-12 {
     padding: 0; 
 }
@@ -133,6 +148,8 @@ footer p:last-child {
 /* Declare heights because of positioning of img element */
 .carousel-item {
     height: 32rem;
+    position: relative;
+    height:100%;
 }
 
 .carousel-item>img {
@@ -282,10 +299,12 @@ Center align the text within the three columns below the carousel */
   right: 49px;
   top: 82px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-height: 50vh; 
+
 }
 
 .basket-dropdown-zone:hover + .basket-dropdown {
-    display:block;    
+    display:block; 
 }
 
 .checkout {

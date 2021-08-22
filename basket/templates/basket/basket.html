@@ -43,7 +43,7 @@
                                         </a>
                                     {% endif %}
                                 </td>
-                                <td class="">
+                                <td class="p-3">
                                     <p class=""><strong>{{ item.product.name }}</strong></p>
                                 </td>
                                 <td class="p-3">
@@ -62,8 +62,8 @@
                                                     </span>
                                                 </button>
                                             </div>
-                                            <input class="form-control qty_input w-25" type="number"
-                                                name="quantity" value="1" min="1" max="99"
+                                            <input class="form-control qty_input p-0 text-center w-25" type="number"
+                                                name="quantity" value="{{item.quantity}}" min="1" max="99"
                                                 data-item_id="{{ item.item_id }}"
                                                 id="id_qty_{{ item.item_id }}">
                                             <div class="input-group-append">
@@ -121,7 +121,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-{{ block.super }}
 
 {% include 'products/includes/quantity_script.html' %}
 

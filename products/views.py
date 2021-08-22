@@ -90,12 +90,12 @@ def add_product(request):
             "add a product, please contact you web adminstrator in"
             "order to set up the correct permissions to access this function")
         return redirect(reverse('home'))
-    
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, 'Product uploaded!')
+            messages.success(request, f'{product.name} has been uploaded!')
             return redirect(reverse('product_details', args=[product.id]))
         else:
             messages.error(
@@ -103,7 +103,7 @@ def add_product(request):
                 'Please ensure the form is valid.')
     else:
         form = ProductForm()
-      
+
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -143,3 +143,18 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_product(request, product_id):
+    """ A view to delete a product from the database """
+    if not request.user.is_superuser:
+        messages.error(request, 'You need to have the correct '
+                       'permissions to edit product details, please contact'
+                       ' you web administrator for more information')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, f'{product.name} has been deleted!')
+    return redirect(reverse('products'))

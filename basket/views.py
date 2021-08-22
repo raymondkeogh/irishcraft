@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404)
 from django.contrib import messages
 from products.models import Product
 
 
 def view_basket(request):
     """A view to show the shopping basket"""
-  
+
     return render(request, 'basket/basket.html')
 
 
@@ -54,13 +55,17 @@ def adjust_basket(request, item_id):
 
 def remove_from_basket(request, item_id):
     """Remove an item from the basket"""
-    basket = request.session.get('basket', {})
-
     try:
+        product = get_object_or_404(Product, pk=item_id)
+        basket = request.session.get('basket', {})
         basket.pop(item_id)
-
+        messages.success(
+            request, f'{product.name} has been removed from your bag')
         request.session['basket'] = basket
+
         return HttpResponse(status=200)
 
-    except Exception as e:
+    except Exception as err:
+        messages.error(
+            request, f'Error deleting item: {err}')
         return HttpResponse(status=500)
