@@ -3,8 +3,8 @@
 
 {% block content %}
 
-<div class="main">
-    <div class="container-fluid carousel-container">
+<div class="main container">
+    <div class="carousel-container">
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -73,25 +73,39 @@
                 </div>
             </div>
         </div>
-    </div>
-        <hr class="featurette-divider">
+    </div><!-- /.carousel-container -->
+
+    <hr class="featurette-divider  mt-5">
 
     <div class="container-fluid marketing">
-        <h1 class="text-center">Handcrafted in Ireland</h1>
-        {{rand_products}}
+        <h1 class="text-center mb-5 mt-4">Handcrafted in Ireland</h1>
         {% include 'includes/category-grid.html' %}
+
         <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Prints</h2>
+                <p class="lead">We have worked with some of the finest artist Ireland has to offer to procure these pieces. Our featured artist Conor Hamill whose contemporary imagery is the ideal addition to any home. <i class="fas fa-arrow-right"></i>  </p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <a href="{% url 'products' %}?category=prints" id="prints-link">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{prints_first.image.url}}" width="300" height="300" >  
+                </a>        
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading">Glassware</h2>
-                <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how
-                    this layout would work with some actual real-world content in place.</p>
+                <p class="lead">From fine crystal to everyday tumblers, handblown or handcut find the finest pieces here</p>
             </div>
             <div class="col-md-5 order-md-1">
-                <img class="img-fluid" src="{{ product.image_url }}" alt="{{product.name}}" style="width:500;height:500;">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-                </svg>
+                <a href="{% url 'products' %}?category=glassware" id="glassware-link">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{glassware_first.image.url}}" width="300" height="300" >
+                </a> 
             </div>
         </div>
 
@@ -99,17 +113,13 @@
 
         <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading">Jewellery</h2>
-                <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
-                    intended to be actually read, simply here to give you a better view of what this would look like
-                    with some actual content. Your content.</p>
+                <h2 class="featurette-heading">Textiles</h2>
+                <p class="lead">Irelands finest contemporary and classical interior fabrics. Our suppliers work with only the finest materials to produce uniquely beuatiful pieces.</p>
             </div>
             <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-                </svg>
-
+                <a href="{% url 'products' %}?category=textiles" id="textiles-link">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{textiles_first.image.url}}" width="300" height="300" >   
+                </a>  
             </div>
         </div>
 
@@ -117,21 +127,21 @@
 
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Clothing</h2>
-                <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how
-                    this layout would work with some actual real-world content in place.</p>
+                <h2 class="featurette-heading">Kitchenware</h2>
+                <p class="lead">Make your kitchen a feast for the senses with some of our kitchenware range.  </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-                </svg>
+                <a href="{% url 'products'%}?category=kitchen" id="kitchen-link">
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{kitchen_first.image.url}}" width="300" height="300" >
+                </a>  
             </div>
         </div>
-        <hr class="featurette-divider">
 
-    </div><!-- /.container -->
-</div>
+        <hr class="featurette-divider"> 
+
+    </div><!-- /.container-fluid marketing -->
+</div><!-- /.main container -->
+
 
 {% endblock %}
 
@@ -146,3 +156,16 @@
   </script>
   <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
+
+
+
+
+
+
+
+
+</li>
+<li class="nav-item px-4">
+ 
+</li>
+<li class="nav-item px-4">
