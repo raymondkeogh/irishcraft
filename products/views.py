@@ -5,8 +5,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
+from product_health.signals import product_viewed_signal
+from django.db.models import F
+from django.core.exceptions import ObjectDoesNotExist
+
+
 from .forms import ProductForm
 from .models import Product, PhotoForm, Category
+from product_health.models import ProductActivity
 
 
 def upload(request):
@@ -74,7 +80,29 @@ def all_products(request):
 
 def product_details(request, product_id):
     """ A view to show products details """
-    product = get_object_or_404(Product, pk=product_id)
+    try:
+        product = get_object_or_404(Product, id=product_id)
+        print("1. the product exists")
+        print("2. product is :   " + str(product))
+    except ObjectDoesNotExist:
+        product = None
+        print("3. the product doesn't exist")
+        # Check for product activity and update the ProductActivity model
+    if product is not None:
+        try:
+            product_activity = ProductActivity.objects.get(
+                name__name=product.name)
+        except ObjectDoesNotExist:
+            product_activity = None
+        if product_activity is not None:
+            product_activity.view_count = F(
+                "view_count") + 1
+            product_activity.save()
+        else:
+            product_activity = ProductActivity.objects.create(
+                view_count=1,
+                name=product,
+            )
     context = {
         'product': product,
     }
@@ -155,6 +183,7 @@ def delete_product(request, product_id):
         return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
+
     product.delete()
     messages.success(request, f'{product.name} has been deleted!')
     return redirect(reverse('products'))
