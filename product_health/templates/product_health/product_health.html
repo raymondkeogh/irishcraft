@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-lg-6">
+            <div class="rounded px-3 mb-5">
+                <h4 class="mb-4">Product Relations</h4>
+                {% for order in allorders %}
+                    {% if order.purchase_history != None %}
+                        Customers who bought: "{{order.purchase_history}}"
+                        also bought<br>
+                        {% for item in order.lineitems.all %}
+                        <li class="small">
+                            {% if order.purchase_history != item.product.name %}
+                                {{ item.product.name }} x{{ item.quantity }}
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+</div>
+
+{% endblock %} 
