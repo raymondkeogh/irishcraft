@@ -4,8 +4,9 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
-from products.models import Product
 from customer_account.models import CustomerAccount
+from products.models import Product
+from product_health.models import PurchaseHistory
 
 
 class Order(models.Model):
@@ -14,6 +15,9 @@ class Order(models.Model):
     customer_account = models.ForeignKey(
         CustomerAccount, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='orders')
+    purchase_history = models.ForeignKey(
+        PurchaseHistory, on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='related_products')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
@@ -65,7 +69,7 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_number
-
+        
 
 class OrderLineItem(models.Model):
     """"A model for referencing line items"""

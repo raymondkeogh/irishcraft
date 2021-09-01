@@ -3,11 +3,13 @@ from django.contrib import messages
 from django.conf import settings
 import stripe
 from basket.contexts import basket_contents
+from django.core.exceptions import ObjectDoesNotExist
+
 from customer_account.forms import CustomerAccountForm
 from customer_account.models import CustomerAccount
 from products.models import Product
 from .forms import OrderForm
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, PurchaseHistory
 
 
 def checkout(request):
@@ -94,26 +96,71 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
-    customer = CustomerAccount.objects.get(user=request.user)
-    # Attach the user's profile to the order
-    order.customer_account = customer
-    order.save()
+    if request.user.is_authenticated:
+        customer = CustomerAccount.objects.get(user=request.user)
+       
+        # Attach the user's profile to the order
+        order.customer_account = customer
+        order.save()
+    
+        # Save the user's info
+        if save_info:
+            customer_info = {
+                'phone_number': order.phone_number,
+                'country': order.country,
+                'postcode': order.postcode,
+                'town_or_city': order.town_or_city,
+                'street_address1': order.street_address1,
+                'street_address2': order.street_address2,
+                'county': order.county,
+            }
+            customer_account_form = CustomerAccountForm(
+                customer_info, instance=customer)
+            if customer_account_form.is_valid():
+                customer_account_form.save()
 
-    # Save the user's info
-    if save_info:
-        customer_info = {
-            'phone_number': order.phone_number,
-            'country': order.country,
-            'postcode': order.postcode,
-            'town_or_city': order.town_or_city,
-            'street_address1': order.street_address1,
-            'street_address2': order.street_address2,
-            'county': order.county,
-        }
-        customer_account_form = CustomerAccountForm(
-            customer_info, instance=customer)
-        if customer_account_form.is_valid():
-            customer_account_form.save()
+    for item in order.lineitems.all():
+       
+        # Attach the user's profile to the order
+
+        try:
+            product_history = PurchaseHistory.objects.get(name__name=item.product)
+            print("youve got 1 exception ray")
+        except ObjectDoesNotExist:
+            product_history = None
+            print("youve got an exception ray")
+
+        if product_history is not None:
+            product_history = PurchaseHistory.objects.get(name__name=item.product)
+            
+            order.purchase_history = product_history
+            order.save()
+            print("Product history :  - ", product_history)
+
+        else:
+            product_history = PurchaseHistory.objects.create(
+                name=item.product)
+            print("New Product history :  - ", product_history)
+            order.purchase_history = product_history
+            order.save()
+
+       
+
+        
+        # p1 = Publication(title='The Python Journal')
+        # purchase_history.save()
+        # a1 = Article(headline='Django lets you build Web apps easily')
+        # a1.save()
+        # a1.publications.add(p1)
+
+        # purchase_history1 = PurchaseHistory(product.set(item.product))
+        # purchase_history1.save()
+        # order.purchase_history.add(purchase_history)
+
+
+        # order.purchase_history = purchase_history
+        # order.save()
+
 
     messages.success(request, f'Thank you for your order! \
         Your order number is {order_number}. A confirmation \
