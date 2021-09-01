@@ -12,7 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from .forms import ProductForm
 from .models import Product, PhotoForm, Category
-from product_health.models import ProductActivity
+from product_health.models import ProductActivity, PurchaseHistory
 
 
 def upload(request):
@@ -82,11 +82,8 @@ def product_details(request, product_id):
     """ A view to show products details """
     try:
         product = get_object_or_404(Product, id=product_id)
-        print("1. the product exists")
-        print("2. product is :   " + str(product))
     except ObjectDoesNotExist:
         product = None
-        print("3. the product doesn't exist")
         # Check for product activity and update the ProductActivity model
     if product is not None:
         try:
@@ -103,10 +100,24 @@ def product_details(request, product_id):
                 view_count=1,
                 name=product,
             )
+
+    if product is not None:
+        try:
+            purchase_history = PurchaseHistory.objects.get(
+                name__name=product.name)
+            for item in purchase_history.related_products.all():
+                for lineitem in item.lineitems.all():
+                    print("lineitem is:", lineitem.product.name)
+        except ObjectDoesNotExist:
+            purchase_history = None
+
+            
     context = {
         'product': product,
+        'purchase_history': purchase_history,
     }
     return render(request, 'products/product_details.html', context)
+
 
 
 @login_required

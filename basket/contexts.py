@@ -6,21 +6,21 @@ from products.models import Product
 
 def basket_contents(request):
     """Context to return basket contents"""
-
+    
     basket_items = []
     total = 0
     product_count = 0
     basket = request.session.get('basket', {})
-    for item_id, quantity in basket.items():
-        if isinstance(item_id, int):
+    for item_id, item_data in basket.items():
+        if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
-            total += quantity * product.price
-            product_count += quantity
+            total += item_data * product.price
+            product_count += item_data
             basket_items.append({
                 'item_id': item_id,
-                'quantity': quantity,
+                'quantity': item_data,
                 'product': product,
-                'item_total': product.price * quantity,
+                'item_total': product.price * item_data,
             })
 
     delivery = total * Decimal(

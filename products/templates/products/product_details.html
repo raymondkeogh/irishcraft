@@ -7,18 +7,18 @@
             <div class="col-sm">
                 <div class="product-image">
                     {% if product.image_url != None %}
-                    <a href="{{ product.image_url }}">
-                        <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
-                    </a>    
-                {% elif "No%20Image" not in product.image.url %}
-                    <a href="{{ product.image.url }}">
-                        <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
-                    </a>
-                {% else %} 
-                    <a href="{% url 'product_details' product.id %}">
-                        <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
-                    </a>
-                {% endif %}
+                        <a href="{{ product.image_url }}">
+                            <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
+                        </a>    
+                    {% elif "No%20Image" not in product.image.url %}
+                        <a href="{{ product.image.url }}">
+                            <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
+                        </a>
+                    {% else %} 
+                        <a href="{% url 'product_details' product.id %}">
+                            <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
+                        </a>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-sm">
@@ -61,22 +61,49 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
-                            <input type="submit" class="btn btn-secondary btn active mt-2" value="Add to basket">
-                            <input type="hidden" name="redirect_url" value="{{ request.path  }}">
-                        
-                            {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
+                            {% if request.user.is_authenticated and request.user.is_superuser%}
                                 <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Edit Product</a>
                                 <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn active mt-2" role="button" aria-pressed="true">Delete Product</a>
+                            {% else %}
+                                <a href="{% url 'products' %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Continue Shopping</a>
+                                <input type="submit" class="btn btn-secondary btn active mt-2" value="Add to basket">
+                                <input type="hidden" name="redirect_url" value="{{ request.path  }}">
                             {% endif %}
-                        {% endif %}
                 
                         </div>
                     </div>
                 </form>
                 </div>
             </div> 
+    </div>
+
+    <!-- Row to display commonly related products purchased with item being viewed -->
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+           {% if purchase_history.related_products != None %}
+            <h6>Items commonly purchased with <br> "{{product.name}}":   </h6>
+            <div class="row">
+                {%for item in purchase_history.related_products.all%}
+                    {% for lineitem in item.lineitems.all%}
+                        <div class="col-3 my-1">
+                            <a href="{% url 'product_details' lineitem.product.id %}">
+                        {% if lineitem.product.image_url != None %}
+
+                            <img class="img-thumbnail"  src="{{lineitem.product.image_url}}" alt="{{lineitem.product.name}}">
+                        {% elif "No%20Image" not in lineitem.product.image.url %}
+                            <img class="img-thumbnail"  src="{{lineitem.product.image.url}}" alt="{{lineitem.product.name}}">
+                    
+                        {% else %} 
+                            <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{lineitem.product.name}}">
+                        
+                        {% endif %}
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 
