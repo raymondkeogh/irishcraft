@@ -11,10 +11,12 @@
                 <h4 class="mb-4">Product Relations</h4>
                 {% for order in allorders %}
                     {% if order.purchase_history != None %}
-                        Customers who bought: "{{order.purchase_history}}"
-                        also bought<br>
+                        Customers who bought "{{order.purchase_history}}"
+                        also bought:  <br>
                         {% for item in order.lineitems.all %}
                         <li class="small">
+                            <!-- order.purchase_history is : {{order.purchase_history}}
+                            item.product.name is : {{item.product.name }} -->
                             {% if order.purchase_history != item.product.name %}
                                 {{ item.product.name }} x{{ item.quantity }}
                             {% endif %}
@@ -23,6 +25,15 @@
                     {% endif %}
                 {% endfor %}
             </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="rounded px-3 mb-5">
+            <h4 class="mb-4">Product Views</h4>
+            {% for product in product_activity %}
+            <a href="{% url 'product_details' product.id %}">{{product.name}}</a> - ({{product.view_count}}) views <br>
+            {% endfor %}
+            
+        </div>
     </div>
 </div>
 
