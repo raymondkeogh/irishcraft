@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-12">
+            <div class="polymorphism p-5 text-center">
+                <h2 class="logo-font">404 Error</h2>
+            
+                <p>It seems we've taken a wrong turn<br>
+                Click here <a class="btn btn-dark custom-dark-btn" href="{% url 'home' %}"><span class="button-effect">Home</span>
+                </a>to get back to our shop</p>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

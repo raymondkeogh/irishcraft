@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-12">
+            <div class="polymorphism p-5 text-center">
+                <h1><span class="logo-font">500 Error</span></h1>
+                <div class="col-12">
+                    <p>Hmmm, seems we can't quite find that in our servers<br>
+                        Click here <a class="btn btn-dark custom-dark-btn" href="{% url 'home' %}"><span class="button-effect">Home</span>
+                        </a> to get back to our shop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
