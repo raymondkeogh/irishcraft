@@ -9,7 +9,6 @@ from product_health.signals import product_viewed_signal
 from django.db.models import F
 from django.core.exceptions import ObjectDoesNotExist
 
-
 from .forms import ProductForm
 from .models import Product, PhotoForm, Category
 from product_health.models import ProductActivity, PurchaseHistory
@@ -84,7 +83,8 @@ def product_details(request, product_id):
         product = get_object_or_404(Product, id=product_id)
     except ObjectDoesNotExist:
         product = None
-        # Check for product activity and update the ProductActivity model
+    # Check for product activity and update the ProductActivity model
+
     if product is not None:
         try:
             product_activity = ProductActivity.objects.get(
@@ -100,24 +100,22 @@ def product_details(request, product_id):
                 view_count=1,
                 name=product,
             )
-
+    # logic used to dipslay 'linked purchase' items
     if product is not None:
         try:
-            purchase_history = PurchaseHistory.objects.get(
-                name__name=product.name)
-            for item in purchase_history.related_products.all():
-                for lineitem in item.lineitems.all():
-                    print("lineitem is:", lineitem.product.name)
+            purchase_history = get_object_or_404(
+                PurchaseHistory, name__name=product.name)
+            linked_purchases = purchase_history.related_products.all()
         except ObjectDoesNotExist:
             purchase_history = None
+            linked_purchases = None
 
-            
     context = {
         'product': product,
         'purchase_history': purchase_history,
+        'linked_purchases': linked_purchases,
     }
     return render(request, 'products/product_details.html', context)
-
 
 
 @login_required

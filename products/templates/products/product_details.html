@@ -80,29 +80,27 @@
     <!-- Row to display commonly related products purchased with item being viewed -->
     <div class="row">
         <div class="col-sm-12 col-md-6">
-           {% if purchase_history.related_products != None %}
-            <h6>Items commonly purchased with <br> "{{product.name}}":   </h6>
+           
+            <h6>Also purchased with this item:</h6>
             <div class="row">
-                {%for item in purchase_history.related_products.all%}
-                    {% for lineitem in item.lineitems.all%}
-                        <div class="col-3 my-1">
-                            <a href="{% url 'product_details' lineitem.product.id %}">
-                        {% if lineitem.product.image_url != None %}
-
-                            <img class="img-thumbnail"  src="{{lineitem.product.image_url}}" alt="{{lineitem.product.name}}">
-                        {% elif "No%20Image" not in lineitem.product.image.url %}
-                            <img class="img-thumbnail"  src="{{lineitem.product.image.url}}" alt="{{lineitem.product.name}}">
-                    
-                        {% else %} 
-                            <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{lineitem.product.name}}">
-                        
-                        {% endif %}
-                        </a>
-                    </div>
+                {% for order in linked_purchases %}
+                    {% for item in order.lineitems.all %}
+                        {% if item.product.name != product.name %}
+                                <div class="col-3 my-1">
+                                    <a href="{% url 'product_details' item.product.id %}">
+                                {% if item.product.image_url != None %}
+                                    <img class="img-thumbnail"  src="{{item.product.image_url}}" alt="{{item.product.name}}">
+                                {% elif "No%20Image" not in item.product.image.url %}
+                                    <img class="img-thumbnail"  src="{{item.product.image.url}}" alt="{{item.product.name}}">          
+                                {% else %} 
+                                    <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">    
+                                {% endif %}
+                                </a>
+                            </div>
+                            {% endif %}
                     {% endfor %}
                 {% endfor %}
             </div>
-            {% endif %}
         </div>
     </div>
 </div>

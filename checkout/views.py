@@ -119,11 +119,11 @@ def checkout_success(request, order_number):
             if customer_account_form.is_valid():
                 customer_account_form.save()
 
-    for item in order.lineitems.all():
-       
-        # Attach the user's profile to the order
+    for item in order.lineitems.all():  
+        # Connect lineitems to eachother in product_history object
 
         try:
+            # check if item has a product history
             product_history = PurchaseHistory.objects.get(name__name=item.product)
             print("youve got 1 exception ray")
         except ObjectDoesNotExist:
@@ -131,35 +131,19 @@ def checkout_success(request, order_number):
             print("youve got an exception ray")
 
         if product_history is not None:
-            product_history = PurchaseHistory.objects.get(name__name=item.product)
-            
+           
+            # attach the new product_history object to the order
             order.purchase_history = product_history
             order.save()
             print("Product history :  - ", product_history)
 
         else:
+            # if there are no PurchaseHistory objects with the item then create one
             product_history = PurchaseHistory.objects.create(
                 name=item.product)
             print("New Product history :  - ", product_history)
             order.purchase_history = product_history
             order.save()
-
-       
-
-        
-        # p1 = Publication(title='The Python Journal')
-        # purchase_history.save()
-        # a1 = Article(headline='Django lets you build Web apps easily')
-        # a1.save()
-        # a1.publications.add(p1)
-
-        # purchase_history1 = PurchaseHistory(product.set(item.product))
-        # purchase_history1.save()
-        # order.purchase_history.add(purchase_history)
-
-
-        # order.purchase_history = purchase_history
-        # order.save()
 
 
     messages.success(request, f'Thank you for your order! \

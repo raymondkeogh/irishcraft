@@ -115,7 +115,7 @@ footer p:last-child {
 }
 
 .carousel-container{
-  height: 80vh;
+  height: 75vh;
   overflow: hidden;
 }
 
@@ -126,7 +126,7 @@ footer p:last-child {
 .carousel-control-prev, .carousel-control-next {
     background-color: transparent;
     border: none;
-    z-index: 999999;
+    z-index: 10;
 }
 
 .carousel-control-prev-icon {
@@ -325,6 +325,15 @@ Center align the text within the three columns below the carousel */
   background:
   radial-gradient(circle at top left, transparent 58%, #ffffff 60%);
 }
+
+.navbar-nav .dropdown-menu {
+  z-index: 999999999;
+}
+
+.allauth-content {
+  background-color: red;
+}
+
 
 /* RESPONSIVE CSS
   -------------------------------------------------- */
