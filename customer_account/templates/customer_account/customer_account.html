@@ -55,6 +55,7 @@
             </div>
             <div class="col-12 col-lg-6">
                 <H6 class="mb-4">ORDER HISTORY</H6>
+                {% if orders %}
                 <div class="order-history table-responsive">
                     <table style="border: 1px solid rgb(189, 189, 189)" class="table table-sm table-borderless">
                         <thead>
@@ -90,6 +91,7 @@
                         </tbody>
                     </table>
                 </div>
+                {% endif %}
             </div>
                
         </div>

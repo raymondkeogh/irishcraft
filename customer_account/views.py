@@ -13,6 +13,7 @@ def customer_account(request):
     """A view that renders the users account"""
 
     customer = get_object_or_404(CustomerAccount, user=request.user)
+    allorders = Order.objects.all()
 
     if request.method == 'POST':
         form = CustomerAccountForm(request.POST, instance=customer)
@@ -32,7 +33,8 @@ def customer_account(request):
         'form': form,
         'orders': orders,
         'customer': customer,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'allorders': allorders,
     }
     return render(request, template, context)
 

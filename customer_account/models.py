@@ -48,5 +48,9 @@ def check_if_superuser(sender, request, user, **kwargs):
     Check if user is super user and delete session variable to prevent basket items causing 404 error when deleted from db
     """
     if request.user.is_superuser:
-        del request.session['basket']
-        request.session.modified = True
+        # try/catch block to prevent keyerror if no basket exists for super user
+        try:
+            del request.session['basket']
+            request.session.modified = True
+        except Exception as e:
+            pass
