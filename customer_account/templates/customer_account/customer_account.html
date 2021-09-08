@@ -70,7 +70,7 @@
                             {% for order in orders %}
                                 <tr style="border: 1px solid rgb(179, 179, 179)">
                                     <td>
-                                        <a class="small" href=""
+                                        <a class="small" href="{% url 'view_order' order.id %}"
                                         title="{{ order.order_number }}">
                                             {{ order.order_number|truncatechars:6 }}
                                         </a>

@@ -71,3 +71,18 @@ def edit_account(request):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def view_order(request, order_id):
+    """A view that renders a chosen order"""
+
+    customer = get_object_or_404(CustomerAccount, user=request.user)
+
+    order = get_object_or_404(Order, id=order_id)
+    template = 'customer_account/view_order.html'
+    context = {
+        'order': order,
+        'customer': customer,
+    }
+    return render(request, template, context)

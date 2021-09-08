@@ -1,0 +1,92 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h4 class="logo-font mb-4">Your Order</h4>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                {% if order %}
+                <div class="order-history table-responsive">
+                    <h6>Items Bought: </h6>
+                    <table class="table table-sm table-borderless basket">
+                        <thead class="text-heading">
+                            <tr>
+                                <th class="px-3" scope="col">Product</th>
+                                <th class="px-3"scope="col"></th>
+                                <th class="px-3"scope="col">Price</th>
+                                <th class="px-3"scope="col">Quantity</th>
+                                <th class="px-3"scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        {% for item in order.lineitems.all %}
+                             <tr>
+                                 <td class="p-3 w-25"> 
+                                     {% if "No%20Image" not in item.product.image.url %}
+                                         <a href="{% url 'product_details' item.product.id %}">
+                                             <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
+                                         </a>
+                                     {% else %} 
+                                         <a href="{% url 'product_details' item.product.id %}">
+                                             <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
+                                         </a>
+                                     {% endif %}
+                                 </td>
+                                 <td class="p-3">
+                                    <a href="{% url 'product_details' item.product.id %}">
+                                     <p class=""><strong>{{ item.product.name }}</strong></p></a>
+                                 </td>
+                                 <td class="p-3">
+                                     <p class="my-0 text-right">€{{ item.product.price }}</p> 
+                                 </td>
+                                 <td class="p-3">x {{item.quantity}}</td>
+                                 <td class="p-3">{{item.lineitem_total}}</td>
+                             </tr>
+                            {% endfor %}
+
+                            <hr>
+                    </table>
+                  
+   
+                </div>
+                {% endif %}
+                 
+            </div>
+            <div class="small col-12 col-lg-4 rounded px-3 mb-5">
+                <h6 >Order Details</h6>
+                <hr>
+                <p>Order No: {{order.order_number}}</p>
+                <p>Order Date: {{ order.date|date:"d M Y" }}</p>
+                <p>Delivery Cost: {{ order.delivery_cost }}</p> 
+                <p>Total Cost: {{ order.grand_total }}</p>
+                
+                <p>Delivery Address: </p>
+                <p>{{ order.full_name }}</p>
+                <p>{{ order.street_address1 }}</p>
+                <p>{{ order.street_address2 }}</p>
+                <p>{{ order.town_or_city }}</p> 
+                <p>{{ order.county }}</p>
+                <p>{{ order.country }}</p>
+                <p>{{ order.postcode }}</p>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %} 
