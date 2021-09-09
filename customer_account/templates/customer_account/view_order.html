@@ -51,6 +51,8 @@
                                  <td class="p-3">
                                     <a href="{% url 'product_details' item.product.id %}">
                                      <p class=""><strong>{{ item.product.name }}</strong></p></a>
+                                     <a href="{% url 'add_review' item.product.id %}">
+                                        <p class=""><strong>Add Review</strong></p></a> 
                                  </td>
                                  <td class="p-3">
                                      <p class="my-0 text-right">€{{ item.product.price }}</p> 
