@@ -13,10 +13,7 @@ def add_review(request, product_id):
     """ Review a product """
     product = get_object_or_404(Product, pk=product_id)
     form = ReviewForm(request.POST or None)
-    print("product is :", product.name)
-    print("User is :", request.user)
     if request.method == 'POST':
-        print(form.errors)
         if form.is_valid():
             title = form.cleaned_data['title']
             body = form.cleaned_data['body']

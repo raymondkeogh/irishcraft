@@ -4,6 +4,13 @@ from products.models import Product
 
 
 class Review(models.Model):
+    ratings = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
     title = models.CharField(max_length=255)
     body = models.TextField()
     product = models.ForeignKey(
@@ -14,6 +21,7 @@ class Review(models.Model):
         related_name='reviews', related_query_name='reviews')
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
+    rating = models.IntegerField(choices=ratings, default=5)
 
     def __str__(self):
         return self.title

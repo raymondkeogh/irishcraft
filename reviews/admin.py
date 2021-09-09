@@ -8,12 +8,13 @@ class ReviewAdmin(admin.ModelAdmin):
         'product',
         'title',
         'user',
+        'rating'
     )
 
     readonly_fields = ('title', 'body',
                        'product', 'user',
                        'created', 'updated')
-    # sorty product by product
+    # sort product by product
     ordering = ('product',)
 
 
