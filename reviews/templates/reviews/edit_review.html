@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+
+    <hr>
+    <h2 class="logo-font mb-4">Edit Review</h2>
+
+    <hr>
+
+    <form method="POST" action="{% url 'edit_review' review.id %}" class="form mb-2" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                {{product.name}}
+                {{ form.title | as_crispy_field }}
+                {{ form.body | as_crispy_field }}
+                {{ form.rating | as_crispy_field }}
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="text-right">
+                    <a class="btn btn-outline-black rounded-0" href="/products/">Cancel</a>
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                </div>
+            </div>
+
+          
+        </div>
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+{% endblock %}

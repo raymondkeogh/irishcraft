@@ -76,6 +76,31 @@
                 </div>
             </div> 
     </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h6>Reviews</h6>
+                </div>
+                {% for review in reviews %}
+            
+                    <div class="card-body">
+                    <h5 class="card-title">{{review.title}}</h5>
+                    <p class="card-text">{{review.body}}</p>
+                    <div><strong>Rating: </strong>
+                        {% with ''|center:review.rating as range %}
+                        {% for x in range %}
+                        <span class="fa fa-star checked"></span>
+                        {% endfor %}</div>
+                        {% endwith %}
+                    {% if request.user.is_authenticated and request.user == review.user%}
+                    <a href="{% url 'edit_review' review.id %}" class="btn btn-primary">Edit Review</a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <!-- Row to display commonly related products purchased with item being viewed -->
     <div class="row">

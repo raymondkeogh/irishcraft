@@ -12,6 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from .forms import ProductForm
 from .models import Product, PhotoForm, Category
 from product_health.models import ProductActivity, PurchaseHistory
+from reviews.models import Review
 
 
 def upload(request):
@@ -109,11 +110,19 @@ def product_details(request, product_id):
         except ObjectDoesNotExist:
             purchase_history = None
             linked_purchases = None
-
+            
+    try:
+        reviews = Review.objects.filter(
+                product=product.id)
+        
+    except ObjectDoesNotExist:
+        reviews = None
+    
     context = {
         'product': product,
         'purchase_history': purchase_history,
         'linked_purchases': linked_purchases,
+        'reviews': reviews,
     }
     return render(request, 'products/product_details.html', context)
 

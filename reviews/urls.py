@@ -5,4 +5,7 @@ urlpatterns = [
     path(
         'add_review/<product_id>',
         views.add_review, name='add_review'),
+    path(
+        'edit_review/<review_id>',
+        views.edit_review, name='edit_review'),
 ]

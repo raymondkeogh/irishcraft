@@ -25,7 +25,7 @@ def add_review(request, product_id):
             review.user = user
             review.save()
             messages.success(
-                    request, f'Your review of {product.name} has been uploaded!')
+                    request, 'Your review has been uploaded!')
 
             return redirect(reverse('product_details', args=[product.id]))
         else:
@@ -38,6 +38,35 @@ def add_review(request, product_id):
     context = {
         'form': form,
         'product': product
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_review(request, review_id):
+    """ A view to edit review details """
+    review = get_object_or_404(Review, pk=review_id)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review Updated!')
+            return redirect(reverse('product_details', args=[review.product.id]))
+        else:
+            messages.error(request, 'There was a problem updating your review'
+                           ', please check to see if all'
+                           'the details have been filled in correctly')
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(
+            request, f'You are editing your review for {review.product}')
+
+    template = 'reviews/edit_review.html'
+    context = {
+        'form': form,
+        'review': review,
     }
 
     return render(request, template, context)
