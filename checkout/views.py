@@ -119,32 +119,27 @@ def checkout_success(request, order_number):
             if customer_account_form.is_valid():
                 customer_account_form.save()
 
-    for item in order.lineitems.all():  
+    for item in order.lineitems.all():
         # Connect lineitems to eachother in product_history object
-
         try:
             # check if item has a product history
-            product_history = PurchaseHistory.objects.get(name__name=item.product)
-            print("youve got 1 exception ray")
+            product_history = PurchaseHistory.objects.get(
+                name__name=item.product)
+            
         except ObjectDoesNotExist:
             product_history = None
-            print("youve got an exception ray")
 
         if product_history is not None:
-           
             # attach the new product_history object to the order
             order.purchase_history = product_history
             order.save()
-            print("Product history :  - ", product_history)
-
         else:
-            # if there are no PurchaseHistory objects with the item then create one
+            # if there are no PurchaseHistory objects with the
+            # item then create one
             product_history = PurchaseHistory.objects.create(
                 name=item.product)
-            print("New Product history :  - ", product_history)
             order.purchase_history = product_history
             order.save()
-
 
     messages.success(request, f'Thank you for your order! \
         Your order number is {order_number}. A confirmation \

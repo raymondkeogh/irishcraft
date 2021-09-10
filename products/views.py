@@ -5,14 +5,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
-from product_health.signals import product_viewed_signal
 from django.db.models import F
 from django.core.exceptions import ObjectDoesNotExist
-
-from .forms import ProductForm
-from .models import Product, PhotoForm, Category
 from product_health.models import ProductActivity, PurchaseHistory
 from reviews.models import Review
+from .forms import ProductForm
+from .models import Product, PhotoForm, Category
 
 
 def upload(request):
@@ -104,25 +102,37 @@ def product_details(request, product_id):
     # logic used to dipslay 'linked purchase' items
     if product is not None:
         try:
+            # get purchase history linked to the product
             purchase_history = get_object_or_404(
                 PurchaseHistory, name__name=product.name)
-            linked_purchases = purchase_history.related_products.all()
+            # get all the orders linked to the purchase
+            # history object for the product
+            linked_purchases = (
+                purchase_history.related_products.all().distinct())
+            also_bought = []
+            for order in iter(linked_purchases):
+                for item in order.lineitems.all():
+                    if str(item.product.name) not in str(also_bought):
+                        also_bought.append(item)
+
         except ObjectDoesNotExist:
             purchase_history = None
             linked_purchases = None
-            
+            also_bought = None
+
     try:
         reviews = Review.objects.filter(
                 product=product.id)
-        
+
     except ObjectDoesNotExist:
         reviews = None
-    
+
     context = {
         'product': product,
         'purchase_history': purchase_history,
         'linked_purchases': linked_purchases,
         'reviews': reviews,
+        'also_bought': also_bought,
     }
     return render(request, 'products/product_details.html', context)
 

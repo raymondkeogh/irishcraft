@@ -13,13 +13,4 @@ class ProductActivityAdmin(admin.ModelAdmin):
     # sorty product by sku
     ordering = ('name',)
 
-class PurchaseHistoryAdmin(admin.ModelAdmin):
-
-    list_display = (
-        'name',
-    )
-    ordering = ('name',)
-
-
 admin.site.register(ProductActivity, ProductActivityAdmin)
-admin.site.register(PurchaseHistory, PurchaseHistoryAdmin)
