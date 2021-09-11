@@ -243,11 +243,16 @@ Center align the text within the three columns below the carousel */
 /* PRODUCT DETAILS
   -------------------------------------------------- */
 
-.product-details, .product-image{
+.product-details{
   box-sizing: border-box; 
-  padding:30px;
+  padding: 0 30px 30px;
   padding-bottom: 100px; 
 }
+
+.product-image{
+  box-sizing: border-box; 
+}
+
 
 .card-deck .card-text{
   font-size: 17px;
@@ -335,6 +340,23 @@ Center align the text within the three columns below the carousel */
 }
 
 
+
+/* Readmore CSS from https://www.viralpatel.net/dynamically-shortened-text-show-more-link-jquery/
+  -------------------------------------------------- */
+
+.comment {
+	max-width: 400px;
+}
+
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+
+}
+
 /* RESPONSIVE CSS
   -------------------------------------------------- */
 
@@ -363,3 +385,9 @@ Center align the text within the three columns below the carousel */
       font-size: 3.5rem;
     }
   }
+
+@media (max-width: 992px) {
+    body {
+      padding-top: 0;
+    } 
+}
