@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
 body {
-    padding-top: 5rem;
+    padding-top: 80px;
     padding-bottom: 3rem;
     color: #5a5a5a;
     font-family: Work Sans,sans-serif;
@@ -86,7 +86,7 @@ footer p:last-child {
 }
 
 .category-nav li:nth-child(1){
-  background-image: linear-gradient(to top, #767aa1a4 50%, transparent 50%);
+  background-image: linear-gradient(to top, #efd452a4  50%, transparent 50%);
 }
 
 .category-nav li:nth-child(2){
@@ -212,6 +212,10 @@ Center align the text within the three columns below the carousel */
     margin: 1rem 0;
 }
 
+.lead {
+  font-size: 1rem;
+}
+
 .featurette-heading {
     font-weight: 300;
     line-height: 1;
@@ -260,8 +264,7 @@ Center align the text within the three columns below the carousel */
 
 .card-deck .card-img-top {
   width: 100%;
-  height: 20vw;
-  object-fit: cover;
+  height: auto;
 }
 
 .text-black {
@@ -333,6 +336,7 @@ Center align the text within the three columns below the carousel */
 
 .navbar-nav .dropdown-menu {
   z-index: 999999999;
+  min-width: 260px;
 }
 
 .allauth-content {
@@ -381,13 +385,19 @@ a.morelink {
 }
 
 @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
+.bd-placeholder-img-lg {
       font-size: 3.5rem;
     }
   }
 
 @media (max-width: 992px) {
     body {
-      padding-top: 0;
+      padding-top: 60px;
     } 
+}
+
+@media (max-width: 570px) {
+  body {
+    padding-top: 0;
+  } 
 }

@@ -65,9 +65,9 @@
                                 <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Edit Product</a>
                                 <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn active mt-2" role="button" aria-pressed="true">Delete Product</a>
                             {% else %}
-                                <a href="{% url 'products' %}" class="btn active mt-2" role="button" aria-pressed="true">Continue Shopping <i class="fas fa-arrow-right"></i></a>
-                                <input type="submit" class="btn btn-secondary btn active mt-2" value="Add to basket">
+                                <input type="submit" class="btn btn-secondary btn active m-2" value="Add to basket">
                                 <input type="hidden" name="redirect_url" value="{{ request.path  }}">
+                                <a href="{% url 'products' %}" class="btn active mt-2" role="button" aria-pressed="true">Continue Shopping <i class="fas fa-arrow-right"></i></a>
                             {% endif %}
                         </div>
                     </div>
@@ -129,8 +129,9 @@
                         {% if request.user.is_authenticated and request.user == review.user%}
                         <a href="{% url 'edit_review' review.id %}" class="m-2"><i class="fas fa-edit"></i> Edit</a>
                         <a href="{% url 'delete_review' review.id %}" class=" text-danger m-2"><i class="fas fa-trash-alt"></i> Delete</a>
+                        {% endif %}
                     </div>
-                    {% endif %}
+                   
                 {% endfor %}
             </div>
      
