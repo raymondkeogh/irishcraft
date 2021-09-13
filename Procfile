@@ -1,1 +1,1 @@
-web: gunicorn irishcraft.wsgi:application 
+web: gunicorn irishcraft.wsgi:application

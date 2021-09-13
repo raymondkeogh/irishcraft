@@ -1,4 +1,3 @@
-
 aiohttp==3.7.4.post0
 asgiref==3.4.1
 async-timeout==3.0.1
@@ -10,6 +9,7 @@ django-crispy-forms==1.12.0
 django-environ==0.4.5
 django-threadlocals==0.10
 geoip2==4.2.0
+gunicorn==20.1.0
 maxminddb==2.0.3
 multidict==5.1.0
 oauthlib==3.1.1
