@@ -38,12 +38,12 @@
                         <fieldset class="rounded px-3 mb-5">
                             <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
                             {{ form.phone_number | as_crispy_field }}
-                            {{ form.country | as_crispy_field }}
-                            {{ form.postcode | as_crispy_field }}
                             {{ form.town_or_city | as_crispy_field }}
                             {{ form.street_address1 | as_crispy_field }}
                             {{ form.street_address2 | as_crispy_field }}
                             {{ form.county | as_crispy_field }} 
+                            {{ form.country | as_crispy_field }}
+                            {{ form.postcode | as_crispy_field }}
                         </fieldset>
                         <div class="submit-button text-right mt-5 mb-2">                    
                             <button id="submit-button" class="btn btn-black rounded-0">

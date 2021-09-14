@@ -74,7 +74,27 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        order_form = OrderForm()
+
+        # Attempt to prefill the form with any info
+        # the user has saved in their customer account
+        if request.user.is_authenticated:
+            try:
+                customer = CustomerAccount.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'full_name': customer.user.get_full_name(),
+                    'email': customer.user.email,
+                    'phone_number': customer.phone_number,
+                    'country': customer.country,
+                    'postcode': customer.postcode,
+                    'town_or_city': customer.town_or_city,
+                    'street_address1': customer.street_address1,
+                    'street_address2': customer.street_address2,
+                    'county': customer.county,
+                })
+            except CustomerAccount.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -107,12 +127,12 @@ def checkout_success(request, order_number):
         if save_info:
             customer_info = {
                 'phone_number': order.phone_number,
-                'country': order.country,
-                'postcode': order.postcode,
                 'town_or_city': order.town_or_city,
                 'street_address1': order.street_address1,
                 'street_address2': order.street_address2,
                 'county': order.county,
+                'country': order.country,
+                'postcode': order.postcode,
             }
             customer_account_form = CustomerAccountForm(
                 customer_info, instance=customer)
