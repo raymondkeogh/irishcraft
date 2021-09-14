@@ -3,6 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from allauth.account.signals import (
     user_signed_up, user_logged_in, password_changed)
+from django_countries.fields import CountryField
 
 from django.contrib.auth.models import User
 
@@ -23,8 +24,7 @@ class CustomerAccount(models.Model):
     town_or_city = models.CharField(
         max_length=40, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
-    country = models.CharField(
-        max_length=40, null=True, blank=True)
+    country = CountryField(blank_label='Country *', null=True, blank=True)
     postcode = models.CharField(max_length=20, null=True, blank=True)
 
     def __str__(self):
