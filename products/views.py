@@ -103,10 +103,13 @@ def product_details(request, product_id):
     if product is not None:
         try:
             # get purchase history linked to the product
-            purchase_history = get_object_or_404(
-                PurchaseHistory, name__name=product.name)
-            # get all the orders linked to the purchase
-            # history object for the product
+            purchase_history = PurchaseHistory.objects.get(
+                name__name=product.name)
+        except ObjectDoesNotExist:
+            purchase_history = None
+        if purchase_history is not None:
+            # get all the orders linked to the purchase_history 
+            # object for the product
             linked_purchases = (
                 purchase_history.related_products.all().distinct())
             also_bought = []
@@ -114,9 +117,7 @@ def product_details(request, product_id):
                 for item in order.lineitems.all():
                     if str(item.product.name) not in str(also_bought):
                         also_bought.append(item)
-
-        except ObjectDoesNotExist:
-            purchase_history = None
+        else:
             linked_purchases = None
             also_bought = None
 
