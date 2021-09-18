@@ -79,6 +79,7 @@ footer p:last-child {
   -webkit-transition: background-position 1s;
   -moz-transition: background-position 1s;
   transition: background-position 1s;
+  border-radius: 0 0 .25rem .25rem;
 }
 
 .category-nav li:hover{
@@ -153,7 +154,6 @@ footer p:last-child {
 }
 
 .carousel-item>img {
-    position: absolute;
     top: 0;
     left: 0;
     max-width: 100%;
@@ -163,19 +163,19 @@ footer p:last-child {
     -o-object-fit: cover;  
 }
 
-
 .carousel-description {
   font-size: 1.25rem;
   position: absolute;
   display: block;
-  right: 2rem;
+  /* right: 2rem;
   bottom:2rem;
-  left: 2rem;
-  height: 100px;
+  left: 2rem; */
+ 
   text-align: center;
-  top: 50%;
+  bottom: 10px;
   width: 85%;
-  margin: auto;
+  /* margin: auto; */
+  height: 100px;
   color: black;
   z-index: 100;
   opacity: 0;
@@ -257,14 +257,12 @@ Center align the text within the three columns below the carousel */
   box-sizing: border-box; 
 }
 
-
 .card-deck .card-text{
   font-size: 17px;
 }
 
-.card-deck .card-img-top {
-  width: 100%;
-  height: auto;
+.card .card-img-top {
+  max-width: 100%;
 }
 
 .text-black {
@@ -290,7 +288,7 @@ Center align the text within the three columns below the carousel */
 .basket-body, .basket{
   font-size: .8rem ;
 }
-.basket-dropdown-zone:hover .basket-dropdown{
+.basket-dropdown-zone:active .basket-dropdown{
   display: block;
 } 
 
@@ -310,9 +308,9 @@ Center align the text within the three columns below the carousel */
   max-height: 50vh; 
 }
 
-.basket-dropdown-zone:hover + .basket-dropdown {
+/* .basket-dropdown-zone:hover + .basket-dropdown {
     display:block; 
-}
+} */
 
 .checkout {
   background-color: rgb(255, 181, 43);

@@ -34,24 +34,24 @@
         </div>
         <div class="row">
             {% for product in page_obj %}
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 col-xl-3">
                 <div class="card-deck">
-                    <div class="card">
+                    <div class="card h-100 border-0">
                         {% if product.image_url != None %}
                             <a href="{% url 'product_details' product.id %}">
-                                <img class="card-img-top" src="{{ product.image_url }}" alt="{{product.name}}">
+                                <img class="card-img-top img-fluid" src="{{ product.image_url }}" alt="{{product.name}}">
                             </a>   
                         {% elif "No%20Image" not in product.image.url %}
                             <a href="{% url 'product_details' product.id %}">
-                                <img class="card-img-top" src="{{ product.image.url }}" alt="{{product.name}}">
+                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{product.name}}">
                             </a>
                         {% else %} 
                             <a href="{% url 'product_details' product.id %}">
-                                <img class="card-img-top" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
+                                <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
                             </a>
                         {% endif %}
                         <div class="card-body">
-                            <p class="card-text">{{product.name}}</p>
+                            <p class="card-text text-uppercase">{{product.name}}</p>
                             <p class="small mt-1 mb-0" >
                                 <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
                                     <i class="fas fa-tag mr-1" ></i>{{ product.category.friendly_name }}
