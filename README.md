@@ -94,15 +94,13 @@ The mockup for this site was done on Balsamiq Wireframes
 and can be viewed below 
 
 
-
 - [Desktop Homepage](static/readme_files/wireframes/index_page.png).  
 - [Catagory Page](static/readme_files/wireframes/category_page.png).  
 - [Login Page](static/readme_files/wireframes/login.png).  
 - [Create Account Page](static/readme_files/wireframes/create_account.png).  
 - [Basket Page](static/readme_files/wireframes/basket.png).
 - [Account Page](static/readme_files/wireframes/account.png). 
-- [Review Item Page](static/readme_files/wireframes/review_item.png).  
-- [Wishlist Page](static/readme_files/wireframes/wishlist.png). 
+- [Review Item Page](static/readme_files/wireframes/review_item.png).   
 - [View Item Page](static/readme_files/wireframes/view_itme.png). 
 - [Admin Edit Item Page](static/readme_files/wireframes/admin_edit_item.png). 
 - [Admin Add Item Page](static/readme_files/wireframes/admin_add_item.png). 
@@ -141,29 +139,29 @@ The full selection of wireframes including mobile layout can be viewed in PDF fo
 
 - **Search Bar** – Search bar to query the database of products.
 
-- **Account Page** – Displays shopper account details.
+- **Account Page** – Displays shopper account details and order history
 
 - **Review Page** - Give the shopper an opportunity to share their experience with the product/company.
-
-- **Wishlist** - Allows the shopper to save their favourite items for return visits to the site.
-
 
 **STRUCTURE**
 
 ----------
 
-1. The shopper will first be presented with the main 'index' page where they will see a 
+1. The shopper will first be presented with the main 'index' page where they will see a carousel of products, an array of products below this and a section highlighting the various categories of products avaialble.
 
-2. The Menu will display if not logged in "Home", "Login" and "SignUp" and if logged in will display "Add Location", "Profile" "Home and "Logout"
+2. The Menu will display if not logged in "Home", "Login", "Registers" "Products" and "Basket" and if logged in will display "Profile" "Home and "Logout"
 
+3. The Profile page will have two sections. One for the user details and the other for users order history. 
 
-3. The Profile page will Be broken into three sections. A profile card with some stats about the users activity. A section for posts that the user has created and section with posts that the user has liked. 
-    - As an external user I create a collection of my favourite camping locations.
+4. Product Details page will display the products descriptions, buttons to add to basket, increase quantity and continue shopping. Below the product image will be a section displaying items that have been previously been bought with that product as well as a section for user reviews. 
 
-4. The View location page will be a simple card displaying the Name, Description, Rating, Location and Picture of the campsite. This card will display a like button to logged in users and edit or delete to the user who created the post.
+5. The Search bar located in the nav menu will return a list of products with a sort option in the top of the page. 
 
-5. The Add Location page will have a simple form with fields for Name and Description, a star rating selection area, a map to search for the location and drop a pin, a button to upload a photo and a submit button. 
-    - As a site owner I want create a knowledge bank of good camping locations
+6. The Checkout page will offer the user the choice to update or input their contact details for the order, payment information and review their order. 
+
+7. The Review page, accessible to the user once they have purchased an item, allows them to add a review and rate a product.
+
+8. (SuperUsers) Add Product page - A simple form to allow the site owner to upload products. 
 
 
 ----------
@@ -175,23 +173,15 @@ The full selection of wireframes including mobile layout can be viewed in PDF fo
 
 **Colours:** 
 
-- 
+- The sites navigation bar will be on a simple grey background with hightlights of pastel colours for nav items below the menu bar for catagory selection. 
 
 **Typography:** 
 
-- 
+- Work Sans was chosen for its clean lines and contempory feel.
 
 **Effects:**
 
- -  
-
-**Imagery:** 
-
- - 
-
-**Deviations from design:**
-
-- 
+ -  The index page will have grid section displaying a selection of products that when hovered over overlays a transparent colour box, blurring the image behind and reveal the product name and price. 
 
 
 Technologies
@@ -214,6 +204,9 @@ Technologies
  - [**DevTools**](https://developers.google.com/web/tools/chrome-devtools) - I used Chrome DevTools throughout the development of the site to modify elements on the screen live, testing screen responsiveness and debugging code.
  - [**W3 HTML Validation**](https://validator.w3.org/) - Online HTML validation tool. 
  - [**W3 CSS Validation**](https://jigsaw.w3.org/css-validator/) - Online CSS validation tool.
+ - [Stripe](https://stripe.com/en-ie) - Online payments and webhooks
+ - [AWS](https://aws.amazon.com/) - Storage for static and media files
+ - [Heroku](https://www.heroku.com/) - container-based cloud Platform as a Service
  - **Gitpod extensions:**
      - Auto Close Tag
      - Bracket Pair Colorizer
@@ -230,6 +223,8 @@ Technologies
  - [**JSON Valdiation**](https://jsonlint.com/) - Debug JSON object structure used in MongoDB and Javascript
  - [**Django**](https://www.djangoproject.com/) - High-level Python Web framework
  - [**Cloudinary**](https://cloudinary.com/) - Cloud storage for website media files
+ - [**TempMail**](https://temp-mail.org/) - Used for testing in creation of new customer accounts.
+ 
 
 
 Testing
@@ -339,20 +334,26 @@ Any new features and bug fixes were submitted to regression testing of all funct
 ----
 **Bugs**
 
-+ **Bug001:** "django.db.utils.OperationalError: no such column:" Error after altering model item 'image' to change its definition to cloudinary parameters. 
-**Fix:** The field had to be deleted entirely then running 'python3 manage.py makemigrations' and 'python3 manage.py migrate'. I then put in the altered field and ran migrations again to update the table. 
++ **Bug-001:** "django.db.utils.OperationalError: no such column:" Error after altering model item 'image' to change its definition to cloudinary parameters. 
++ **Fix-001:** The field had to be deleted entirely then running 'python3 manage.py makemigrations' and 'python3 manage.py migrate'. I then put in the altered field and ran migrations again to update the table. 
+
+
++ **Bug-002:** handle_payment_intent_succeeded basket = intent.metadata.basket, raise AttributeError(*err.args)
++ **Fix-002:** This error was cause by the browswer cache. To fix this error while in Development
+    1. Open DevTools
+    2. Navigate to the "Network" tab
+    3. Check the "Disable Cache" checkbox
+    4. Reload your page as normal. (With devtools still open)
+    You may need to delete you webhook and create an new one to stop the previous failed webhooks for firing on an hourly interval. 
+
++ **Bug-003:**    
++ **Fix-003:** 
 
 + **Bug:**    
-**Fix:** 
++ **Fix:** 
 
 + **Bug:**    
-**Fix:** 
-
-+ **Bug:**    
-**Fix:** 
-
-+ **Bug:**    
-**Fix:** 
++ **Fix:** 
 
 
 
@@ -360,22 +361,94 @@ Any new features and bug fixes were submitted to regression testing of all funct
 Deployment
 ----------
 
+In order to deploy this project you will need set up accounts with the follwoing services.
+
+-[Github](https://github.com/) 
+-[Gitpod](https://gitpod.io/)
+-[Stripe](https://stripe.com/en-ie)
+-[Cloudinary](https://cloudinary.com/)
+-[AWS](https://aws.amazon.com/)
+-[Heroku](https://www.heroku.com/) 
+
 **Local Deployment**
 
 
+Gitpod can be used to deploy your site locally using the following steps. 
+1. Create a Gitpod account. 
+2. Create a Github account. On creating a Github account you will need to login and search for the repository called irishcraft or follow this [link](https://github.com/raymondkeogh/irishcraft) to locate the project. 
+3. Click on the green 'gitpod' button near the top of the screen. This will open a gitpod workspace containing all the files contained in the project. 
+4. Go to the terminal window and install the project requirments with the command 
+            pip install -r requirements.txt 
+5. In the gitpod workspace you will need to create a file named 'env.py' which will contain the environment variables required to access the various API's and services. Add this file to the .gitignore file to ensure you sensitive data isn't commited to Github. This file can be created inside the irishcraft folder at the same level as settings.py. Within this file you will have the following variables:
 
-**Remote**
-
-1. Open repository in gitpod
-2. Create a file got .env inside the directory irishcraft at the same level as settings.py
-3. Add .env to .gitignore
-4. Generate a random key, I used https://randomkeygen.com/ but you can just google any random key generator. 
-5. Inside the .env file add the following....
-    SECRET_KEY=insert-your-random-key-here. eg. SECRET_KEY=12345678abcdefg
+- CLOUDINARY_CLOUD_NAME
+- CLOUDINARY_API_KEY
+- CLOUDINARY_API_SECRET
+These three variables can be found by logging into cloudinary and copying the corresponding keys from the dashboard.
 
 
-6. Set up a cloudinary account and follow directions in the following link https://www.section.io/engineering-education/uploading-images-to-cloudinary-from-django-application/\
+- DATABASE_URL
+This can be set from your Heroku account inside your project app (Creating the app in Heroku ***************************)
 
+- DEVELOPMENT=True
+
+- EMAIL_HOST_PASS
+- EMAIL_HOST_USER
+Set up a host email and enter the details in the following two variables
+
+In Stripe.com go to your account 'Dashboard', click on 'Developmers' where you will see the 'API keys' section, here you will find your Public and secret key.
+- STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+
+You will need to click on 'Webhooks' below the API Keys menu item and click 'Add Endpoint'. Here you will need to enter the local host url which is available on port 8000 after running 'python3 manage.py runserver in the gitpod terminal. the url should end in ....gitpod.io. Once you have this append the following the to URL  /checkout/wh/ 
+Paste this url in the 'endpoint url' box. 
+Select all events and the click 'Add Endpoint'
+Once the Endpoint is created you can scroll to the bottom of the page, under the heading 'Signing Secret' click reveal. This will be the variable for : 
+- STRIPE_WH_SECRET
+
+
+**Heroku Deployment**
+
+1. Once you have created an Heroku account you can click 'New' then 'Create New App'. Name the app 
+Inside this app you can then click on 'resources'.
+2. Find the add-ons search bar, find Heroku Postgres DB and select the free option to add it to your app. 
+3. Go back to the main app dashboard and click 'settings', 'reveal config vars'. Here you will be able to input the environment variables from your env.py file.
+
+
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- USE_AWS - set value to 'True'
+- CLOUDINARY_CLOUD_NAME
+- CLOUDINARY_API_KEY
+- CLOUDINARY_API_SECRET
+- DATABASE_URL
+- EMAIL_HOST_PASS
+- EMAIL_HOST_USER
+- SECRET_KEY
+- STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+- STRIPE_WH_SECRET
+
+4. Click 'Deploy', in the'Deployment' method section select GitHub and 'Automatic Deploys'.
+
+5. Migrate the database from our local SQLite database to the Postres Database with the following commands in the gitpod terminal. 
+
+        python3 manage.py makemigrations 
+        python3 manage.py migrate
+
+6. Create a super user to give admin panel access for the project using 
+
+        python3 manage.py createsuperuser
+
+7. Disable CollectStatic with the command, 
+        
+        heroku config:set DISABLE_COLLECTSTATIC=1
+
+8. In Settings.py in ALLOWED_HOSTS add
+
+        ALLOWED_HOSTS = ['irishcraft.herokuapp.com', 'localhost']
+
+9. Push to Heroku using the following command: git push heroku master
 
 
 Credits
@@ -386,7 +459,6 @@ Credits
 Generate random selection from Products database
 https://stackoverflow.com/questions/32389519/django-get-10-random-instances-from-a-queryset-and-order-them-into-a-new-querys#:~:text=to%20show%0Anum_entities%20%3D-,Entity.objects,-.all().count()%0Arand_entities
 
-
 Setting active item in carousel loop - 
 https://stackoverflow.com/questions/52870493/carousel-set-first-loop-image-as-active-item/52870679
 
@@ -395,6 +467,9 @@ https://www.cssscript.com/snackbar-toast-notification/
 
 SCSS used to create hover/color effect on index page
 https://freefrontend.com/css-hover-effects/
+
+Code Institue - BoutiqueAdo tutorial -
+https://github.com/Code-Institute-Solutions/boutique_ado_v1
 
 
 **Content**
