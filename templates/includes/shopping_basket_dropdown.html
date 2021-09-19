@@ -3,8 +3,10 @@
 <!-- Basket dropdown menu item -->
 <span class="dropdown-arrow"></span>
 <div class="toast-header bg-white text-black">
-    <strong class="mr-auto">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>{% if grand_total %}<a class="text-muted small"
-    href="{% url 'view_basket' %}">view</a>{% endif %}
+   
+    <strong class="mr-auto"><a href="{% url 'view_basket' %}">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
+        </a> 
+        <span class="ml-1 close small">Close</span>
 </div>
 <div class="toast-body bg-white">
     {% if grand_total %}
@@ -44,6 +46,7 @@
                     <span class="icon">
                         <i class="fas fa-shield-alt"></i>
                     </span>
+                   
                 </a>
             </div>
         </div>

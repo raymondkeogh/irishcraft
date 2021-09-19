@@ -14,13 +14,13 @@
   {% endblock %}
 
   {% block corecss %}
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" href="{% static 'css/js-snackbar.css' %}">
   <link rel="stylesheet" href="{% static 'css/hover-grid.css' %}">
-  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}"/>
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 
   {% endblock %}
 
@@ -28,32 +28,36 @@
   {% endblock %}
 
   {% block corejs %}
-    <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <!-- Stripe -->
-    <script src="{% static 'js/js-snackbar.js' %}"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-  
+  <script src="https://kit.fontawesome.com/4863a75fd6.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <!-- Stripe -->
+  <script src="{% static 'js/js-snackbar.js' %}"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+
+
   {% endblock %}
 
   {% block extra_js %}
-
   {% endblock %}
+
 
   <title>Irish Craft {% block extra_title %}{% endblock %}</title>
 </head>
+
 <body>
   <header class="container-fluid fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}"><img class="img-thumbnail" src="{% static 'images/logo.png' %}"></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img class="img-thumbnail"
+            src="{% static 'images/logo.png' %}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -92,7 +96,7 @@
                 </a>
               </div>
             </li>
-             <li class="nav-item h-100 dropdown">
+            <li class="nav-item h-100 dropdown">
               <a class="nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <div class="text-center">
@@ -104,7 +108,7 @@
                 {% if request.user.is_superuser %}
                 <a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a>
                 <a href="{% url 'product_health' %}" class="dropdown-item">Product Health</a>
-                
+
                 {% endif %}
                 <a href="{% url 'customer_account' %}" class="dropdown-item">My Profile</a>
                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -115,25 +119,27 @@
               </div>
             </li>
             <li class="nav-item h-100 basket-dropdown-zone">
-              <a class="{% if grand_total %}text-info font-weight-bold{% else %}{% endif %} nav-link"
-                href="{% url 'view_basket' %}">
-                <div class="text-center">
-                  <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                  <p class="my-0">
-                    {% if total %}
-                    €{{ total|floatformat:2 }}
-                    {% else %}
-                    €0.00
-                    {% endif %}
-                  </p>
-                </div>
-              </a>
-              <div class="basket-dropdown">
-                {% include 'includes/shopping_basket_dropdown.html' %}
-              </div>
-            </li>  
-          </ul>     
-        </div>   
+                <a href="#" id="menu-icon">
+                  <div class="{% if grand_total %}text-info font-weight-bold{% else %}{% endif %} nav-link">
+                    <div class="text-center">
+                      <i class="fas fa-shopping-bag fa-lg"></i>
+                      <p class="my-0">
+                        {% if total %}
+                        €{{ total|floatformat:2 }}
+                        {% else %}
+                        €0.00
+                        {% endif %}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <ul class="box">
+                    {% include 'includes/shopping_basket_dropdown.html' %}
+
+                </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="row bg-white">
@@ -143,25 +149,26 @@
     </div>
   </header>
 
-<!-- Snackbar script used to create toast messages alerts
+
+  <!-- Snackbar script used to create toast messages alerts
   https://www.cssscript.com/snackbar-toast-notification/ -->
-  
+
   {% if messages %}
   <div class="message-container">
     {% for message in messages %}
-      {% for message in messages %}
-        {% with message.level as level %}
-            {% if level == 25 %}      
-              {% include 'includes/toasts/toast_success.html' %}
-            {% elif level == 40 %}
-                {% include 'includes/toasts/toast_error.html' %}
-            {% elif level == 30 %}
-                {% include 'includes/toasts/toast_warning.html' %}
-            {% else %}
-                {% include 'includes/toasts/toast_info.html' %}
-            {% endif %}
-        {% endwith %}
-      {% endfor %}
+    {% for message in messages %}
+    {% with message.level as level %}
+    {% if level == 25 %}
+    {% include 'includes/toasts/toast_success.html' %}
+    {% elif level == 40 %}
+    {% include 'includes/toasts/toast_error.html' %}
+    {% elif level == 30 %}
+    {% include 'includes/toasts/toast_warning.html' %}
+    {% else %}
+    {% include 'includes/toasts/toast_info.html' %}
+    {% endif %}
+    {% endwith %}
+    {% endfor %}
     {% endfor %}
   </div>
   {% endif %}
@@ -171,14 +178,15 @@
 
   {% block content %}
   {% endblock %}
-  
+
   {% block postloadjs %}
-
+  
   {% endblock %}
-
+  <script src="{% static 'js/dropdown_basket.js' %}" defer></script>
   <footer>
-    <p><a  href="#">Back to top</a></p>
+    <p><a href="#">Back to top</a></p>
     <p class="pb-3">© 2017–2021 Irish Craft, Inc.</p>
   </footer>
 </body>
+
 </html>

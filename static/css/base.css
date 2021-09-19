@@ -269,33 +269,6 @@ Center align the text within the three columns below the carousel */
   color: black !important;
 }
 
-.basket-dropdown-zone{
-  position:relative;
-}
-
-.basket-dropdown-zone a.text-info{
-  color: #77cc7a !important;
-}
-
-.basket-dropdown-zone a.text-info:focus, .basket-dropdown-zone a.text-info:hover {
-  color: #1e7140!important;
-}
-
-.basket-dropdown-zone:hover{
-  color: #4750479a ;
-}
-
-.basket-body, .basket{
-  font-size: .8rem ;
-}
-.basket-dropdown-zone:active .basket-dropdown{
-  display: block;
-} 
-
-.basket-dropdown .toast-body {
-  font-size: 15px;
-}
-
 .basket-dropdown {
   background-color: white;
   display: none;
@@ -308,9 +281,79 @@ Center align the text within the three columns below the carousel */
   max-height: 50vh; 
 }
 
-/* .basket-dropdown-zone:hover + .basket-dropdown {
-    display:block; 
+.box {
+  display: none;
+  /* z-index: 1000; */
+  position: absolute;
+  width: 200px;
+  padding: 20px;
+  background: #F5F5F5;
+  border: 1px solid #a5bdcd;
+  right: 20px;
+  width: 50%;
+  border-radius: 3px 0 3px 3px;
+  opacity: .95;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-height: 50vh;  
+}
+/* 
+#menu-icon {
+  display: hidden;
 } */
+/* 
+#menu-icon:focus ~ .box {
+  display: block !important;
+} */
+
+.toast-header a {
+    text-decoration: none;
+    color:rgb(68, 68, 68)
+}
+
+.toast-header a:hover {
+  color:rgb(112, 112, 112)
+}
+
+.close{
+  font-size: 15px;
+  cursor: pointer;
+  color:rgb(51, 50, 50);
+  opacity: 1;
+}
+
+.close:hover {
+  color:rgb(112, 112, 112)
+}
+
+.close:focus ~ .box {
+  display: none;
+}
+
+/* .basket-dropdown-zone{
+  position:relative;
+} */
+
+.basket-dropdown-zone div.text-info{
+  color: #77cc7a !important;
+}
+
+.basket-dropdown-zone a div.text-info:focus, .basket-dropdown-zone a div.text-info:hover, #menu-icon {
+  color: #1e7140!important;
+  text-decoration: none;
+  
+}
+
+.basket-dropdown-zone:hover{
+  color: #4750479a ;
+}
+
+.basket-body, .basket{
+  font-size: .8rem ;
+}
+
+.basket-dropdown .toast-body {
+  font-size: 15px;
+}
 
 .checkout {
   background-color: rgb(255, 181, 43);
@@ -320,22 +363,10 @@ Center align the text within the three columns below the carousel */
   min-width: 50px;
 }
 
-.dropdown-arrow:before {
-  content: "";
-  position: absolute;
-  top: -24px;
-  right: 0;
-  width: 26px;
-  height: 33px;
-  background:
-  radial-gradient(circle at top left, transparent 58%, #ffffff 60%);
-}
-
 .navbar-nav .dropdown-menu {
   z-index: 999999999;
   min-width: 260px;
 }
-
 
 /* Allauth form formatting */
 
