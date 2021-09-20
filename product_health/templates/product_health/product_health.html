@@ -9,26 +9,27 @@
     <div class="col-12 col-lg-6">
             <div class="rounded px-3 mb-5">
                 <h4 class="mb-4">Product Relations</h4>
-                {% for order in allorders %}
+                <!-- {% for order in allorders %}
                     {% if order.purchase_history != None %}
                         Customers who bought "{{order.purchase_history}}"
                         also bought:  <br>
                         {% for item in order.lineitems.all %}
                         <li class="small">
-                            <!-- order.purchase_history is : {{order.purchase_history}}
+                            order.purchase_history is : {{order.purchase_history}}
                             item.product.name is : {{item.product.name }} -->
-                            {% if order.purchase_history != item.product.name %}
+                            <!-- {% if order.purchase_history != item.product.name %}
                                 {{ item.product.name }} x{{ item.quantity }}
-                            {% endif %}
+                            {% endif %} -->
                         </li>
-                        {% endfor %}
+                        <!-- {% endfor %}
                     {% endif %}
-                {% endfor %}
+                {% endfor %} -->
             </div>
     </div>
     <div class="col-12 col-lg-6">
         <div class="rounded px-3 mb-5">
-            <h4 class="mb-4">Product Views</h4>
+            <h4 class="mb-4">Product Views</h4> 
+          
             {% for product in product_activity %}
             <a href="{% url 'product_details' product.id %}">{{product.name}}</a> - ({{product.view_count}}) views <br>
             {% endfor %}
@@ -36,5 +37,20 @@
         </div>
     </div>
 </div>
+
+<div id="container" style="width: 75%;">
+    <canvas id="product-chart" data-url="{% url 'product_chart' %}"></canvas>
+  </div>
+
+
+
+<script type="text/JavaScript" src="{%  static 'js/bar_chart.js' %}"></script>
+
+  
+
+
+
+
+
 
 {% endblock %} 

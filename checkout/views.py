@@ -6,9 +6,11 @@ from django.contrib import messages
 from django.views.decorators.http import require_POST
 
 from django.conf import settings
+from django.db.models import F
 
 import stripe
 import json
+
 
 from basket.contexts import basket_contents
 from django.core.exceptions import ObjectDoesNotExist
@@ -17,7 +19,8 @@ from customer_account.forms import CustomerAccountForm
 from customer_account.models import CustomerAccount
 from products.models import Product
 from .forms import OrderForm
-from .models import Order, OrderLineItem, PurchaseHistory
+from .models import Order, OrderLineItem
+from product_health.models import PurchaseHistory, ProductActivity
 
 
 @require_POST
@@ -35,8 +38,6 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-
-
 
 def checkout(request):
     """
@@ -182,10 +183,27 @@ def checkout_success(request, order_number):
         else:
             # if there are no PurchaseHistory objects with the
             # item then create one
-            product_history = PurchaseHistory.objects.create(
-                name=item.product)
+            product_history = PurchaseHistory.objects.create(name=item.product)
             order.purchase_history = product_history
             order.save()
+
+        # Track purchases on the ProductActivity model
+        try:
+            product_activity = ProductActivity.objects.get(
+                name__name=item.product)
+        except ObjectDoesNotExist:
+            product_activity = None
+            
+        if product_activity is not None:
+            product_activity.purchase_count = F(
+                "purchase_count") + 1
+            product_activity.save()
+        else:
+            product_activity = ProductActivity.objects.create(
+                purchase_count=1,
+                name=item.name,
+            )
+
 
     messages.success(request, f'Thank you for your order! \
         Your order number is {order_number}. A confirmation \
