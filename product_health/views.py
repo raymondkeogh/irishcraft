@@ -31,15 +31,17 @@ def product_health(request):
 def product_chart(request):
     labels = []
     data = []
+    data2 = []
 
-    queryset = ProductActivity.objects.values('name__name').annotate(views=Sum('view_count')).order_by('-views')
+    queryset = ProductActivity.objects.values('name__name', 'purchase_count').annotate(views=Sum('view_count')).order_by('-views')
 
     for entry in queryset:
-        print(entry)
         labels.append(entry['name__name'][:15])
         data.append(entry['views'])
+        data2.append(entry['purchase_count'])
 
     return JsonResponse(data={
         'labels': labels,
         'data': data,
+        'data2': data2,
     })

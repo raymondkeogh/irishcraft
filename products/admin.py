@@ -11,7 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
         'rating',
         'image',
     )
-    # sorty product by sku
+    # sort product by sku
     ordering = ('name',)
 
 

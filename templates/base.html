@@ -40,8 +40,8 @@
   <!-- Stripe -->
   <script src="{% static 'js/js-snackbar.js' %}"></script>
   <script src="https://js.stripe.com/v3/"></script>
-
-
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
   {% endblock %}
 
@@ -54,7 +54,7 @@
 
 <body>
   <header class="container-fluid fixed-top">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top {% if request.user.is_superuser %} superuser {% else %} bg-dark {% endif %} ">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}"><img class="img-thumbnail"
             src="{% static 'images/logo.png' %}"></a>
@@ -182,7 +182,9 @@
   {% block postloadjs %}
   
   {% endblock %}
+  
   <script src="{% static 'js/dropdown_basket.js' %}" defer></script>
+    
   <footer>
     <p><a href="#">Back to top</a></p>
     <p class="pb-3">© 2017–2021 Irish Craft, Inc.</p>

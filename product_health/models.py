@@ -14,6 +14,7 @@ class ProductActivity(models.Model):
         Product, null=True, blank=True,
         on_delete=models.SET_NULL, related_name='producty_activity')
     view_count = models.PositiveIntegerField(default=0)
+    purchase_count = models.PositiveIntegerField(default=0)
     viewed_on = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):

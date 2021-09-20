@@ -261,29 +261,20 @@ Center align the text within the three columns below the carousel */
   font-size: 17px;
 }
 
+
 .card .card-img-top {
-  max-width: 100%;
+  height: 260px; 
+  width: 300px; 
+  overflow: hidden;
+  object-fit: cover;
 }
 
 .text-black {
   color: black !important;
 }
 
-.basket-dropdown {
-  background-color: white;
-  display: none;
-  width: 300px;
-  position: absolute;
-  z-index: 9999999;
-  right: 49px;
-  top: 82px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  max-height: 50vh; 
-}
-
 .box {
   display: none;
-  /* z-index: 1000; */
   position: absolute;
   width: 200px;
   padding: 20px;
@@ -296,14 +287,6 @@ Center align the text within the three columns below the carousel */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   max-height: 50vh;  
 }
-/* 
-#menu-icon {
-  display: hidden;
-} */
-/* 
-#menu-icon:focus ~ .box {
-  display: block !important;
-} */
 
 .toast-header a {
     text-decoration: none;
@@ -366,6 +349,10 @@ Center align the text within the three columns below the carousel */
 .navbar-nav .dropdown-menu {
   z-index: 999999999;
   min-width: 260px;
+}
+
+.superuser {
+  background-color: #bd2b30;
 }
 
 /* Allauth form formatting */

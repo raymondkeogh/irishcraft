@@ -13,11 +13,17 @@
             type: 'bar',
             data: {
               labels: data.labels,
-              datasets: [{
-                label: 'product',
-                backgroundColor: 'blue',
+              datasets: [
+                {
+                label: 'Product Views',
+                backgroundColor: '#e05f5f',
                 data: data.data
-              }]          
+                },
+                {
+                label: 'Purchased',
+                backgroundColor: '#00bd19',
+                data: data.data2
+                }]           
             },
             options: {
               responsive: true,
@@ -25,8 +31,8 @@
                 position: 'top',
               },
               title: {
-                display: true,
-                text: 'Product Bar Chart'
+                display: false,
+                text: 'Product Activity'
               }
             }
           });
