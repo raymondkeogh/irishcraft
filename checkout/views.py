@@ -193,14 +193,14 @@ def checkout_success(request, order_number):
                 name__name=item.product)
         except ObjectDoesNotExist:
             product_activity = None
-            
+
         if product_activity is not None:
             product_activity.purchase_count = F(
-                "purchase_count") + 1
+                "purchase_count") + item.quantity
             product_activity.save()
         else:
             product_activity = ProductActivity.objects.create(
-                purchase_count=1,
+                purchase_count=item.quantity,
                 name=item.name,
             )
 
