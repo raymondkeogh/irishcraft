@@ -31,7 +31,7 @@ function SnackBar(userOptions) {
     _Options = {
       message: userOptions?.message ?? "Operation performed successfully.",
       dismissible: userOptions?.dismissible ?? true,
-      timeout: userOptions?.timeout ?? 2000,
+      timeout: userOptions?.timeout ?? 2500,
       status: userOptions?.status ? userOptions.status.toLowerCase().trim() : "",
       actions: userOptions?.actions ?? [],
       fixed: userOptions?.fixed ?? false,

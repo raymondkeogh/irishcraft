@@ -4,15 +4,16 @@
 
 
 {% block content %}
-
+<div class="container-fluid">
 <div class="row">
-    <div class="col-12 m-5">
+    <div class="col-sm-12 col-md-10 m-sm-0 m-md-5">
            <!-- Barchart -->
-           <h3 class="mb-3">Product Activity</h3>
-            <div id="container" style="width: 75%;">
-                <canvas id="product-chart" data-url="{% url 'product_chart' %}"></canvas>
-            </div>
+           <h4 class=" mb-3">Product Activity</h4>
+      
+                <canvas id="product-chart" data-url="{% url 'product_chart' %}"></canvas>  
+                <p class="m-4">Graph detailing the relationship between product views and sales. Click on the the keys 'Product Views' and 'Purchases' in order to toggle them on or off. </p>
     </div>
+</div>
 </div>
 
 {% endblock %} 

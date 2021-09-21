@@ -3,8 +3,8 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-            <div class="col-sm mb-3">
+    <div class="row mt-3 mb-2">
+            <div class="col-sm ">
                 <div class="product-image">
                     {% if product.image_url != None %}
                         <a href="{{ product.image_url }}">
@@ -76,15 +76,16 @@
             </div> 
     </div>
     <!-- Row to display commonly related products purchased with item being viewed -->
+    {% if also_bought|length > 1 %}
     <div class="row mb-5">
         <div class="col-sm-12 col-md-8 mt-5">    
-            {% if also_bought|length != 0 %}
+       
             <h6>Also purchased with this item:</h6>
             <hr>
             <div class="row">
                     {% for item in also_bought%}
                         {% if item.product.name != product.name %}
-                            <div class="col-3 my-1">
+                            <div class="col-3 my-1 d-flex align-items-center justify-content-center">
                                     <a href="{% url 'product_details' item.product.id %}">
                                 {% if item.product.image_url != None %}
                                     <img class="img-thumbnail"  src="{{item.product.image_url}}" alt="{{item.product.name}}">
@@ -98,12 +99,14 @@
                             {% endif %}
                     {% endfor %}   
             </div>
-            {% endif %}
+         
         </div>
     </div>
+    {% endif %}
+    {% if reviews %}
     <div class="row mb-5">
         <div class="col-sm-12 col-md-8">
-            {% if reviews %}
+           
               
             <div class="card">
                 <div class="card-header">
@@ -135,14 +138,11 @@
                 {% endfor %}
             </div>
      
-            {% endif %}
+         
         </div>
     </div>
+    {% endif %}
 </div>
-
-</div>
-
-
 {% endblock %}
 
 {% block postloadjs %}
