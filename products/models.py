@@ -40,7 +40,8 @@ class Product(models.Model):
     rating = models.DecimalField(max_digits=6,
                                  decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = CloudinaryField('image', default='No Image')
+    image = CloudinaryField(
+        'image', default='No Image', transformation={"quality": "auto:best"}, format="jpg")
 
     def __str__(self):
         return self.name
