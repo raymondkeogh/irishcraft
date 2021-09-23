@@ -62,7 +62,7 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
-    paginator = Paginator(products, 25)
+    paginator = Paginator(products, 15)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     current_sorting = f'{sort}_{direction}'
