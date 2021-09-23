@@ -32,12 +32,13 @@ def all_products(request):
     query = None
     categories = None
     sort = None
+    category = None
     direction = None
     if request.GET:
         if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            category = request.GET['category'].split(',')
+            products = products.filter(category__name__in=category)
+            categories = Category.objects.filter(name__in=category)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -65,13 +66,15 @@ def all_products(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     current_sorting = f'{sort}_{direction}'
+    on_product_page = True
 
     context = {
         'products': products,
         'page_obj': page_obj,
         'search': query,
-        'category_selected': categories,
+        'category': category,
         'sorting': current_sorting,
+        'on_product_page': on_product_page,
     }
     return render(request, 'products/products.html', context)
 
@@ -112,6 +115,7 @@ def product_details(request, product_id):
             # object for the product
             linked_purchases = (
                 purchase_history.related_products.all().distinct())
+            
             also_bought = []
             for order in iter(linked_purchases):
                 for item in order.lineitems.all():
@@ -128,8 +132,13 @@ def product_details(request, product_id):
     except ObjectDoesNotExist:
         reviews = None
 
+    review_paginator = Paginator(reviews, 4)
+    page_number = request.GET.get('page')
+    page_obj = review_paginator.get_page(page_number)
+
     context = {
         'product': product,
+        'page_obj': page_obj,
         'purchase_history': purchase_history,
         'linked_purchases': linked_purchases,
         'reviews': reviews,

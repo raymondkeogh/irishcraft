@@ -43,7 +43,7 @@ header {
 
 footer {
     padding: 2.5rem 0;
-    color: #999;
+    color: #495057;
     text-align: center;
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
@@ -101,6 +101,10 @@ footer p:last-child {
   -moz-transition: background-position 1s;
   transition: background-position 1s;
   border-radius: 0 0 .25rem .25rem;
+}
+
+#current-category{
+  background-color: #efd452a4;
 }
 
 .category-nav li:hover{
@@ -244,25 +248,29 @@ Center align the text within the three columns below the carousel */
 }
 
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
-  .page-item {
-    display: inline-block;
-  }
+.page-item {
+  display: inline-block;
+}
 
-  .overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: white;
-	z-index: -1;
+.pagination {
+  font-size: 15px;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: #ffffff;
+  z-index: -1;
 }
 
 /* PRODUCT DETAILS
@@ -317,7 +325,7 @@ Center align the text within the three columns below the carousel */
   width: 300px;
   padding: 20px;
   background: #F5F5F5;
-  border: 1px solid #a5bdcd;
+  border: 1px solid #f5f5f5f7;
   right: 20px;
   border-radius: 3px 0 3px 3px;
   opacity: .95;
@@ -454,7 +462,7 @@ color: #17a2b8; /* text-info */
 
 
 footer a {
-  color: #17a2b8; /* text-info */
+  color: #007588 /* text-info */
   }
   
 
