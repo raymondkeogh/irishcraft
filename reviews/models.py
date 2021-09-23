@@ -21,7 +21,7 @@ class Review(models.Model):
         related_name='reviews', related_query_name='reviews')
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
-    rating = models.IntegerField(choices=ratings, default=5)
+    rating = models.IntegerField(choices=ratings)
 
     def __str__(self):
         return self.title

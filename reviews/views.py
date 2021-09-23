@@ -12,48 +12,70 @@ from products.models import Product
 def add_review(request, product_id):
     """ Review a product """
     product = get_object_or_404(Product, pk=product_id)
-    form = ReviewForm(request.POST or None)
-    if request.method == 'POST':
-        if form.is_valid():
-            title = form.cleaned_data['title']
-            body = form.cleaned_data['body']
-            user = request.user
-            review = Review()
-            review.product = product
-            review.title = title
-            review.body = body
-            review.user = user
-            review.save()
-            messages.success(
-                    request, 'Your review has been uploaded!')
+    review = get_object_or_404(Review, user=request.user)
+    if review:
+        form = ReviewForm(instance=review)
+        messages.info(
+            request, f'You are editing your review for {review.product}')
 
-            return redirect(reverse('product_details', args=[product.id]))
-        else:
-            messages.error(
-                request, 'Failed to upload product review. '
-                'Please ensure the review form is filled correctly.')
+        template = 'reviews/edit_review.html'
+        context = {
+            'form': form,
+            'review': review,
+        }
+        return render(request, template, context)
+    
     else:
-        form = ReviewForm()
-    template = 'reviews/add_review.html'
-    context = {
-        'form': form,
-        'product': product
-    }
 
-    return render(request, template, context)
+        form = ReviewForm(request.POST or None)
+        if request.method == 'POST':
+            if form.is_valid():
+                title = form.cleaned_data['title']
+                body = form.cleaned_data['body']
+                user = request.user
+                review = Review()
+                review.product = product
+                review.title = title
+                review.body = body
+                review.user = user
+                review.save()
+                messages.success(
+                        request, 'Your review has been uploaded!')
+
+                return redirect(reverse('product_details', args=[product.id]))
+            else:
+                messages.error(
+                    request, 'Failed to upload product review. '
+                    'Please ensure the review form is filled correctly.')
+        else:
+            form = ReviewForm()
+        template = 'reviews/add_review.html'
+        context = {
+            'form': form,
+            'product': product
+        }
+
+        return render(request, template, context)
 
 
 @login_required
 def edit_review(request, review_id):
     """ A view to edit review details """
     review = get_object_or_404(Review, pk=review_id)
+    # print("requst,user is ", request.user)
+    # print("review.user is ", review.user)
+    # if review.user is not request.user:
+    #     messages.error(
+    #         request, 'You must be the ownder of the review to edit it.')
+    #     return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
             form.save()
             messages.success(request, 'Review Updated!')
-            return redirect(reverse('product_details', args=[review.product.id]))
+            return redirect(
+                reverse('product_details', args=[review.product.id]))
         else:
             messages.error(request, 'There was a problem updating your review'
                            ', please check to see if all'
