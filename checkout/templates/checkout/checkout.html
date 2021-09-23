@@ -80,8 +80,8 @@
             </div>
         </div>
         <div class="col-12 col-lg-6">
-            <p class="text-muted">Please fill out the form below to complete your order</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                <p class="text-muted">Please fill out the form below to complete your order</p>
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
@@ -119,7 +119,9 @@
 
                     <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-               
+                    <!-- Pass the client secret to the view so we can get the payment intent id -->
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                </fieldset>
 
                 <div class="submit-button text-right mt-5 mb-2">
                     <a href="{% url 'view_basket' %}" class="btn btn-outline-black rounded-0">
@@ -145,17 +147,24 @@
                         <span>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
                     </p>
                 </div>
-            </fieldset>
+         
             </form>
         </div>
     </div>
+</div>
+<div id="loading-overlay">
+    <h1 class="text-light logo-font loading-spinner">
+        <span class="icon">
+            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+        </span>
+    </h1>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
 {{ stripe_public_key|json_script:'id_stripe_public_key' }}
-{{ client_secret|json_script:"id_client_secret"}}
+{{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 </script>
 {% endblock %}

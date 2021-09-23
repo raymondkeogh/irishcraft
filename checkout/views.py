@@ -61,16 +61,30 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_basket = json.dumps(basket)
+            order.save()
             for item_id, item_data in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=item_data,
-                    )
-                    order_line_item.save()
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                    else:
+                        for size, quantity in item_data['items_by_size'].items():
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
+                            )
+                            order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your basket"
@@ -145,7 +159,7 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         customer = CustomerAccount.objects.get(user=request.user)
-       
+
         # Attach the user's profile to the order
         order.customer_account = customer
         order.save()
@@ -172,7 +186,6 @@ def checkout_success(request, order_number):
             # check if item has a product history
             product_history = PurchaseHistory.objects.get(
                 name__name=item.product)
-            
         except ObjectDoesNotExist:
             product_history = None
 
@@ -203,7 +216,6 @@ def checkout_success(request, order_number):
                 purchase_count=item.quantity,
                 name=item.name,
             )
-
 
     messages.success(request, f'Thank you for your order! \
         Your order number is {order_number}. A confirmation \
