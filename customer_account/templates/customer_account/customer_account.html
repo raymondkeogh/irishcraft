@@ -31,7 +31,7 @@
                         <h6 class="mb-4">ACCOUNT DETAILS</h6>
                         <p>Full Name: {{customer.full_name}}</p>
                         <p>Username: {{customer.user}}</p>
-                        <p>Email Address: {{customer.email}}</p>
+                        <p>Email Address: {{customer.user.email}}</p>
                         <p>Phone Number: {{customer.phone_number}}</p>
                     </div>
                     <hr>
@@ -54,20 +54,20 @@
                     </div>
             </div>
             <div class="col-12 col-lg-6">
-                <H6 class="mb-4">ORDER HISTORY</H6>
                 {% if orders %}
+                <H6 class="mb-4">ORDER HISTORY ({{orders.count}})</H6>
                 <div class="order-history table-responsive">
                     <table style="border: 1px solid rgb(189, 189, 189)" class="table table-sm table-borderless">
                         <thead>
                             <tr>
                                 <th>Order Number</th>
                                 <th>Date</th>
-                                <th>Items</th>
+                                <th class="small d-none d-sm-block">Items</th>
                                 <th>Order Total</th>
                             </tr>
                         </thead>
                         <tbody style="border: 1px solid rgb(179, 179, 179)">
-                            {% for order in orders %}
+                            {% for order in page_obj %}
                                 <tr style="border: 1px solid rgb(179, 179, 179)">
                                     <td>
                                         <a class="small" href="{% url 'view_order' order.id %}"
@@ -76,10 +76,10 @@
                                         </a>
                                     </td>
                                     <td><p class="small">{{ order.date|date:"d M Y" }}</p></td> 
-                                    <td>
+                                    <td class="small d-none d-sm-block">
                                         <ul class="list-unstyled">
                                             {% for item in order.lineitems.all %}
-                                                <li class="small">
+                                                <li class="small d-none d-sm-block">
                                                     {{ item.product.name }} x{{ item.quantity }}
                                                 </li>
                                             {% endfor %}
@@ -88,8 +88,29 @@
                                     <td><p class="small">  €{{ order.grand_total }}</p> </td>
                                 </tr>
                             {% endfor %}
+                          
                         </tbody>
+   
                     </table>
+                    <nav aria-label="Products list">
+                        <ul class="pagination step-links list-inline justify-content-center">
+                            {% if page_obj.has_previous %}
+                            <li class="page-item"> <a class="page-link" href="?page=1">&laquo; first</a></li>
+                            <li class="page-item"> <a class="page-link"
+                                    href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                            {% endif %}
+                            <li class="page-item disabled">
+                                <span class="current page-link">
+                                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                </span>
+                            </li>
+                            {% if page_obj.has_next %}
+                            <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                            <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last
+                                    &raquo;</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
                 </div>
                 {% endif %}
             </div>

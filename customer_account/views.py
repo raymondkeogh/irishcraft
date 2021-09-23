@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from .models import CustomerAccount
 from .forms import CustomerAccountForm
 from checkout.models import Order
@@ -13,7 +14,6 @@ def customer_account(request):
     """A view that renders the users account"""
 
     customer = get_object_or_404(CustomerAccount, user=request.user)
-    allorders = Order.objects.all()
 
     if request.method == 'POST':
         form = CustomerAccountForm(request.POST, instance=customer)
@@ -28,13 +28,18 @@ def customer_account(request):
     else:
         form = CustomerAccountForm(instance=customer)
     orders = customer.orders.all()
+
+    order_paginator = Paginator(orders, 4)
+    page_number = request.GET.get('page')
+    page_obj = order_paginator.get_page(page_number)
+
     template = 'customer_account/customer_account.html'
     context = {
         'form': form,
         'orders': orders,
         'customer': customer,
         'on_profile_page': True,
-        'allorders': allorders,
+        'page_obj': page_obj,
     }
     return render(request, template, context)
 
