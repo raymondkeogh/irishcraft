@@ -35,7 +35,7 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
+        messages.error(request, 'Your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
@@ -88,8 +88,7 @@ def checkout(request):
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your basket"
-                        " wasn't found in our database. "
-                        "Please call us for assistance!")
+                        " wasn't found in our database.")
                     )
                     order.delete()
                     return redirect(reverse('view_basket'))
@@ -99,7 +98,7 @@ def checkout(request):
                 'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+                Please check your inputs.')
     else:
         basket = request.session.get('basket', {})
         if not basket:
@@ -122,7 +121,7 @@ def checkout(request):
             try:
                 customer = CustomerAccount.objects.get(user=request.user)
                 order_form = OrderForm(initial={
-                    'full_name': customer.user.get_full_name(),
+                    'full_name': customer.full_name,
                     'email': customer.user.email,
                     'phone_number': customer.phone_number,
                     'country': customer.country,
