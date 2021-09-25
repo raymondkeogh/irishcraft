@@ -1,0 +1,13 @@
+{% if item.product.image_url != None %}
+    <a href="{% url 'product_details' item.product.id %}">
+        <img class="img-thumbnail"  src="{{ item.product.image_url }}" alt="{{item.product.name}}">
+    </a>    
+{% elif "No%20Image" not in item.product.image.url %}
+    <a href="{% url 'product_details' item.product.id %}">
+        <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
+    </a>
+{% else %} 
+    <a href="{% url 'product_details' item.product.id %}">
+        <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
+    </a>
+{% endif %}

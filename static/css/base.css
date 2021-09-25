@@ -360,10 +360,6 @@ Center align the text within the three columns below the carousel */
   display: none;
 }
 
-/* .basket-dropdown-zone{
-  position:relative;
-} */
-
 .basket-dropdown-zone div.text-info{
   color: #77cc7a !important;
 }
@@ -394,6 +390,7 @@ Center align the text within the three columns below the carousel */
 
 .qty_input {
   min-width: 50px;
+  max-width: 150px;
 }
 
 .navbar-nav .dropdown-menu {
@@ -403,6 +400,10 @@ Center align the text within the three columns below the carousel */
 
 .superuser {
   background-color: #bd2b30;
+}
+
+.address p {
+  margin-bottom: 0;
 }
 
 /* Allauth form formatting */
