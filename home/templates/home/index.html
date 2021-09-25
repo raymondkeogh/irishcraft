@@ -7,54 +7,55 @@
     <div class="carousel-container">
         <div class="row">
             <div class="col-sm-12">
-                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="row">
-                        {% for product in products %}
-                                {% if product.image_url != None %}
-                                <div class="carousel-item col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-6 my-auto">
+                            {% for product in products %}
+                            {% if product.image_url != None %}
+                            <div class="carousel-item col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 my-auto">
                                         <a href="{% url 'product_details' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ product.image_url }}" alt="{{product.name}}">
-                                        </a> 
-                                        </div>
-                                        <div class="col-md-6">
-                                            {{product.name}}<br>€{{product.price}}
-                                        </div>
+                                            <img class="card-img-top img-fluid" src="{{ product.image_url }}"
+                                                alt="{{product.name}}">
+                                        </a>
                                     </div>
-                                       
+                                    <div class="col-md-6">
+                                        {{product.name}}<br>€{{product.price}}
+                                    </div>
                                 </div>
-                                {% elif "No%20Image" not in product.image.url %}
-                                <div class="carousel-item col-sm-12">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-6 my-auto carousel-image">
-                                            <a href="{% url 'product_details' product.id %}">
-                                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{product.name}}">
-                                                </a>
-                                        </div>
+
+                            </div>
+                            {% elif "No%20Image" not in product.image.url %}
+                            <div class="carousel-item col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 my-auto carousel-image">
+                                        <a href="{% url 'product_details' product.id %}">
+                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}"
+                                                alt="{{product.name}}">
+                                        </a>
+                                    </div>
                                     <div class="col-md-6 my-auto p-5">
                                         <h1 class="text-uppercase">{{product.name}}</h1><br>
                                         €{{product.price}}
                                     </div>
                                 </div>
                             </div>
-
-                                {% endif %} 
-                        {% endfor %}
-                            </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" onclick="$('#myCarousel').carousel('prev')">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next" onclick="$('#myCarousel').carousel('next')">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden"></span>
-                    </button>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-target="#myCarousel" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-target="#myCarousel" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            </div>
-           
+
         </div>
     </div><!-- /.carousel-container -->
 
@@ -64,17 +65,20 @@
         <h1 class="text-center mb-5 mt-4">Handcrafted in Ireland</h1>
         {% include 'includes/category-grid.html' %}
 
-        <hr class="featurette-divider">
+        <hr class="featurette-divider mt-5">
 
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Prints</h2>
-                <p class="lead">We have worked with some of the finest artist Ireland has to offer to procure these pieces. Our featured artist Conor Hamill whose contemporary imagery is the ideal addition to any home. </p>
+                <p class="lead">We have worked with some of the finest artist Ireland has to offer to procure these
+                    pieces. Our featured artist Conor Hamill whose contemporary imagery is the ideal addition to any
+                    home. </p>
             </div>
             <div class="col-md-5 order-md-1">
                 <a href="{% url 'products' %}?category=prints" id="prints-link">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{prints_first.image.url}}" width="300" height="300" >  
-                </a>        
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        src="{{prints_first.image.url}}" width="300" height="300">
+                </a>
             </div>
         </div>
 
@@ -83,12 +87,14 @@
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading">Glassware</h2>
-                <p class="lead">From fine crystal to everyday tumblers, handblown or handcut find the finest pieces here</p>
+                <p class="lead">From fine crystal to everyday tumblers, handblown or handcut find the finest pieces here
+                </p>
             </div>
             <div class="col-md-5 order-md-1">
                 <a href="{% url 'products' %}?category=glassware" id="glassware-link">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{glassware_first.image.url}}" width="300" height="300" >
-                </a> 
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        src="{{glassware_first.image.url}}" width="300" height="300">
+                </a>
             </div>
         </div>
 
@@ -97,12 +103,14 @@
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Textiles</h2>
-                <p class="lead">Irelands finest contemporary and classical interior fabrics. Our suppliers work with only the finest materials to produce uniquely beuatiful pieces.</p>
+                <p class="lead">Irelands finest contemporary and classical interior fabrics. Our suppliers work with
+                    only the finest materials to produce uniquely beuatiful pieces.</p>
             </div>
             <div class="col-md-5">
                 <a href="{% url 'products' %}?category=textiles" id="textiles-link">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{textiles_first.image.url}}" width="300" height="300" >   
-                </a>  
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        src="{{textiles_first.image.url}}" width="300" height="300">
+                </a>
             </div>
         </div>
 
@@ -111,16 +119,17 @@
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading">Kitchenware</h2>
-                <p class="lead">Make your kitchen a feast for the senses with some of our kitchenware range.  </p>
+                <p class="lead">Make your kitchen a feast for the senses with some of our kitchenware range. </p>
             </div>
             <div class="col-md-5 order-md-1">
                 <a href="{% url 'products'%}?category=kitchen" id="kitchen-link">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{kitchen_first.image.url}}" width="300" height="300" >
-                </a>  
+                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        src="{{kitchen_first.image.url}}" width="300" height="300">
+                </a>
             </div>
         </div>
 
-        <hr class="featurette-divider"> 
+        <hr class="featurette-divider">
 
     </div><!-- /.container-fluid marketing -->
 </div><!-- /.main container -->
@@ -130,25 +139,12 @@
 
 
 {% block postloadjs %}
-<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
+
 <script>
+//    Caroursel
     $(document).ready(function () {
-      $('#myCarousel').find('.carousel-item').first().addClass('active');
-      $('#myCarousel2').find('.carousel-item').first().addClass('active');
+        $('#myCarousel').find('.carousel-item').first().addClass('active');
+     
     });
-  </script>
-  <script src="{% static 'js/script.js' %}"></script>
+</script>
 {% endblock %}
-
-
-
-
-
-
-
-
-</li>
-<li class="nav-item px-4">
- 
-</li>
-<li class="nav-item px-4">
