@@ -192,6 +192,15 @@
   {% endblock %}
   
   <script src="{% static 'js/dropdown_basket.js' %}" defer></script>
+  <script>
+    // https://stackoverflow.com/questions/23706003/changing-nav-bar-color-after-scrolling
+    $(function () {
+      $(document).scroll(function () {
+        var $nav = $(".category-nav");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+      });
+    });
+  </script>
     
   <footer>
     <p><a href="#">Back to top</a></p>

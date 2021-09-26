@@ -1,20 +1,28 @@
+
 {% load socialaccount %}
+{% load static %}
 
 {% get_providers as socialaccount_providers %}
 
-{% for provider in socialaccount_providers %}
+
 {% if provider.id == "openid" %}
-{% for brand in provider.get_brands %}
+
 <li>
   <a title="{{brand.name}}" 
      class="socialaccount_provider {{provider.id}} {{brand.id}}" 
      href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
      >{{brand.name}}</a>
 </li>
-{% endfor %}
 {% endif %}
-<li>
-  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
-     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name}}</a>
-</li>
-{% endfor %}
+<li class="social-button">
+  <a id="twitter-button" title="Twitter" class="socialaccount_provider twitter" href="/accounts/twitter/login/?process=login"> 
+    <img class="m-3"
+    src="{% static 'images/socialaccounts/twitter.png' %}" alt="twitter login">
+  </a>
+</li> 
+  <li class="social-button">
+    <a id="google-button"  title="Google" class="socialaccount_provider google" href="/accounts/google/login/?process=login">
+      <img class="m-3"
+      src="{% static 'images/socialaccounts/google.png' %}" alt="google login">
+    </a>
+  </li>
