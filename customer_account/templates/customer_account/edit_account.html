@@ -31,12 +31,11 @@
                     <form action="{% url 'edit_account' %}" method="POST" id="contact-form">
                         {% csrf_token %}
                         <fieldset class="rounded px-3 mb-5">
-                            <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
-                            {{ form.full_name | as_crispy_field }}
+                            <legend class="fieldset-label small text-black px-2 w-auto">Phone Number</legend>
+                            {{ form.phone_number| as_crispy_field }}
                         </fieldset>
                         <fieldset class="rounded px-3 mb-5">
-                            <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
-                            {{ form.phone_number | as_crispy_field }}
+                            <legend class="fieldset-label small text-black px-2 w-auto">Address</legend>
                             {{ form.town_or_city | as_crispy_field }}
                             {{ form.street_address1 | as_crispy_field }}
                             {{ form.street_address2 | as_crispy_field }}

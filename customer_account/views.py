@@ -27,11 +27,13 @@ def customer_account(request):
                            'correctly')
     else:
         form = CustomerAccountForm(instance=customer)
-    orders = customer.orders.all()
+    orders = customer.orders.order_by('-date')
 
     order_paginator = Paginator(orders, 4)
     page_number = request.GET.get('page')
     page_obj = order_paginator.get_page(page_number)
+
+    
 
     template = 'customer_account/customer_account.html'
     context = {

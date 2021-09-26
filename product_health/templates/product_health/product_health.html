@@ -1,17 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_js %}
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
 <div class="row">
     <div class="col-sm-12 col-md-10 m-sm-0 m-md-5">
            <!-- Barchart -->
-           <h4 class=" mb-3">Product Activity</h4>
       
-                <canvas id="product-chart" data-url="{% url 'product_chart' %}"></canvas>  
-                <p class="m-4">Graph detailing the relationship between product views and sales. Click on the the keys 'Product Views' and 'Purchases' in order to toggle them on or off. </p>
+        <h3 class="mb-3 mt-5 mt-md-2">Product Activity</h3>
+        <canvas id="product-chart" data-url="{% url 'product_chart' %}"></canvas>  
+        <p class="m-4">Graph detailing the relationship between product views and sales. Click on the the keys 'Product Views' and 'Purchases' in order to toggle them on or off. </p>
+        <p class="text-muted mx-4 d-block d-md-none"><small><i class="mr-3 fas fa-mobile-alt fa-rotate-90 fa-2x"></i> For mobile screens the chart is best views in landscape mode</small></p>
     </div>
 </div>
 </div>

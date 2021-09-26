@@ -1,6 +1,7 @@
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum
 from django.http import JsonResponse
@@ -11,12 +12,17 @@ from .models import ProductActivity, PurchaseHistory
 
 @login_required
 def product_health(request):
-    """A view that renders products that are related to eachother by way of orders"""
+    """A view that renders products that are
+    related to eachother by way of orders"""
+
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'You must have adminstrator access this area.')
+        return redirect(reverse('home'))
 
     allorders = Order.objects.all()
     products = PurchaseHistory.objects.all()
     product_activity = ProductActivity.objects.all()
- 
 
     template = 'product_health/product_health.html'
     context = {
@@ -33,7 +39,9 @@ def product_chart(request):
     data = []
     data2 = []
 
-    queryset = ProductActivity.objects.values('name__name', 'purchase_count').annotate(views=Sum('view_count')).order_by('-views')
+    queryset = ProductActivity.objects.values(
+        'name__name', 'purchase_count').annotate(views=Sum(
+            'view_count')).order_by('-views')
 
     for entry in queryset:
         labels.append(entry['name__name'][:15])
