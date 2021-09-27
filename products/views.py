@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.db.models import F
 from django.core.exceptions import ObjectDoesNotExist
-from product_health.models import ProductActivity, PurchaseHistory
+from product_health.models import ProductActivity
 from reviews.models import Review
 from .forms import ProductForm
 from .models import Product, PhotoForm, Category
@@ -102,28 +102,6 @@ def product_details(request, product_id):
                 view_count=1,
                 name=product,
             )
-    # logic used to dipslay 'linked purchase' items
-    if product is not None:
-        try:
-            # get purchase history linked to the product
-            purchase_history = PurchaseHistory.objects.get(
-                name__name=product.name)
-        except ObjectDoesNotExist:
-            purchase_history = None
-        if purchase_history is not None:
-            # get all the orders linked to the purchase_history 
-            # object for the product
-            linked_purchases = (
-                purchase_history.related_products.all().distinct())
-            
-            also_bought = []
-            for order in iter(linked_purchases):
-                for item in order.lineitems.all():
-                    if str(item.product.name) not in str(also_bought):
-                        also_bought.append(item)
-        else:
-            linked_purchases = None
-            also_bought = None
 
     try:
         reviews = Review.objects.filter(
@@ -139,10 +117,7 @@ def product_details(request, product_id):
     context = {
         'product': product,
         'page_obj': page_obj,
-        'purchase_history': purchase_history,
-        'linked_purchases': linked_purchases,
         'reviews': reviews,
-        'also_bought': also_bought,
     }
     return render(request, 'products/product_details.html', context)
 
