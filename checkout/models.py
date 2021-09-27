@@ -8,8 +8,6 @@ from django_countries.fields import CountryField
 
 from customer_account.models import CustomerAccount
 from products.models import Product
-from product_health.models import PurchaseHistory
-
 
 class Order(models.Model):
     """Model to define order details"""
@@ -17,9 +15,6 @@ class Order(models.Model):
     customer_account = models.ForeignKey(
         CustomerAccount, on_delete=models.SET_NULL,
         null=True, blank=True, related_name='orders')
-    purchase_history = models.ForeignKey(
-        PurchaseHistory, on_delete=models.SET_NULL,
-        null=True, blank=True, related_name='related_products')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)

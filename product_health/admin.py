@@ -2,7 +2,7 @@ from django.contrib import admin
 from checkout.models import OrderLineItem
 from checkout.admin import OrderLineItemAdminInline
 
-from .models import ProductActivity, PurchaseHistory
+from .models import ProductActivity
 
 class ProductActivityAdmin(admin.ModelAdmin):
     list_display = (
@@ -15,13 +15,4 @@ class ProductActivityAdmin(admin.ModelAdmin):
     # sorty product by sku
     ordering = ('name',)
 
-class PurchaseHistoryAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-    )
-    # sorty product by sku
-    ordering = ('name',)
-
-
 admin.site.register(ProductActivity, ProductActivityAdmin)
-admin.site.register(PurchaseHistory, PurchaseHistoryAdmin)

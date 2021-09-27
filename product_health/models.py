@@ -22,13 +22,3 @@ class ProductActivity(models.Model):
 
     class Meta:
         verbose_name_plural = "Product Activity"
-
-
-class PurchaseHistory(models.Model):
-    name = models.OneToOneField(Product, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.name)
-
-    class Meta:
-        verbose_name_plural = "Product History"

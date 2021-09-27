@@ -20,7 +20,7 @@ from customer_account.models import CustomerAccount
 from products.models import Product
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from product_health.models import PurchaseHistory, ProductActivity
+from product_health.models import ProductActivity
 
 
 @require_POST
@@ -181,25 +181,6 @@ def checkout_success(request, order_number):
                 customer_account_form.save()
 
     for item in order.lineitems.all():
-        # Connect lineitems to eachother in product_history object
-        try:
-            # check if item has a product history
-            product_history = PurchaseHistory.objects.get(
-                name__name=item.product)
-        except ObjectDoesNotExist:
-            product_history = None
-
-        if product_history is not None:
-            # attach the new product_history object to the order
-            order.purchase_history = product_history
-            order.save()
-        else:
-            # if there are no PurchaseHistory objects with the
-            # item then create one
-            product_history = PurchaseHistory.objects.create(name=item.product)
-            order.purchase_history = product_history
-            order.save()
-
         # Track purchases on the ProductActivity model
         try:
             product_activity = ProductActivity.objects.get(

@@ -7,7 +7,7 @@ from django.db.models import Sum
 from django.http import JsonResponse
 
 from checkout.models import Order
-from .models import ProductActivity, PurchaseHistory
+from .models import ProductActivity
 
 
 @login_required
@@ -21,14 +21,12 @@ def product_health(request):
         return redirect(reverse('home'))
 
     allorders = Order.objects.all()
-    products = PurchaseHistory.objects.all()
     product_activity = ProductActivity.objects.all()
 
     template = 'product_health/product_health.html'
     context = {
         'allorders': allorders,
         'product_activity': product_activity,
-        'products': products,
     }
     return render(request, template, context)
 
