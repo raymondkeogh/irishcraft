@@ -1,7 +1,7 @@
 [![homepage][1]][2]
 
 [1]:  static/images/siterender.png
-[2]:  Irishcraft.webaddress "Redirect to homepage"
+[2]:  https://irishcraft.herokuapp.com/ "Redirect to homepage"
 
 
 
@@ -45,7 +45,7 @@ Description
 -----------
 
 Irish Craft is an e-commerce website built using Python and Django. 
-The live site can be viewed [here](https://irishcraft.webaddress/).
+The live site can be viewed [here](https://irishcraft.herokuapp.com/).
 
 User Experience
 --------------------
@@ -56,39 +56,37 @@ User Experience
 
 ----------
 
-| User Stories | As A/An                             | I want to be able to                                                           | So that I can                                                                 |   |   |   |
-|--------------|-------------------------------------|--------------------------------------------------------------------------------|-------------------------------------------------------------------------------|---|---|---|
-|              ||****** **View Products**  ******                     |                                                                                |                                                                               |   |   |   |
-| 1            | Casual Shopper                      | View all products                                                              | products can be selected from list to purchase                                |   |   |   |
-| 2            | Casual Shopper                      | Select and view individual products details                                    | View larger image of product, description, price, sizes and a purchase option |   |   |   |
-| 3            | Casual Shopper                      | View list of items in basket and totals                                        | See my item count, price and subtotal/total                                   |   |   |   |
-| 4            | Casual Shopper                      | View a list of products by category                                            | See a range of items in the category I am interested in.                      |   |   |   |
-|              ||****** **Search and Sort Products** ******            |                                                                                |                                                                               |   |   |   |
-| 5            | Casual Shopper                      | Search for products by name or description                                     | Narrow down the list of items that I have to view                             |   |   |   |
-| 6            | Casual Shopper                      | See the number of results in a search that I have performed                    | Easily see how many products are available.                                   |   |   |   |
-| 7            | Casual Shopper                      | Sort the products based on price                                               | Better identify items that I would like to buy                                |   |   |   |
-|              ||**** **Registration & Account management** ****|                                                                                |                                                                               |   |   |   |
-| 8            | Return Shopper                      | Set up an account with the store                                               | Create an account to store my details such as purchase history and address.   |   |   |   |
-| 9            | Return Shopper                      | Login and logout functionality                                                 | Gain access to my account                                                     |   |   |   |
-| 10           | Return Shopper                      | Recover account if password forgotten                                          | Gain access to my account                                                     |   |   |   |
-| 11           | Return Shopper                      | Receive an confirmation email on registration                                  | Verify my account has been created                                            |   |   |   |
-| 12           ||****** **Checkout and Payment** ******                |                                                                                |                                                                               |   |   |   |
-| 13           | Return Shopper                      | Select a quantity of items and sizes if available                              | Add the items to my basket                                                    |   |   |   |
-| 14           | Return Shopper                      | Remove items from my basket                                                    | Ensure I am paying for only the products I want                               |   |   |   |
-| 15           | Return Shopper                      | Edit items in my basket                                                        | Ensure I am paying the correct quantity or size of product.                   |   |   |   |
-| 16           | Return Shopper                      | View a full list of all products in my basket with prices and subtotal/total.  | Ensure that I have everything in my basket that I wanted.                     |   |   |   |
-| 17           | Return Shopper                      | Enter my address and payment details for purchase                              | Pay for the items and have them delivered to the correct address              |   |   |   |
-| 18           | Return Shopper                      | Get a confirmation email of my purchase                                        | Be reassured that my purchase has gone through and is correct                 |   |   |   |
-| 19           | Return Shopper                      | Pay for my items in a manner that is secure and familiar                       | Be sure that my card details and payment are handled securely.                |   |   |   |
-| 20           | Return Shopper                      | Review a product that I have bought                                            | Let other people know what I think of the product                             |   |   |   |
-| 21           | Return Shopper                      | Add items to a Wishlist                                                        | Save items that I would like to buy at a future date.                         |   |   |   |
-|              ||****** **Site Administration** ******                 |                                                                                |                                                                               |   |   |   |
-| 22           | Site Owner                          | Add and remove products from the site                                          | Ensure my site is up to date.                                                 |   |   |   |
-| 23           | Site Owner                          | Edit product details                                                           | Have the ability to change product details, price, availability and images.   |   |   |   |
-|              |                                     |                                                                                |                                                                               |   |   |   |
-|              |                                     |                                                                                |                                                                               |   |   |   |
+| User Stories | As a…                               | I want to be able to…                                                          | So that I can…                                                                  |   |   |   |
+|--------------|-------------------------------------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------|---|---|---|
+|              | View Products                       |                                                                                |                                                                                 |   |   |   |
+| 1            | Casual Shopper                      | View all products                                                              | Find what I want to purchase                                                    |   |   |   |
+| 2            | Casual Shopper                      | Select and view individual products details                                    | View a larger image of product, description, price, sizes and a purchase option |   |   |   |
+| 3            | Casual Shopper                      | View list of items in basket and totals                                        | See my item count, price and subtotal/total                                     |   |   |   |
+| 4            | Casual Shopper                      | View a list of products by category                                            | See a range of items in the category I am interested in.                        |   |   |   |
+|              | Search and Sort Products            |                                                                                |                                                                                 |   |   |   |
+| 5            | Casual Shopper                      | Search for products by name or description                                     | Narrow down the list of items that I have to view                               |   |   |   |
+| 6            | Casual Shopper                      | See the number of results in a search that I have performed                    | Easily see how many products are available.                                     |   |   |   |
+| 7            | Casual Shopper                      | Sort the products based on price                                               | Better identify items that I would like to buy                                  |   |   |   |
+|              | Registration and Account management |                                                                                |                                                                                 |   |   |   |
+| 8            | Return Shopper                      | Set up an account with the store                                               | Create an account to store my details such as purchase history and address.     |   |   |   |
+| 9            | Return Shopper                      | Login and logout functionality                                                 | Gain access to my account                                                       |   |   |   |
+| 10           | Return Shopper                      | Recover account if password forgotten                                          | Gain access to my profile.                                                      |   |   |   |
+|              | Checkout and Payment                |                                                                                |                                                                                 |   |   |   |
+| 13           | Return Shopper                      | Select a quantity of items                                                     | Add the items to my basket                                                      |   |   |   |
+| 14           | Return Shopper                      | Remove items from my basket                                                    | Ensure I am paying for only the products I want                                 |   |   |   |
+| 16           | Return Shopper                      | View a full list of all products in my basket with prices and subtotal/total.  | Ensure that I have everything in my basket that I wanted.                       |   |   |   |
+| 17           | Return Shopper                      | Enter my address and payment details for purchase                              | Pay for the items and have them delivered to the correct address                |   |   |   |
+| 18           | Return Shopper                      | Get a confirmation email of my purchase                                        | Be reassured that my purchase has gone through and is correct                   |   |   |   |
+| 19           | Return Shopper                      | Pay for my items in a manner that is secure and familiar                       | Be sure that my card details and payment are handled securely.                  |   |   |   |
+| 20           | Return Shopper                      | Review a product that I have bought                                            | Let other people know what I think of the product                               |   |   |   |
+|              | Site Administration                 |                                                                                |                                                                                 |   |   |   |
+| 22           | Site Owner                          | Add and remove products from the site                                          | Ensure my site is up to date.                                                   |   |   |   |
+| 23           | Site Owner                          | Edit product details                                                           | Have the ability to change product details, price, availability and images.     |   |   |   |
+| 24           | Site Owner                          | See how products are performing                                                | See which products are performing best                                          |   |   |   |
+|              |                                     |                                                                                |                                                                                 |   |   |   |
 
-A pdf of the User Stories spreadsheet can ben view [here](/static/readme_files/user_stories_irish_craft.numbers)
+
+A pdf of the User Stories spreadsheet can ben view [here](static/readme_files/irish_craft_userstories.numbers)
 
 The mockup for this site was done on Balsamiq Wireframes 
 and can be viewed below 
@@ -225,7 +223,6 @@ Technologies
  - [**Cloudinary**](https://cloudinary.com/) - Cloud storage for website media files
  - [**TempMail**](https://temp-mail.org/) - Used for testing in creation of new customer accounts.
  
-
 
 Testing
 -------
@@ -372,7 +369,6 @@ In order to deploy this project you will need set up accounts with the follwoing
 
 **Local Deployment**
 
-
 Gitpod can be used to deploy your site locally using the following steps. 
 1. Create a Gitpod account. 
 2. Create a Github account. On creating a Github account you will need to login and search for the repository called irishcraft or follow this [link](https://github.com/raymondkeogh/irishcraft) to locate the project. 
@@ -403,17 +399,15 @@ In Stripe.com go to your account 'Dashboard', click on 'Developmers' where you w
 You will need to click on 'Webhooks' below the API Keys menu item and click 'Add Endpoint'. Here you will need to enter the local host url which is available on port 8000 after running 'python3 manage.py runserver in the gitpod terminal. the url should end in ....gitpod.io. Once you have this append the following the to URL  /checkout/wh/ 
 Paste this url in the 'endpoint url' box. 
 Select all events and the click 'Add Endpoint'
-Once the Endpoint is created you can scroll to the bottom of the page, under the heading 'Signing Secret' click reveal. This will be the variable for : 
+Once the Endpoint is created you can scroll to the bottom of the page, under the heading 'Signing Secret' click reveal. This will be your variable for : 
 - STRIPE_WH_SECRET
 
 
 **Heroku Deployment**
 
-1. Once you have created an Heroku account you can click 'New' then 'Create New App'. Name the app 
-Inside this app you can then click on 'resources'.
+1. Once you have created an Heroku account you can click 'New' then 'Create New App'. Name the app and in this app you can then click on 'resources'.
 2. Find the add-ons search bar, find Heroku Postgres DB and select the free option to add it to your app. 
 3. Go back to the main app dashboard and click 'settings', 'reveal config vars'. Here you will be able to input the environment variables from your env.py file.
-
 
 - AWS_ACCESS_KEY_ID
 - AWS_SECRET_ACCESS_KEY
