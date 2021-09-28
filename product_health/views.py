@@ -1,8 +1,7 @@
-
+"""Views for rendering data on product health"""
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Sum
 from django.http import JsonResponse
 
@@ -33,6 +32,7 @@ def product_health(request):
 
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 def product_chart(request):
+    """View to hand json data to product_health template for chart rendering"""
     labels = []
     data = []
     data2 = []

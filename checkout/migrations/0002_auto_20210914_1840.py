@@ -21,6 +21,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='order',
             name='purchase_history',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='related_products', to='product_health.purchasehistory'),
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='related_products',
+                to='product_health.purchasehistory'),
         ),
     ]

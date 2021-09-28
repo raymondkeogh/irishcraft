@@ -5,7 +5,7 @@ import django_countries.fields
 
 
 class Migration(migrations.Migration):
-
+    """Change tp customer account countryfield"""
     dependencies = [
         ('customer_account', '0003_remove_customeraccount_email'),
     ]
@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='customeraccount',
             name='country',
-            field=django_countries.fields.CountryField(blank=True, max_length=2, null=True),
+            field=django_countries.fields.CountryField(
+                blank=True,
+                max_length=2,
+                null=True),
         ),
     ]

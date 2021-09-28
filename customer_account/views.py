@@ -33,8 +33,6 @@ def customer_account(request):
     page_number = request.GET.get('page')
     page_obj = order_paginator.get_page(page_number)
 
-    
-
     template = 'customer_account/customer_account.html'
     context = {
         'form': form,

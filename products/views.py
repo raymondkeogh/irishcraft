@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from product_health.models import ProductActivity
 from reviews.models import Review
 from .forms import ProductForm
-from .models import Product, PhotoForm, Category
+from .models import Product, PhotoForm
 
 
 def upload(request):
@@ -30,7 +30,6 @@ def all_products(request):
     """ A view to show all products """
     products = Product.objects.all().order_by('name')
     query = None
-    categories = None
     sort = None
     category = None
     direction = None
@@ -38,7 +37,6 @@ def all_products(request):
         if 'category' in request.GET:
             category = request.GET['category'].split(',')
             products = products.filter(category__name__in=category)
-            categories = Category.objects.filter(name__in=category)
 
         if 'q' in request.GET:
             query = request.GET['q']

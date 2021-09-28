@@ -18,13 +18,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Review',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('title', models.CharField(
+                    max_length=255)),
                 ('body', models.TextField()),
-                ('created', models.DateField(auto_now_add=True)),
-                ('updated', models.DateField(auto_now=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', related_query_name='reviews', to='products.product')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', related_query_name='reviews', to=settings.AUTH_USER_MODEL)),
+                ('created', models.DateField(
+                    auto_now_add=True)),
+                ('updated', models.DateField(
+                    auto_now=True)),
+                ('product', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='reviews',
+                    related_query_name='reviews',
+                    to='products.product')),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    related_name='reviews',
+                    related_query_name='reviews',
+                    to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

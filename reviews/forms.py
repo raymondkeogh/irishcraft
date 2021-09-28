@@ -1,8 +1,7 @@
+# Review Form settings
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import (
-    Layout, Fieldset, ButtonHolder, Submit, Field)
-from .models import Review, Product
+
+from .models import Review
 
 
 class ReviewForm(forms.ModelForm):

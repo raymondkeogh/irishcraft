@@ -16,10 +16,22 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ProductActivity',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('view_count', models.PositiveIntegerField(default=0)),
-                ('viewed_on', models.DateTimeField(auto_now=True, null=True)),
-                ('name', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ProductyActivity', to='products.product')),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('view_count', models.PositiveIntegerField(
+                    default=0)),
+                ('viewed_on', models.DateTimeField(
+                    auto_now=True,
+                    null=True)),
+                ('name', models.ForeignKey(
+                    blank=True,
+                    null=True,
+                    on_delete=django.db.models.deletion.SET_NULL,
+                    related_name='ProductActivity',
+                    to='products.product')),
             ],
             options={
                 'verbose_name_plural': 'Product Activity',

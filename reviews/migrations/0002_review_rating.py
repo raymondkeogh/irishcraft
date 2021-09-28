@@ -13,6 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='review',
             name='rating',
-            field=models.IntegerField(choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], default=5),
+            field=models.IntegerField(
+                choices=[(1, '1'),
+                         (2, '2'),
+                         (3, '3'),
+                         (4, '4'),
+                         (5, '5')], default=5),
         ),
     ]

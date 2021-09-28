@@ -6,7 +6,6 @@ from products.models import Product
 
 def basket_contents(request):
     """Context to return basket contents"""
-    
     basket_items = []
     total = 0
     product_count = 0

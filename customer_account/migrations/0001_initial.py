@@ -17,16 +17,39 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CustomerAccount',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('phone_number', models.CharField(blank=True, max_length=20, null=True)),
-                ('street_address1', models.CharField(blank=True, max_length=80, null=True)),
-                ('street_address2', models.CharField(blank=True, max_length=80, null=True)),
-                ('town_or_city', models.CharField(blank=True, max_length=40, null=True)),
-                ('county', models.CharField(blank=True, max_length=80, null=True)),
-                ('country', models.CharField(blank=True, max_length=40, null=True)),
-                ('postcode', models.CharField(blank=True, max_length=20, null=True)),
-                ('email', models.EmailField(blank=True, max_length=70, unique=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.BigAutoField(
+                    auto_created=True,
+                    primary_key=True,
+                    serialize=False,
+                    verbose_name='ID')),
+                ('phone_number', models.CharField(
+                    blank=True,
+                    max_length=20)),
+                ('street_address1', models.CharField(
+                    blank=True,
+                    max_length=80)),
+                ('street_address2', models.CharField(
+                    blank=True,
+                    max_length=80)),
+                ('town_or_city', models.CharField(
+                    blank=True,
+                    max_length=40)),
+                ('county', models.CharField(
+                    blank=True,
+                    max_length=80)),
+                ('country', models.CharField(
+                    blank=True,
+                    max_length=40)),
+                ('postcode', models.CharField(
+                    blank=True,
+                    max_length=20)),
+                ('email', models.EmailField(
+                    blank=True,
+                    max_length=70,
+                    unique=True)),
+                ('user', models.OneToOneField(
+                    on_delete=django.db.models.deletion.CASCADE,
+                    to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

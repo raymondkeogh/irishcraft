@@ -39,6 +39,7 @@ def cache_checkout_data(request):
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
+
 def checkout(request):
     """
     A view to show checkout data
@@ -77,7 +78,8 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in item_data[
+                                'items_by_size'].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -154,7 +156,6 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
-    print(save_info)
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
@@ -163,7 +164,7 @@ def checkout_success(request, order_number):
         # Attach the user's profile to the order
         order.customer_account = customer
         order.save()
-    
+
         # Save the user's info
         if save_info:
             customer_info = {

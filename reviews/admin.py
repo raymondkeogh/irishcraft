@@ -1,9 +1,10 @@
+# Review Admin settings
 from django.contrib import admin
 from .models import Review
 
 
 class ReviewAdmin(admin.ModelAdmin):
-    
+    """Review admin display setttings"""
     list_display = (
         'product',
         'title',

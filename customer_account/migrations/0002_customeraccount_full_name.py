@@ -4,7 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
+    """Customer account name field change"""
     dependencies = [
         ('customer_account', '0001_initial'),
     ]
@@ -13,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customeraccount',
             name='full_name',
-            field=models.CharField(blank=True, max_length=80, null=True),
+            field=models.CharField(
+                blank=True,
+                max_length=80),
         ),
     ]
