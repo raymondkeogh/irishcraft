@@ -3,6 +3,8 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from django.core.exceptions import ObjectDoesNotExist
+
 from .forms import ReviewForm
 from .models import Review
 from products.models import Product
@@ -12,8 +14,11 @@ from products.models import Product
 def add_review(request, product_id):
     """ Review a product """
     product = get_object_or_404(Product, pk=product_id)
-    review = get_object_or_404(Review, user=request.user)
-    if review:
+    try:
+        review = Review.objects.get(user=request.user)
+    except ObjectDoesNotExist:
+        review = None
+    if review is not None:
         form = ReviewForm(instance=review)
         messages.info(
             request, f'You are editing your review for {review.product}')
@@ -26,18 +31,20 @@ def add_review(request, product_id):
         return render(request, template, context)
 
     else:
-
+        print("First else")
         form = ReviewForm(request.POST or None)
         if request.method == 'POST':
             if form.is_valid():
                 title = form.cleaned_data['title']
                 body = form.cleaned_data['body']
+                rating = form.data['rating']
                 user = request.user
                 review = Review()
                 review.product = product
                 review.title = title
                 review.body = body
                 review.user = user
+                review.rating = rating
                 review.save()
                 messages.success(
                         request, 'Your review has been uploaded!')
@@ -48,6 +55,7 @@ def add_review(request, product_id):
                     request, 'Failed to upload product review. '
                     'Please ensure the review form is filled correctly.')
         else:
+            print("Second else")
             form = ReviewForm()
         template = 'reviews/add_review.html'
         context = {
