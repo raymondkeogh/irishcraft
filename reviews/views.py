@@ -1,7 +1,7 @@
+# Views for Edit Review, Add Review and Delete Review
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ObjectDoesNotExist
 
 from .forms import ReviewForm
 from .models import Review
@@ -24,7 +24,7 @@ def add_review(request, product_id):
             'review': review,
         }
         return render(request, template, context)
-    
+
     else:
 
         form = ReviewForm(request.POST or None)
@@ -62,12 +62,13 @@ def add_review(request, product_id):
 def edit_review(request, review_id):
     """ A view to edit review details """
     review = get_object_or_404(Review, pk=review_id)
-    # print("requst,user is ", request.user)
-    # print("review.user is ", review.user)
-    # if review.user is not request.user:
-    #     messages.error(
-    #         request, 'You must be the ownder of the review to edit it.')
-    #     return redirect(reverse('home'))
+
+    if request.user != review.user:
+        messages.error(
+            request, "You must have shop Superuser access in order to"
+            "add a product, please contact you web adminstrator in"
+            "order to set up the correct permissions to access this function")
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ReviewForm(request.POST, request.FILES, instance=review)
@@ -97,7 +98,6 @@ def edit_review(request, review_id):
 @login_required
 def delete_review(request, review_id):
     """ A view to delete a product review """
-    
     review = get_object_or_404(Review, pk=review_id)
 
     review.delete()
