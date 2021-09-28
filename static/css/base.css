@@ -99,6 +99,7 @@ footer p:last-child {
   width: 55%;
 }
 
+
 .navbar-brand img {
   max-height: 89px;
   background-color: transparent;
@@ -425,6 +426,10 @@ Center align the text within the three columns below the carousel */
   min-width: 260px;
 }
 
+.navigation-container {
+  padding: 1px;
+}
+
 .superuser {
   background-color: #bd2b30;
 }
@@ -552,12 +557,6 @@ a.morelink {
     font-size: 3.5rem;
   }
 }
-
-/* @media (max-width: 992px) {
-  body {
-    padding-top: 100px;
-  } 
-} */
 
 @media (max-width: 570px) {
   body {

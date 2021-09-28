@@ -55,7 +55,7 @@
 <body>
   <header class="container-fluid fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top {% if request.user.is_superuser %} superuser {% else %} bg-dark {% endif %} p-1 p-sm-1 p-md-0">
-      <div class="container-fluid">
+      <div class="container-fluid navigation-container">
         <a class="navbar-brand" href="{% url 'home' %}"><img class="img-thumbnail"
             src="{% static 'images/logo.png' %}" alt="irishcraft logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -65,7 +65,7 @@
         <div class="collapse navbar-collapse pt-3" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto mb-2 mb-md-0 d-lg-flex align-items-center">
             <li class="nav-item h-100 pb-3">
-              <form method="GET" action="{% url 'products' %}" class="d-flex">
+              <form method="GET" action="{% url 'products' %}" class="d-flex justify-content-end">
                 <input class="form-control me-2 search-bar" type="search" placeholder="..." aria-label="Search" name="q">
                 <button class="btn btn-outline-success" type="submit">Search</button>
               </form>
