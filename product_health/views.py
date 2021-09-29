@@ -40,9 +40,8 @@ def product_chart(request):
     queryset = ProductActivity.objects.values(
         'name__name', 'purchase_count').annotate(views=Sum(
             'view_count')).order_by('-views')
-
     for entry in queryset:
-        labels.append(entry['name__name'][:15])
+        labels.append(entry['name__name'])
         data.append(entry['views'])
         data2.append(entry['purchase_count'])
 
