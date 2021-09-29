@@ -9,6 +9,7 @@ def view_basket(request):
     return render(request, 'basket/basket.html')
 
 
+# Elements from Code Institute boutique ado 'bag' tutorial
 def add_to_basket(request, item_id):
     """A view to add a product to the basket"""
 

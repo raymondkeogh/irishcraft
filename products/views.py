@@ -13,6 +13,7 @@ from .forms import ProductForm
 from .models import Product, PhotoForm
 
 
+# https://cloudinary.com/documentation/django_image_and_video_upload
 def upload(request):
     """ Connects to cloudinary to allow file upload"""
     context = dict(backend_form=PhotoForm())
@@ -25,7 +26,7 @@ def upload(request):
 
     return render(request, 'upload.html', context)
 
-
+# Products view altered from Code Institute Boutique Ado 
 def all_products(request):
     """ A view to show all products """
     products = Product.objects.all().order_by('name')
@@ -120,6 +121,7 @@ def product_details(request, product_id):
     return render(request, 'products/product_details.html', context)
 
 
+# Code Intitute Boutique Ado https://www.youtube.com/watch?v=bQuggmgIEEs
 @login_required
 def add_product(request):
     """ upoad a product to the site """
@@ -150,7 +152,7 @@ def add_product(request):
 
     return render(request, template, context)
 
-
+# Code Intitute Boutique Ado https://www.youtube.com/watch?v=0rRNZa7BR_Y
 @login_required
 def edit_product(request, product_id):
     """ A view to edit product details """

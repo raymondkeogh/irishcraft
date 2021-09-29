@@ -7,8 +7,6 @@ from .forms import CustomerAccountForm
 from checkout.models import Order
 
 
-# Create your views here.
-
 @login_required
 def customer_account(request):
     """A view that renders the users account"""

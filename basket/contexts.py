@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 
+# Elements from Code institute boutique ado 'bag' tutorial
 def basket_contents(request):
     """Context to return basket contents"""
     basket_items = []

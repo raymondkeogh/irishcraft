@@ -23,6 +23,7 @@ from .models import Order, OrderLineItem
 from product_health.models import ProductActivity
 
 
+# cache_checkout_data function from BoutiqueAdo Code Institue tutorial
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -39,7 +40,7 @@ def cache_checkout_data(request):
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
-
+# checkout funtion from the Code Institue Boutique Ado tutorial
 def checkout(request):
     """
     A view to show checkout data
@@ -151,6 +152,7 @@ def checkout(request):
     return render(request, template, context)
 
 
+# Modified and appended code from Code Institute Boutique Ado tutorial
 def checkout_success(request, order_number):
     """
     Handle successful checkouts

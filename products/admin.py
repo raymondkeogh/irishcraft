@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Product, Category
 
-
+# Admin classes take from Code Institue Boutique Ado tutorial
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',

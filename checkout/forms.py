@@ -3,6 +3,7 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    # OrderForm from Code Institute boutique ado 'Checkout' tutorial
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'phone_number',

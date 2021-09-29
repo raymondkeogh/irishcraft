@@ -2,12 +2,13 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from allauth.account.signals import user_logged_in
 from django_countries.fields import CountryField
 
 from django.contrib.auth.models import User
+from allauth.account.signals import user_logged_in
 
 
+# Code Institue modified from Profile class in Boutique Ado Tutorial
 class CustomerAccount(models.Model):
     """
    A model for storing customer contact details

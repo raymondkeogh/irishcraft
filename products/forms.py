@@ -5,7 +5,7 @@ from crispy_forms.layout import (
     Layout, Field)
 from .models import Product, Category
 
-
+# ProductForm class take from Code Institue Boutique Ado tutorial 
 class ProductForm(forms.ModelForm):
     """Product form """
 

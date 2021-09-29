@@ -10,6 +10,7 @@ from customer_account.models import CustomerAccount
 from products.models import Product
 
 
+# Order model as per Code Institute boutique Ado tutorial
 class Order(models.Model):
     """Model to define order details"""
     order_number = models.CharField(
@@ -115,6 +116,7 @@ class Order(models.Model):
         return self.order_number
 
 
+# Orderlineitems model as per Code Institute boutique Ado tutorial
 class OrderLineItem(models.Model):
     """"A model for referencing line items"""
     order = models.ForeignKey(

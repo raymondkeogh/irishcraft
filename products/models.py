@@ -32,6 +32,7 @@ class Category(models.Model):
         return self.friendly_name
 
 
+# Modified Product Class from Code Institue Boutique Ado tutorial 
 class Product(models.Model):
     """Product Model"""
     category = models.ForeignKey(

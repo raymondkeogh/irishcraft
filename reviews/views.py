@@ -10,6 +10,8 @@ from .models import Review
 from products.models import Product
 
 
+# I fount this tutorial very helpful when creating the Review view
+# https://www.codementor.io/@jadianes/get-started-with-django-building-recommendation-review-app-du107yb1a
 @login_required
 def add_review(request, product_id):
     """ Review a product """
@@ -31,7 +33,6 @@ def add_review(request, product_id):
         return render(request, template, context)
 
     else:
-        print("First else")
         form = ReviewForm(request.POST or None)
         if request.method == 'POST':
             if form.is_valid():
@@ -55,7 +56,6 @@ def add_review(request, product_id):
                     request, 'Failed to upload product review. '
                     'Please ensure the review form is filled correctly.')
         else:
-            print("Second else")
             form = ReviewForm()
         template = 'reviews/add_review.html'
         context = {

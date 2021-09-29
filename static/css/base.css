@@ -13,7 +13,7 @@ body {
   height:100vh; 
 }
 
-.admin-body{
+.admin-body {
   padding-top: 0;
 }
 
@@ -32,7 +32,7 @@ header {
   border-color: #fff;
 } 
 
-.btt-button{
+.btt-button {
   border-radius: .25rem;
   height: 42px;
   width: 42px;
@@ -40,7 +40,6 @@ header {
   bottom: 10px;
   right: 10px;
   backdrop-filter: blur(5px);
-
 }
 
 footer {
@@ -79,7 +78,7 @@ footer p:last-child {
   cursor: pointer;
 }
 
-.navbar-container{
+.navbar-container {
   padding: 0 ;
 }
 
@@ -90,27 +89,22 @@ footer p:last-child {
   transition: background-color 200ms linear;
 }
 
-
 .navbar {
   padding: 0;
 }
 
-.search-bar{
+.search-bar {
   width: 55%;
 }
-
 
 .navbar-brand img {
   max-height: 89px;
   background-color: transparent;
   padding: 0;
   margin: 0;
-  position: absolute;
-  top: 8px;
-  left: 22px;
 }
 
-.category-nav li{
+.category-nav li {
   background-size: 100% 200%;
   -webkit-transition: background-position 1s;
   -moz-transition: background-position 1s;
@@ -118,44 +112,45 @@ footer p:last-child {
   border-radius: 0 0 .25rem .25rem;
 }
 
-#current-category{
+#current-category {
   background-color: #efd452a4;
 }
 
-.category-nav li:hover{
+.category-nav li:hover {
   background-position: 0 -100%;
 }
 
-.category-nav li:nth-child(1){
+.category-nav li:nth-child(1) {
   background-image: linear-gradient(to top, #efd452a4  50%, transparent 50%);
 }
 
-.category-nav li:nth-child(2){
+.category-nav li:nth-child(2) {
   background-image: linear-gradient(to top, #f7c7fc 50%, transparent 50%);
 }
 
-.category-nav li:nth-child(3){
+.category-nav li:nth-child(3) {
   background-image: linear-gradient(to top, #aaafc3 50%, transparent 50%);
 }
 
-.category-nav li:nth-child(4){
+.category-nav li:nth-child(4) {
   background-image: linear-gradient(to top, #daa384 50%, transparent 50%);
 }
 
-.category-nav li:nth-child(5){
+.category-nav li:nth-child(5) {
   background-image: linear-gradient(to top,  #A5D6A7 50%, transparent 50%);
 }
 
-.category-nav li:active a{
+.category-nav li:active a {
   color:#fff;
 }
 
 /* Carousel */
+/* https://getbootstrap.com/docs/4.0/components/carousel/ */
 .carousel {
   margin-bottom: 4rem;
 }
 
-.carousel-container{
+.carousel-container {
   height: 75vh;
   overflow: hidden;
 }
@@ -223,7 +218,7 @@ footer p:last-child {
 .carousel-item:hover .carousel-description {
   opacity: 1;
   transition: 0.6s 0.3s;
-}/*# sourceMappingURL=test.css.map */
+}
 
 /* 
 Center align the text within the three columns below the carousel */
@@ -287,13 +282,13 @@ Center align the text within the three columns below the carousel */
 /* PRODUCT DETAILS
   -------------------------------------------------- */
 
-.product-details{
+.product-details {
   box-sizing: border-box; 
   padding: 0 30px 30px;
   padding-bottom: 100px; 
 }
 
-.product-image{
+.product-image {
   box-sizing: border-box; 
 }
 
@@ -301,7 +296,7 @@ Center align the text within the three columns below the carousel */
   width: 80%;
 }
 
-.product-name{
+.product-name {
   display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -311,7 +306,7 @@ Center align the text within the three columns below the carousel */
   height:45px;
 }
 
-.card-deck .card-text{
+.card-deck .card-text {
   font-size: 17px;
 }
 
@@ -355,7 +350,7 @@ Center align the text within the three columns below the carousel */
   color:rgb(112, 112, 112)
 }
 
-.close{
+.close {
   font-size: 15px;
   cursor: pointer;
   color:rgb(51, 50, 50);
@@ -370,7 +365,7 @@ Center align the text within the three columns below the carousel */
   display: none;
 }
 
-.basket-dropdown-zone div.text-info{
+.basket-dropdown-zone div.text-info {
   color: #77cc7a !important;
 }
 
@@ -385,11 +380,11 @@ Center align the text within the three columns below the carousel */
   object-fit: cover;
 }
 
-.basket-dropdown-zone:hover{
+.basket-dropdown-zone:hover {
   color: #4750479a ;
 }
 
-.basket-body, .basket{
+.basket-body, .basket {
   font-size: .8rem ;
 }
 
