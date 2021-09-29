@@ -14,14 +14,11 @@
             {% for item in basket_items %}
                 <div class="row">
                     <div class="col-3 my-1">
-                        {% if item.product.image_url != None %}
-                                        <img class="img-thumbnail"  src="{{ item.product.image_url }}" alt="{{item.product.name}}">
-                                    {% elif "No%20Image" not in item.product.image.url %}
-                                            <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
-                                
-                                    {% else %} 
-                                            <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
-                                    {% endif %}
+                        {% if item.product.image.url %}
+                            <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
+                        {% else %} 
+                            <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
+                        {% endif %}
                     </div>
                     <div class="col-9">
 

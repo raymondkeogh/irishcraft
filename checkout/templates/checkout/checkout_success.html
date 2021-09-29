@@ -31,13 +31,14 @@
                 {% for item in order.lineitems.all %}
                     <div class="row">
                         <div class="col-3 m-2 d-flex align-items-center justify-content-center">
-                            {% if item.product.image_url != None %}
-                                <img class="checkout-thumbnail"  src="{{ item.product.image_url }}" alt="{{item.product.name}}">
-                            {% elif "No%20Image" not in item.product.image.url %}
-                                <img class="checkout-thumbnail" src="{{ item.product.image.url }}" alt="{{item.product.name}}">
-  
+                            {% if item.product.image.url%}
+                                <a href="{% url 'product_details' item.product.id %}">
+                                    <img class="checkout-thumbnail"  src="{{ item.product.image.url }}" alt="{{product.name}}">
+                                </a>    
                             {% else %} 
-                                <img class="checkout-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">          
+                                <a href="{% url 'product_details' item.product.id %}">
+                                    <img class="checkout-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
+                                </a>
                             {% endif %}
                         </div>
                         <div class="col-5 m-3">

@@ -38,23 +38,15 @@
             {% for item in basket_items %}
             <div class="row">
                 <div class="col-2 mb-1">
-                    <a href="{% url 'product_details' item.product.id %}">
-                        {% if item.product.image.url and item.product.image.url != "https://res.cloudinary.com/ddmhcc5mk/image/upload/No%20Image" %}
+                    {% if item.product.image.url%}
                         <a href="{% url 'product_details' item.product.id %}">
-                            <img class="w-100 card-img-top" src="{{ item.product.image.url }}" alt="{{item.product.name}}">
-                        </a>
-                        {% elif item.product.image_url %}
+                            <img class="w-100 card-img-top" src="{{ item.product.image.url }}" alt="{{product.name}}">
+                        </a>    
+                    {% else %} 
                         <a href="{% url 'product_details' item.product.id %}">
-                            <img class="w-100 card-img-top" src="{{ item.product.image_url }}" alt="{{product.name}}">
+                            <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
                         </a>
-                        {% else %}
-                        <a href="{% url 'product_details' item.product.id %}">
-                            <img class="w-100 card-img-top"
-                                src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example"
-                                alt="{{product.name}}">
-                        </a>
-                        {% endif %}
-                    </a>
+                    {% endif %}
                 </div>
                 <div class="col-7">
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
