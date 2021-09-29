@@ -16,19 +16,19 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container">
+<div class="container m-2">
     <div class="row">
         <div class="col">
             <hr>
             <h3 class="logo-font mb-4">Success! Thank you for your Order!</h3>
-            <hr>
+          
             <p>Here are you order details. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
         </div>
     </div>
+    <hr>
 
-    <div class="row">
-        <div class="col-7">
-            <div class="basket-notification-wrapper">
+    <div class="row ml-0">
+        <div class="col-12 col-md-7">
                 {% for item in order.lineitems.all %}
                     <div class="row">
                         <div class="col-3 m-2 d-flex align-items-center justify-content-center">
@@ -42,27 +42,28 @@
                                 </a>
                             {% endif %}
                         </div>
-                        <div class="col-5 m-3">
+                        <div class="col-7 m-3">
                             <p class="my-1 text-black"><strong>{{ item.product.name }}</strong></p>
                             <p class="my-1 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                     </div>
-                    {% endfor %}
-                
-                </div>
-            </div>
-            <div class="col-5">
-                <div class="row">
+                {% endfor %}
+        </div>
+        <div class="col-12 col-md-5">
+            <div class="row">
                     <div class="col">
-                        <p class="my-1 text-black"><strong>{{ order.full_name}}</strong></p>
-                        <p class="my-1 small text-muted"></p>
+                        <hr class="d-block d-md-none">
+                        <h6 class="mb-2 text-black">DELIVER TO:</h6>
+                        <p class="my-0">{{ order.full_name}}</p>
+                        <p class="my-0">{{order.street_address1}} </p>
+                        <p class="my-0">{{order.street_address2}}</p>
+                        <p class="my-0">{{order.town_or_city}}</p>
+                        <p class="my-0">{{order.county}}</p>
+                        <p class="my-0">{{order.postcode}}</p>
+                        <p class="my-0">{{order.country}}</p>
                     </div>
             </div>
-            </div>
-      
-
         </div>
-    
     </div>
 </div>
 {% endblock %}
