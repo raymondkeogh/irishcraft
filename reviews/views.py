@@ -17,7 +17,7 @@ def add_review(request, product_id):
     """ Review a product """
     product = get_object_or_404(Product, pk=product_id)
     try:
-        review = Review.objects.get(user=request.user)
+        review = Review.objects.get(user=request.user, pk=product_id)
     except ObjectDoesNotExist:
         review = None
     if review is not None:
