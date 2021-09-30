@@ -48,7 +48,7 @@ def adjust_basket(request, item_id):
     if quantity > 0:
         basket[item_id] = quantity
         messages.success(
-            request, f'Updated your basket item {product.name} quantity')
+            request, f'Updated your basket item {product.name} quantityquantityquantityquantityquantityquantityquantityquantityquantityquantityquantityquantityquantityquantity')
 
     else:
         basket.pop[item_id]

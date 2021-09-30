@@ -10,8 +10,8 @@
             <hr>
         </div>
     </div>
-
     <!-- Shopping Basket details and prices -->
+    <!-- Code institute boutique ado tutorial -->
     <div class="row">
         <div class="col">
             {% if basket_items %}
@@ -42,7 +42,7 @@
                             <p class="my-0 mb-2"> <strong>Subtotal:</strong>   €{{item.item_total}}</p>
                          </div>
                          <div class="col-12 col-sm-6 mb-2 m-auto">
-                            {% include 'basket/quantity-form.html'%}
+                            {% include 'basket/quantity-form-mobile.html'%}
                          </div>
                     </div>
                     <div class="row">
@@ -116,8 +116,9 @@
 {% endblock %}
 
 {% block postloadjs %}
+{{ block.super }}
 
-{% include 'products/includes/quantity_script.html' %}
+{% include 'basket/includes/quantity_script.html' %}
  
 <script type="text/javascript">
     $('.btt-link').click(function (e) {
