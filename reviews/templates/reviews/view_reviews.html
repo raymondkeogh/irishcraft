@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if reviews %}
+
+
+<div class="container">
+    <h3>Your Reviews</h3>
+    <hr>
+    <div class="row mb-5">
+        <div class="col-sm-12 col-md-8">    
+            <div class="card">
+                <div class="card-header">
+                    <h6>Reviews ({{reviews.count}})</h6>
+                </div>
+                {% for review in page_obj %}
+                    <div class="card-body small">
+                        <i class="fas fa-user small"></i> {{review.user}}
+                        <div class="mb-1 small"><strong></strong>
+                            {% with ''|center:review.rating as range %}
+                                <div>{% for x in range %}
+                                <span class="fa fa-star checked text-warning"></span>
+                                {% endfor %}
+                            </div>
+                            {% endwith %}
+                            <span>Reviewed on: {{review.created}}</span><br>
+                            <span class="text-info" >Verified Purchase <i class="fas fa-check"></i></span><br>
+                        </div>
+                        <h6 class="card-title comment-title font-weight-bold">{{review.title}}</h6>
+                        <p class="comment more">{{review.body}}</p>
+                        {% if request.user.is_authenticated and request.user == review.user%}
+                        <a href="{% url 'edit_review' review.id %}" class="m-2"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="{% url 'delete_review' review.id %}" class=" text-danger m-2" onclick="return confirm('Are you sure you want to delete this?')"><i class="fas fa-trash-alt"></i> Delete</a>
+                        {% endif %}
+                    </div>
+                   
+                {% endfor %}
+                <nav aria-label="Products list">
+                    <ul class="pagination step-links list-inline justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item"> <a class="page-link" href="?page=1">&laquo; first</a></li>
+                        <li class="page-item"> <a class="page-link"
+                                href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+                        {% endif %}
+                        <li class="page-item disabled">
+                            <span class="current page-link">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+                        </li>
+                        {% if page_obj.has_next %}
+                        <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                        <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last
+                                &raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            
+     
+         
+        </div>
+    </div>
+</div>
+    {% endif %}
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script src="{% static 'js/readmore.js' %}"></script>
+
+{% endblock %}

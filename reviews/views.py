@@ -2,6 +2,7 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from django.core.exceptions import ObjectDoesNotExist
 from products.models import Product
@@ -131,3 +132,19 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Your review has been deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def view_reviews(request):
+    """A view that renders a customer reviews"""
+    user = request.user
+    reviews = user.reviews.all().order_by('-created')
+    review_paginator = Paginator(reviews, 4)
+    page_number = request.GET.get('page')
+    page_obj = review_paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj,
+        'reviews': reviews,
+    }
+    return render(request, 'reviews/view_reviews.html', context)

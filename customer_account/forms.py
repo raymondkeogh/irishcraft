@@ -1,8 +1,9 @@
 from django import forms
 from .models import CustomerAccount
 
-
+# Code Institue BoutiqueAdo Tutorial
 class CustomerAccountForm(forms.ModelForm):
+    # Customer Account form class
     class Meta:
         model = CustomerAccount
         exclude = ('user',)

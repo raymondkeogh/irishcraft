@@ -38,12 +38,12 @@
                     <hr>
                     <div class="px-3 mb-5 address">
                         <h6 class="mb-4">DELIVERY ADDRESS</h6>
-                        <p>{{customer.street_address1}} </p>
-                        <p>{{customer.street_address2}}</p>
-                        <p>{{customer.town_or_city}}</p>
-                        <p>{{customer.county}}</p>
-                        <p>{{customer.postcode}}</p>
-                        <p>{{customer.country}}</p>
+                        <p>{{customer.street_address1|default_if_none:""}} </p>
+                        <p>{{customer.street_address2|default_if_none:""}}</p>
+                        <p>{{customer.town_or_city|default_if_none:""}}</p>
+                        <p>{{customer.county|default_if_none:""}}</p>
+                        <p>{{customer.postcode|default_if_none:""}}</p>
+                        <p>{{customer.country|default_if_none:""}}</p>
                     </div>
                     <div class="text-left mt-5 mb-2">                    
                         <a href="{% url 'edit_account' %}" class="btn btn-outline-black rounded-0">
@@ -55,6 +55,15 @@
                     </div>
             </div>
             <div class="col-12 col-lg-6">
+                
+                {% if reviews %}
+                <hr>
+                <a class="small" href="{% url 'view_reviews' %}"
+                title="">
+                <h6> YOUR REVIEWS ({{reviews.count}})</h6>
+                </a>
+                <hr>
+                {% endif %}
                 {% if orders %}
                 <H6 class="mb-4">ORDER HISTORY ({{orders.count}})</H6>
                 <div class="order-history table-responsive">

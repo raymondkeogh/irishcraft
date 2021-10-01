@@ -11,4 +11,7 @@ urlpatterns = [
     path(
         'delete_review/<review_id>',
         views.delete_review, name='delete_review'),
+    path(
+        'view_reviews',
+        views.view_reviews, name='view_reviews'),
 ]

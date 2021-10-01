@@ -26,7 +26,7 @@ def customer_account(request):
     else:
         form = CustomerAccountForm(instance=customer)
     orders = customer.orders.order_by('-date')
-
+    reviews = request.user.reviews.all()
     order_paginator = Paginator(orders, 4)
     page_number = request.GET.get('page')
     page_obj = order_paginator.get_page(page_number)
@@ -38,6 +38,7 @@ def customer_account(request):
         'customer': customer,
         'on_profile_page': True,
         'page_obj': page_obj,
+        'reviews': reviews,
     }
     return render(request, template, context)
 
