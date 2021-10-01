@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -79,10 +79,15 @@ def edit_account(request):
 @login_required
 def view_order(request, order_id):
     """A view that renders a chosen order"""
-
     customer = get_object_or_404(CustomerAccount, user=request.user)
-
     order = get_object_or_404(Order, id=order_id)
+    if request.user != order.customer_account.user:
+        messages.error(
+            request, "You cannot access this order"
+            " unless logged in as the account owner"
+            )
+        return redirect(reverse('home'))
+
     template = 'customer_account/view_order.html'
     context = {
         'order': order,

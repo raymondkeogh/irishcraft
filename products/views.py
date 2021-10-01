@@ -104,7 +104,7 @@ def product_details(request, product_id):
 
     try:
         reviews = Review.objects.filter(
-                product=product.id)
+                product=product.id).order_by('-created')
 
     except ObjectDoesNotExist:
         reviews = None
@@ -151,6 +151,7 @@ def add_product(request):
     }
 
     return render(request, template, context)
+
 
 # Code Intitute Boutique Ado https://www.youtube.com/watch?v=0rRNZa7BR_Y
 @login_required

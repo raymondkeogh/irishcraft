@@ -4,10 +4,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from django.core.exceptions import ObjectDoesNotExist
+from products.models import Product
+from customer_account.models import CustomerAccount
+from .models import Review
 
 from .forms import ReviewForm
-from .models import Review
-from products.models import Product
 
 
 # I fount this tutorial very helpful when creating the Review view
@@ -16,6 +17,19 @@ from products.models import Product
 def add_review(request, product_id):
     """ Review a product """
     product = get_object_or_404(Product, pk=product_id)
+    customer = get_object_or_404(CustomerAccount, user=request.user)
+    purchased = []
+    for order in customer.orders.all():
+        for item in order.lineitems.all():
+            purchased.append(item)
+
+    if product.name not in str(purchased):
+        messages.error(
+            request, "You must have purchased the product"
+            " in order to write a review"
+            )
+        return redirect(reverse('home'))
+
     try:
         review = Review.objects.get(user=request.user, pk=product_id)
     except ObjectDoesNotExist:
@@ -32,38 +46,37 @@ def add_review(request, product_id):
         }
         return render(request, template, context)
 
-    else:
-        form = ReviewForm(request.POST or None)
-        if request.method == 'POST':
-            if form.is_valid():
-                title = form.cleaned_data['title']
-                body = form.cleaned_data['body']
-                rating = form.data['rating']
-                user = request.user
-                review = Review()
-                review.product = product
-                review.title = title
-                review.body = body
-                review.user = user
-                review.rating = rating
-                review.save()
-                messages.success(
-                        request, 'Your review has been uploaded!')
+    form = ReviewForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            body = form.cleaned_data['body']
+            rating = form.data['rating']
+            user = request.user
+            review = Review()
+            review.product = product
+            review.title = title
+            review.body = body
+            review.user = user
+            review.rating = rating
+            review.save()
+            messages.success(
+                    request, 'Your review has been uploaded!')
 
-                return redirect(reverse('product_details', args=[product.id]))
-            else:
-                messages.error(
-                    request, 'Failed to upload product review. '
-                    'Please ensure the review form is filled correctly.')
+            return redirect(reverse('product_details', args=[product.id]))
         else:
-            form = ReviewForm()
-        template = 'reviews/add_review.html'
-        context = {
-            'form': form,
-            'product': product
-        }
+            messages.error(
+                request, 'Failed to upload product review. '
+                'Please ensure the review form is filled correctly.')
+    else:
+        form = ReviewForm()
+    template = 'reviews/add_review.html'
+    context = {
+        'form': form,
+        'product': product
+    }
 
-        return render(request, template, context)
+    return render(request, template, context)
 
 
 @login_required
@@ -73,9 +86,9 @@ def edit_review(request, review_id):
 
     if request.user != review.user:
         messages.error(
-            request, "You must have shop Superuser access in order to"
-            "add a product, please contact you web adminstrator in"
-            "order to set up the correct permissions to access this function")
+            request, "You must be the creater of the review "
+            "in order to edit it."
+            )
         return redirect(reverse('home'))
 
     if request.method == 'POST':
@@ -107,6 +120,13 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     """ A view to delete a product review """
     review = get_object_or_404(Review, pk=review_id)
+
+    if request.user != review.user:
+        messages.error(
+            request, "You must be the creater of the review in order"
+            "to delete it!"
+            )
+        return redirect(reverse('home'))
 
     review.delete()
     messages.success(request, 'Your review has been deleted!')
