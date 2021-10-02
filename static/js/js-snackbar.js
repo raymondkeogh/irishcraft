@@ -1,3 +1,6 @@
+// Snackbar script used to create toast messages alerts
+//   https://www.cssscript.com/snackbar-toast-notification/
+
 function SnackBar(userOptions) {
   var _This = this;
 
@@ -31,7 +34,7 @@ function SnackBar(userOptions) {
     _Options = {
       message: userOptions?.message ?? "Operation performed successfully.",
       dismissible: userOptions?.dismissible ?? true,
-      timeout: userOptions?.timeout ?? 2500,
+      timeout: userOptions?.timeout ?? 3000,
       status: userOptions?.status ? userOptions.status.toLowerCase().trim() : "",
       actions: userOptions?.actions ?? [],
       fixed: userOptions?.fixed ?? false,

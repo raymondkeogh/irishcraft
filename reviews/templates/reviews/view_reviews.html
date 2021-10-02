@@ -4,8 +4,6 @@
 {% block content %}
 
 {% if reviews %}
-
-
 <div class="container">
     <h3>Your Reviews</h3>
     <hr>
@@ -17,7 +15,7 @@
                 </div>
                 {% for review in page_obj %}
                     <div class="card-body small">
-                        <i class="fas fa-user small"></i> {{review.user}}
+                        Review for: <h6>{{review.product}}</h6>
                         <div class="mb-1 small"><strong></strong>
                             {% with ''|center:review.rating as range %}
                                 <div>{% for x in range %}
@@ -28,7 +26,8 @@
                             <span>Reviewed on: {{review.created}}</span><br>
                             <span class="text-info" >Verified Purchase <i class="fas fa-check"></i></span><br>
                         </div>
-                        <h6 class="card-title comment-title font-weight-bold">{{review.title}}</h6>
+                        
+                        <h6 class="card-title comment-title">{{review.title}}</h6>
                         <p class="comment more">{{review.body}}</p>
                         {% if request.user.is_authenticated and request.user == review.user%}
                         <a href="{% url 'edit_review' review.id %}" class="m-2"><i class="fas fa-edit"></i> Edit</a>

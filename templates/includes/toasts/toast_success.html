@@ -3,6 +3,9 @@
  new SnackBar({
     message: "{{message}}<i class='fas fa-arrow-up></i>",
     status: "success",
+    position: 'br',
+    timeout: 4000,
+    
     });
 
 $( "span.js-snackbar--success").parent().css( "border-bottom", "3px solid #A5D6A7", "background-color",  "#A5D6A7");
