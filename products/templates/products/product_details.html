@@ -7,11 +7,11 @@
             <div class="col-sm mt-3 mb-2">
                 <div class="product-image">
                     {% if product.image.url%}
-                        <a href="{{ product.image.url }}">
+                        <a href="{{ product.image.url }}" aria-label="{{product.name}} image">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{product.name}}">
                         </a>    
                     {% else %} 
-                            <a href="{% url 'product_details' product.id %}">
+                            <a href="{% url 'product_details' product.id %}" aria-label="{{product.name}} image">
                             <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
                         </a>
                     {% endif %}
@@ -71,33 +71,8 @@
                 </div>
             </div> 
     </div>
-    <!-- Row to display commonly related products purchased with item being viewed -->
-    {% if also_bought|length > 1 %}
-    <div class="row mb-5">
-        <div class="col-sm-12 col-md-8 mt-5">    
-       
-            <h6>Also purchased with this item:</h6>
-            <hr>
-            <div class="row">
-                    {% for item in also_bought%}
-                        {% if item.product.name != product.name %}
-                            <div class="col-3 my-1 d-flex align-items-center justify-content-center">
-                                <a href="{% url 'product_details' item.product.id %}">
-                                {% if item.product.image.url %}
-                                    <img class="img-thumbnail"  src="{{item.product.image.url}}" alt="{{item.product.name}}">          
-                                {% else %} 
-                                    <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">    
-                                {% endif %}
-                                </a>
-                            </div>
-                            {% endif %}
-                    {% endfor %}   
-            </div>
-         
-        </div>
-    </div>
-    {% endif %}
     {% if reviews %}
+    <hr>
     <div class="row mb-5">
         <div class="col-sm-12 col-md-8">    
             <div class="card">

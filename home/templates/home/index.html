@@ -44,11 +44,11 @@
                             {% endif %}
                             {% endfor %}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-target="#myCarousel" data-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-target="#myCarousel" data-slide="prev" aria-label="previous product">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden"></span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-target="#myCarousel" data-slide="next">
+                        <button class="carousel-control-next" type="button" data-target="#myCarousel" data-slide="next" aria-label="next product">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden"></span>
                         </button>
@@ -75,9 +75,9 @@
                     home. </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a href="{% url 'products' %}?category=prints" id="prints-link">
+                <a href="{% url 'products' %}?category=prints" id="prints-category" aria-label="prints category">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{prints_first.image.url}}" width="300" height="300">
+                        src="{{prints_first.image.url}}" width="300" height="300" aria-label="{{prints_first.name}}">
                 </a>
             </div>
         </div>
@@ -91,9 +91,9 @@
                 </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a href="{% url 'products' %}?category=glassware" id="glassware-link">
+                <a href="{% url 'products' %}?category=glassware" id="glassware-category" aria-label="glassware category">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{glassware_first.image.url}}" width="300" height="300">
+                        src="{{glassware_first.image.url}}" width="300" height="300" aria-label="{{glassware_first.name}}">
                 </a>
             </div>
         </div>
@@ -107,9 +107,9 @@
                     only the finest materials to produce uniquely beuatiful pieces.</p>
             </div>
             <div class="col-md-5">
-                <a href="{% url 'products' %}?category=textiles" id="textiles-link">
+                <a href="{% url 'products' %}?category=textiles" id="textiles-category" aria-label="textiles category">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{textiles_first.image.url}}" width="300" height="300">
+                        src="{{textiles_first.image.url}}" width="300" height="300" aria-label="{{textiles_first.name}}">
                 </a>
             </div>
         </div>
@@ -122,15 +122,13 @@
                 <p class="lead">Make your kitchen a feast for the senses with some of our kitchenware range. </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a href="{% url 'products'%}?category=kitchen" id="kitchen-link">
+                <a href="{% url 'products'%}?category=kitchen" id="kitchen-category" aria-label="kitchen category">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{kitchen_first.image.url}}" width="300" height="300">
+                        src="{{kitchen_first.image.url}}" width="300" height="300" aria-label="{{kitchen_first.name}}">
                 </a>
             </div>
         </div>
-
         <hr class="featurette-divider">
-
     </div><!-- /.container-fluid marketing -->
 </div><!-- /.main container -->
 
