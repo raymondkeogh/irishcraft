@@ -6,7 +6,7 @@
     <div class="row">
             <div class="col-sm mt-3 mb-2">
                 <div class="product-image">
-                    {% if product.image.url%}
+                    {% if 'No%20Image' not in product.image.url%}
                         <a href="{{ product.image.url }}" aria-label="{{product.name}} image">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{product.name}}">
                         </a>    

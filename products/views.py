@@ -72,7 +72,7 @@ def all_products(request):
         'page_obj': page_obj,
         'search': query,
         'category': category,
-        'sorting': current_sorting,
+        'current_sorting': current_sorting,
         'on_product_page': on_product_page,
     }
     return render(request, 'products/products.html', context)
