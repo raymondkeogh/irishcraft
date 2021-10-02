@@ -289,6 +289,10 @@ Center align the text within the three columns below the carousel */
   padding-bottom: 100px; 
 }
 
+select {
+  -webkit-appearance: none;
+}
+
 .product-image {
   box-sizing: border-box; 
 }

@@ -39,7 +39,7 @@
             {% for item in basket_items %}
             <div class="row">
                 <div class="col-2 mb-1">
-                    {% if item.product.image.url%}
+                    {% if 'No%20Image' not in item.product.image.url%}
                         <a href="{% url 'product_details' item.product.id %}">
                             <img class="w-100 card-img-top" src="{{ item.product.image.url }}" alt="{{product.name}}">
                         </a>    

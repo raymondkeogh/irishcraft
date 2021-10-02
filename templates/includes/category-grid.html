@@ -1,20 +1,18 @@
 <div class='featurette-grid'>
     <ul class="grid">    
         {% for product in grid_sample_products %}
-            {% if product.image_url != None %}
-            <li>
-                <a href="{% url 'product_details' product.id %}">
-                    <img src="{{ product.image_url }}" alt="{{product.name}}">
-                    <span class="description">{{product.name}}</span>
-                </a>
-            </li>
-            {% elif "No%20Image" not in product.image.url %}
+            {% if 'No%20Image' not in product.image.url %}
                 <li>
                     <a href="{% url 'product_details' product.id %}">
                         <img src="{{ product.image.url }}" alt="{{product.name}}">
                         <span class="description">{{product.name}}</span>
                     </a>
                 </li>
+            {% else %} 
+                <a href="{% url 'product_details' product.id %}">  
+                    <img src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{prints_first.name}}"> 
+                    <span class="description">{{product.name}}</span>
+                </a>
             {%endif %}
         {% endfor %}
     </ul>

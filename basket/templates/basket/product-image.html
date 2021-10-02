@@ -1,4 +1,4 @@
-{% if item.product.image.url%}
+{% if 'No%20Image' not in item.product.image.url%}
 <a href="{% url 'product_details' item.product.id %}">
     <img class="img-thumbnail" src="{{ item.product.image.url }}" alt="{{product.name}}">
 </a>    

@@ -10,18 +10,19 @@
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="row">
-                            {% for product in products %}
-                            {% if product.image_url != None %}
+                            {% for product in products %} 
+                            {% if product.image_url != None and 'No%20Image' not in product.image.url %}
                             <div class="carousel-item col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 my-auto">
                                         <a href="{% url 'product_details' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ product.image_url }}"
+                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}"
                                                 alt="{{product.name}}">
                                         </a>
                                     </div>
-                                    <div class="col-md-6">
-                                        {{product.name}}<br>€{{product.price}}
+                                    <div class="col-md-6 my-auto p-5">
+                                        <h1 class="text-uppercase">{{product.name}}</h1><br>
+                                        €{{product.price}}
                                     </div>
                                 </div>
 
@@ -75,12 +76,21 @@
                     home. </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a href="{% url 'products' %}?category=prints" id="prints-category" aria-label="prints category">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{prints_first.image.url}}" width="300" height="300" aria-label="{{prints_first.name}}">
-                </a>
+                {% if 'No%20Image' not in prints_first.image.url%}
+                    <a href="{% url 'products' %}?category=prints"      id="prints-category" aria-label="prints category">
+                        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        src="{{prints_first.image.url}}" width="300" height="300" aria-label="{{prints_first.name}}" alt="{{prints_first.name}}">
+                    </a>
+                {% else %} 
+                    <a href="{% url 'products' %}?category=prints" id="prints-category" aria-label="prints category">
+                        <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{prints_first.name}}" alt="{{prints_first.name}}"> 
+                    </a>
+                {% endif %}
             </div>
         </div>
+        
+
+       
 
         <hr class="featurette-divider mt-4">
 
@@ -91,10 +101,16 @@
                 </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a href="{% url 'products' %}?category=glassware" id="glassware-category" aria-label="glassware category">
+                {% if 'No%20Image' not in glassware_first.image.url%}
+                    <a href="{% url 'products' %}?category=glassware" id="glassware-category" aria-label="glassware category">
                     <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{glassware_first.image.url}}" width="300" height="300" aria-label="{{glassware_first.name}}">
-                </a>
+                        src="{{glassware_first.image.url}}" width="300" height="300" aria-label="{{glassware_first.name}}" alt="{{glassware_first.name}}">
+                    </a>
+                {% else %} 
+                    <a href="{% url 'products' %}?category=glassware" id="glassware-category" aria-label="glassware category">
+                    <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{glassware_first.name}}" alt="{{glassware_first.name}}">
+                    </a>
+                {% endif %}
             </div>
         </div>
 
@@ -107,13 +123,18 @@
                     only the finest materials to produce uniquely beuatiful pieces.</p>
             </div>
             <div class="col-md-5">
-                <a href="{% url 'products' %}?category=textiles" id="textiles-category" aria-label="textiles category">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{textiles_first.image.url}}" width="300" height="300" aria-label="{{textiles_first.name}}">
-                </a>
+                {% if 'No%20Image' not in textiles_first.image.url%}
+                    <a href="{% url 'products' %}?category=textiles" id="textiles-category" aria-label="textiles category">
+                        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                    src="{{textiles_first.image.url}}" width="300" height="300" aria-label="{{textiles_first.name}}" alt="{{textiles_first.name}}">
+                    </a>
+                {% else %} 
+                    <a href="{% url 'products' %}?category=textiles" id="textiles-category" aria-label="textiles category">
+                        <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{textiles_first.name}}"  alt="{{textiles_first.name}}">
+                    </a>
+                {% endif %}
             </div>
         </div>
-
         <hr class="featurette-divider">
 
         <div class="row featurette">
@@ -122,10 +143,18 @@
                 <p class="lead">Make your kitchen a feast for the senses with some of our kitchenware range. </p>
             </div>
             <div class="col-md-5 order-md-1">
-                <a href="{% url 'products'%}?category=kitchen" id="kitchen-category" aria-label="kitchen category">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                        src="{{kitchen_first.image.url}}" width="300" height="300" aria-label="{{kitchen_first.name}}">
-                </a>
+
+
+                {% if 'No%20Image' not in textiles_first.image.url%}
+                    <a href="{% url 'products'%}?category=kitchen" id="kitchen-category" aria-label="kitchen category">
+                        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        src="{{kitchen_first.image.url}}" width="300" height="300" aria-label="{{kitchen_first.name}}" alt="{{kitchen_first.name}}">
+                    </a>
+                {% else %} 
+                    <a href="{% url 'products'%}?category=kitchen" id="kitchen-category" aria-label="kitchen category">
+                        <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{kitchen_first.name}}" alt="{{kitchen_first.name}}">
+                    </a>
+                {% endif %}
             </div>
         </div>
         <hr class="featurette-divider">

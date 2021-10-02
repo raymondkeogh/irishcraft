@@ -21,7 +21,6 @@
         <div class="col">
             <hr>
             <h3 class="logo-font mb-4">Success! Thank you for your Order!</h3>
-          
             <p>Here are you order details. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
         </div>
     </div>
@@ -32,7 +31,7 @@
                 {% for item in order.lineitems.all %}
                     <div class="row">
                         <div class="col-3 m-2 d-flex align-items-center justify-content-center">
-                            {% if item.product.image.url%}
+                            {% if 'No%20Image' not in item.product.image.url%}
                                 <a href="{% url 'product_details' item.product.id %}">
                                     <img class="checkout-thumbnail"  src="{{ item.product.image.url }}" alt="{{product.name}}">
                                 </a>    

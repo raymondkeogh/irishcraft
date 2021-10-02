@@ -4,7 +4,7 @@
 <span class="dropdown-arrow"></span>
 <div class="toast-header bg-white text-black">
    
-    <strong class="mr-auto"><a href="{% url 'view_basket' %}">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
+    <strong class="mr-auto"><a href="{% url 'view_basket' %}" aria-label="your basket">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
         </a> 
         <span class="ml-1 close small">Close</span>
 </div>
@@ -14,7 +14,7 @@
             {% for item in basket_items %}
                 <div class="row">
                     <div class="col-3 my-1">
-                        {% if item.product.image.url %}
+                        {% if 'No%20Image' not in item.product.image.url %}
                             <img class="img-thumbnail"  src="{{ item.product.image.url }}" alt="{{item.product.name}}">
                         {% else %} 
                             <img class="img-thumbnail" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{item.product.name}}">
