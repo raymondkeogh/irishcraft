@@ -291,6 +291,14 @@ Center align the text within the three columns below the carousel */
 
 select {
   -webkit-appearance: none;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border-color: transparent;
+}
+
+select:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 .product-image {
@@ -533,6 +541,7 @@ color: #17a2b8; /* text-info */
 .social-button img {
   width: 200px;
   border-radius: 5px;
+  height: 38px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
