@@ -197,10 +197,16 @@ def checkout_success(request, order_number):
                 "purchase_count") + item.quantity
             product_activity.save()
         else:
-            product_activity = ProductActivity.objects.create(
-                purchase_count=item.quantity,
-                name=item.name,
-            )
+            try:
+                product = Product.objects.get(name=item.product)
+            except Product.DoesNotExist:
+                product = None
+
+            if product is not None:
+                product_activity = ProductActivity.objects.create(
+                    purchase_count=item.quantity,
+                    name=item.product,
+                )
 
     messages.success(request, f'Thank you for your order! \
         A confirmation \
