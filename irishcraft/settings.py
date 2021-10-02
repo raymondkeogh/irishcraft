@@ -24,6 +24,7 @@ env = environ.Env()
 # read the .env file
 environ.Env.read_env()
 
+# Some elements configured as per BoutiqueAdo tutorial
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

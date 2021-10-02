@@ -1,4 +1,6 @@
 # From Code Institue Boutique Ado tutorial
+import json
+import stripe
 
 from django.shortcuts import (
     render, redirect, reverse, get_object_or_404, HttpResponse)
@@ -7,25 +9,23 @@ from django.views.decorators.http import require_POST
 
 from django.conf import settings
 from django.db.models import F
-
-import stripe
-import json
-
-
-from basket.contexts import basket_contents
 from django.core.exceptions import ObjectDoesNotExist
+from basket.contexts import basket_contents
 
 from customer_account.forms import CustomerAccountForm
 from customer_account.models import CustomerAccount
 from products.models import Product
+from product_health.models import ProductActivity
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from product_health.models import ProductActivity
 
 
 # cache_checkout_data function from BoutiqueAdo Code Institue tutorial
 @require_POST
 def cache_checkout_data(request):
+    """
+    Checkout data caching
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -39,6 +39,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+
 
 # checkout funtion from the Code Institue Boutique Ado tutorial
 def checkout(request):
@@ -202,7 +203,7 @@ def checkout_success(request, order_number):
             )
 
     messages.success(request, f'Thank you for your order! \
-        Your order number is {order_number}. A confirmation \
+        A confirmation \
         email will be sent to {order.email}.')
 
     if 'basket' in request.session:

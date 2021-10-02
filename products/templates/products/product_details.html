@@ -7,11 +7,11 @@
             <div class="col-sm mt-3 mb-2">
                 <div class="product-image">
                     {% if 'No%20Image' not in product.image.url%}
-                        <a href="{{ product.image.url }}" aria-label="{{product.name}} image">
+                        <a href="{{ product.image.url }}" class="prod-image" aria-label="{{product.name}} image">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{product.name}}">
                         </a>    
                     {% else %} 
-                            <a href="{% url 'product_details' product.id %}" aria-label="{{product.name}} image">
+                            <a href="{% url 'product_details' product.id %}" aria-label="{{product.name}} image" class="prod-image">
                             <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" alt="{{product.name}}">
                         </a>
                     {% endif %}
@@ -94,14 +94,11 @@
                         </div>
                         <h6 class="card-title comment-title font-weight-bold">{{review.title}}</h6>
                         <p class="comment more">{{review.body}}</p>
-                    
-                    
                         {% if request.user.is_authenticated and request.user == review.user%}
                         <a href="{% url 'edit_review' review.id %}" class="m-2"><i class="fas fa-edit"></i> Edit</a>
                         <a href="{% url 'delete_review' review.id %}" class=" text-danger m-2" onclick="return confirm('Are you sure you want to delete this?')"><i class="fas fa-trash-alt"></i> Delete</a>
                         {% endif %}
                     </div>
-                   
                 {% endfor %}
                 <nav aria-label="Products list">
                     <ul class="pagination step-links list-inline justify-content-center">
@@ -123,12 +120,18 @@
                     </ul>
                 </nav>
             </div>
-            
-     
-         
         </div>
     </div>
     {% endif %}
+</div>
+
+<div id="picture-overlay">
+    <div id="popup">
+        <div class="image-container">
+            <img class="popup-image" src="" />
+            <div class="close_popup"><i class="fa fa-window-close" aria-hidden="true"></i></div>
+    </div>
+    </div>
 </div>
 {% endblock %}
 
@@ -136,5 +139,29 @@
 {{ block.super }}
 {% include 'products/includes/quantity_script.html' %}
 <script src="{% static 'js/readmore.js' %}"></script>
+
+<script>
+    // https://stackoverflow.com/questions/22352332/how-to-add-a-close-button-to-an-image-that-opens-from-a-thumbnail
+    $('a.prod-image').on('click',function(){ // when press link
+        var fullImg = $(this).attr('href') // get full size img url
+        $('#popup img').attr('src', fullImg) // image in popup now has source that you need
+        console.log(fullImg)
+        $('#popup').css('display', 'flex');
+        // popup appears
+        $('#picture-overlay').css('display', 'block');
+        return false // do not redirect 
+    })
+
+    $('.close_popup').on('click', function(){
+        $('#popup').hide() // close popup
+        $('#picture-overlay').hide()// close overlay
+    })
+
+    $('#picture-overlay').on('click', function(){
+        $('#popup').hide() // close popup
+        $('#picture-overlay').hide()
+    })
+
+</script>
 
 {% endblock %}
