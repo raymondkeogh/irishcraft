@@ -143,24 +143,23 @@
 
 <script>
     // https://stackoverflow.com/questions/22352332/how-to-add-a-close-button-to-an-image-that-opens-from-a-thumbnail
-    $('a.prod-image').on('click',function(){ // when press link
-        var fullImg = $(this).attr('href') // get full size img url
-        $('#popup img').attr('src', fullImg) // image in popup now has source that you need
-        console.log(fullImg)
-        $('#popup').css('display', 'flex');
+    $("a.prod-image").on("click",function(){ // when press link
+        var fullImg = $(this).attr("href"); // get full size img url
+        $("#popup img").attr("src", fullImg); // image in popup now has source that you need
+        $("#popup").css("display", "flex");
         // popup appears
-        $('#picture-overlay').css('display', 'block');
-        return false // do not redirect 
+        $("#picture-overlay").css("display", "block");
+        return false// do not redirect 
     })
 
-    $('.close_popup').on('click', function(){
-        $('#popup').hide() // close popup
-        $('#picture-overlay').hide()// close overlay
+    $(".close_popup").on("click", function(){
+        $("#popup").hide() // close popup
+        $("#picture-overlay").hide()// close overlay
     })
 
-    $('#picture-overlay').on('click', function(){
-        $('#popup').hide() // close popup
-        $('#picture-overlay').hide()
+    $("#picture-overlay").on("click", function(){
+        $("#popup").hide() // close popup
+        $("#picture-overlay").hide()
     })
 
 </script>

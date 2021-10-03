@@ -125,15 +125,15 @@
 {% block postloadjs %}
 {{ block.super }}
 
-
+<!-- Script from Boutique Ado tutorial, Code Institute -->
 <script>
-    $('.btt-link').click(function (e) {
+    $(".btt-link").click(function (e) {
         window.scrollTo(0, 0)
     })
 </script>
 
 <script>
-    $('#sort-selector').change(function () {
+    $("#sort-selector").change(function () {
         var selector = $(this);
         var currentUrl = new URL(window.location);
 
@@ -149,7 +149,6 @@
         } else {
             currentUrl.searchParams.delete("sort");
             currentUrl.searchParams.delete("direction");
-
             window.location.replace(currentUrl);
         }
     })
