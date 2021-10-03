@@ -1,4 +1,6 @@
-# From Code Institue Boutique Ado tutorial
+"""
+Checkout, Checkout Success and Cache Checkout Data views
+"""
 import json
 import stripe
 
@@ -171,6 +173,7 @@ def checkout_success(request, order_number):
         # Save the user's info
         if save_info:
             customer_info = {
+                'full_name': order.full_name,
                 'phone_number': order.phone_number,
                 'town_or_city': order.town_or_city,
                 'street_address1': order.street_address1,

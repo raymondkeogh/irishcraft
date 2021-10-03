@@ -1,4 +1,6 @@
-"""Checkout models for Orders, update order and orderlineitems"""
+"""
+Checkout models for Orders, update order and orderlineitems
+"""
 import uuid
 
 from django.db import models

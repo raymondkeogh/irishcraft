@@ -1,3 +1,6 @@
+"""
+Review Model
+"""
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Product
@@ -6,6 +9,9 @@ from products.models import Product
 # I fount this tutorial very helpful when creating the review model
 # https://www.codementor.io/@jadianes/get-started-with-django-building-recommendation-review-app-du107yb1a
 class Review(models.Model):
+    """
+    Review Model class
+    """
     ratings = (
         (1, '1'),
         (2, '2'),
