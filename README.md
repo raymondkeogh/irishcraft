@@ -128,6 +128,8 @@ User Stories sp(readsheets can ben view here on [PDF](static/readme_files/irish_
 - **Dropdown Basket** - This will drop down when the user clicks on the basket icon in the corner of the sreen displaying a brief summary of the basket as well as links to basket and checkout.
 
 
+----------
+
 **STRUCTURE**
 
 ----------
@@ -147,6 +149,8 @@ User Stories sp(readsheets can ben view here on [PDF](static/readme_files/irish_
 7. The Review page, accessible to the user once they have purchased an item, allows them to add a review and rate a product.
 
 8. (SuperUsers) Add Product page - A simple form to allow the site owner to upload products. 
+
+9. (SuperUsers) Product Activity page - interactive bar chart displaying product views and purchases.
 
 
 ----------
@@ -182,7 +186,7 @@ The full selection of wireframes including mobile layout can be viewed in PDF fo
 
 
 The database diagram was developed in [drawSQL](https://drawsql.app/) and used to aid in the creation of the django models.
-The initial database model was developed with a 'Purchase_History' entity but this was removed. The newer iteration of the model now has a 'Review' entity and an updated 'Product_Acticity' entity. 
+The initial database model was developed with a 'Purchase_History' entity but this was removed. The newer iteration of the model now has a 'Review' entity and an updated 'Product_Activity' entity. 
 
 ![img](static/readme_files/database_schema/database_schema.png)
 
@@ -231,8 +235,7 @@ Technologies
  - [**GitHub**](https://github.com/) – Used for hosting the files used for the website.
  - [**Git**](https://git-scm.com/) – Version control used to track changes, commit and push code to
    Github.
- - [**Javascript**](https://www.javascript.com/)
- - [**Flask**](https://flask.palletsprojects.com/en/2.0.x/)
+ - [**Javascript**](https://www.javascript.com/) 
  - [**Lightspeed**](https://developers.google.com/speed/pagespeed/insights/) - Website performance testing utility
  - [**DevTools**](https://developers.google.com/web/tools/chrome-devtools) - I used Chrome DevTools throughout the development of the site to modify elements on the screen live, testing screen responsiveness and debugging code.
  - [**Selenium IDE**](https://www.selenium.dev/selenium-ide/) - Automated testing IDE
@@ -256,6 +259,7 @@ Technologies
 
 Testing
 -------
+
 
 ----
 **Acceptance Criteria:**
@@ -339,6 +343,10 @@ Javascript validated via https://www.jslint.com/
 **Lightspeed Performance Test** 
 
 The performance of the site on Lighthouse for desktop can view [here](static/readme_files/testing/lighthouse-performance-test-desktop.pdf) and for mobile [here](static/readme_files/testing/lighthouse-performance-test-mobile.pdf)
+
+
+![](static/readme_files/testing/lighthouse_desktop.png)
+
 
 ----
 **Regression Testing**
