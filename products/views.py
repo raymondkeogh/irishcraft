@@ -26,7 +26,8 @@ def upload(request):
 
     return render(request, 'upload.html', context)
 
-# Products view altered from Code Institute Boutique Ado 
+
+# Products view altered from Code Institute Boutique Ado
 def all_products(request):
     """ A view to show all products """
     products = Product.objects.all().order_by('name')

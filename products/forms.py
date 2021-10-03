@@ -1,4 +1,6 @@
-# Product Form
+"""
+Product Form
+"""
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (
@@ -6,10 +8,11 @@ from crispy_forms.layout import (
 from .models import Product, Category
 
 
-# ProductForm class take from Code Institue Boutique Ado tutorial 
+# ProductForm class take from Code Institue Boutique Ado tutorial
 class ProductForm(forms.ModelForm):
-    """Product form """
-
+    """
+    Product form
+    """
     class Meta:
         model = Product
         fields = '__all__'

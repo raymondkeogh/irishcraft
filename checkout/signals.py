@@ -1,7 +1,11 @@
+"""
+Checkout signals fo save and update instances
+"""
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 from .models import OrderLineItem
+
 
 # Signals from Code Institute tutorial for Boutique Ado
 @receiver(post_save, sender=OrderLineItem)

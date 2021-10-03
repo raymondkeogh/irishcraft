@@ -1,4 +1,6 @@
-# Products, Category and photoform models
+"""
+Products, Category and photoform models
+"""
 from django.db import models
 from django.forms import ModelForm
 
@@ -6,17 +8,25 @@ from cloudinary.models import CloudinaryField
 
 
 class Photo(models.Model):
+    """
+    Cloudinary Image model
+    """
     image = CloudinaryField('image')
 
 
 class PhotoForm(ModelForm):
+    """
+    Photo form model
+    """
     class Meta:
         model = Photo
         fields = '__all__'
 
 
 class Category(models.Model):
-    """Category model"""
+    """
+    Category model
+    """
     class Meta:
         verbose_name_plural = "Categories"
     name = models.CharField(
@@ -29,12 +39,17 @@ class Category(models.Model):
         return self.name
 
     def get_friendly_name(self):
+        """
+        Return category friendly names
+        """
         return self.friendly_name
 
 
-# Modified Product Class from Code Institue Boutique Ado tutorial 
+# Modified Product Class from Code Institue Boutique Ado tutorial
 class Product(models.Model):
-    """Product Model"""
+    """
+    Product Model
+    """
     category = models.ForeignKey(
         'Category',
         null=True,

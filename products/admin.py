@@ -1,8 +1,15 @@
+"""
+Product Admin Classes
+"""
 from django.contrib import admin
 from .models import Product, Category
 
+
 # Admin classes take from Code Institue Boutique Ado tutorial
 class ProductAdmin(admin.ModelAdmin):
+    """
+    Product admin
+    """
     list_display = (
         'name',
         'id',
@@ -16,6 +23,9 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    """
+    Category Admin
+    """
     list_display = (
         'friendly_name',
         'name'
