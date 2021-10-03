@@ -88,7 +88,7 @@ User Experience
 
 
 
-User Stories sp(readsheets can ben view here on [PDF](static/readme_files/irish_craft_userstories.numbers), [MAC Number](static/readme_files/user_stories/irish_craft_userstories.numbers) and on Microsft Excell [here](static/readme_files/user_stories/irish_craft_userstories.xlsx)
+User Stories spreadsheets can ben view here on [PDF](static/readme_files/irish_craft_userstories.numbers), [MAC Number](static/readme_files/user_stories/irish_craft_userstories.numbers) and on Microsoft Excel [here](static/readme_files/user_stories/irish_craft_userstories.xlsx)
 
 
 ----------
@@ -104,7 +104,7 @@ User Stories sp(readsheets can ben view here on [PDF](static/readme_files/irish_
     Irish Craft is a solid, secure and friendly environment to search, save and purchase products.
 
  - **Value:**   
-    The shopper will have a positive experience increasing the probablility of purchase and repeat business. 
+    The shopper will have a positive experience increasing the probability of purchase and repeat business. 
 
 ----------
 
@@ -123,9 +123,9 @@ User Stories sp(readsheets can ben view here on [PDF](static/readme_files/irish_
 
 - **Review Page** - Give the shopper an opportunity to share their experience with the product/company.
 
-- **Product Activit Page** -  This will display an interactive graph of product view and purchase activity and available only to the superuser/admin account. 
+- **Product Activity Page** -  This will display an interactive graph of product view and purchase activity and available only to the superuser/admin account. 
 
-- **Dropdown Basket** - This will drop down when the user clicks on the basket icon in the corner of the sreen displaying a brief summary of the basket as well as links to basket and checkout.
+- **Dropdown Basket** - This will drop down when the user clicks on the basket icon in the corner of the screen displaying a brief summary of the basket as well as links to basket and checkout.
 
 
 ----------
@@ -166,13 +166,13 @@ and can be viewed below
 
 
 - [Desktop Homepage](static/readme_files/wireframes/index_page.png).  
-- [Catagory Page](static/readme_files/wireframes/category_page.png).  
+- [Category Page](static/readme_files/wireframes/category_page.png).  
 - [Login Page](static/readme_files/wireframes/login.png).  
 - [Create Account Page](static/readme_files/wireframes/create_account.png).  
 - [Basket Page](static/readme_files/wireframes/basket.png).
 - [Account Page](static/readme_files/wireframes/account.png). 
 - [Review Item Page](static/readme_files/wireframes/review_item.png).   
-- [View Item Page](static/readme_files/wireframes/view_itme.png). 
+- [View Item Page](static/readme_files/wireframes/view_item.png). 
 - [Admin Edit Item Page](static/readme_files/wireframes/admin_edit_item.png). 
 - [Admin Add Item Page](static/readme_files/wireframes/admin_add_item.png).
 - [Admin Product Activity](static/readme_files/wireframes/admin_product_activity.png). 
@@ -185,7 +185,7 @@ The full selection of wireframes including mobile layout can be viewed in PDF fo
 **Database:**     
 
 
-The database diagram was developed in [drawSQL](https://drawsql.app/) and used to aid in the creation of the django models.
+The database diagram was developed in [drawSQL](https://drawsql.app/) and used to aid in the creation of the Django models.
 The initial database model was developed with a 'Purchase_History' entity but this was removed. The newer iteration of the model now has a 'Review' entity and an updated 'Product_Activity' entity. 
 
 ![img](static/readme_files/database_schema/database_schema.png)
@@ -203,11 +203,11 @@ The SQL schema can be viewed [here](static/readme_files/database_schema/database
 
 **Colours:** 
 
-- The sites navigation bar will be on a simple grey background with hightlights of pastel colours for nav items below the menu bar for catagory selection. 
+- The sites navigation bar will be on a simple grey background with highlights of pastel colours for nav items below the menu bar for category selection. 
 
 **Typography:** 
 
-- Work Sans was chosen for its clean lines and contempory feel.
+- Work Sans was chosen for its clean lines and contemporary feel.
 
 **Effects:**
 
@@ -395,12 +395,12 @@ You will need a superuser account for Test-Case 12.1 onwards and will need to re
 
 
 + **Bug-002:** handle_payment_intent_succeeded basket = intent.metadata.basket, raise AttributeError(*err.args)
-+ **Fix-002:** This error was cause by the browswer cache. To fix this error while in Development
++ **Fix-002:** This error was cause by the browser cache. To fix this error while in Development
     1. Open DevTools
     2. Navigate to the "Network" tab
     3. Check the "Disable Cache" checkbox
     4. Reload your page as normal. (With devtools still open)
-    You may need to delete you webhook and create an new one to stop the previous failed webhooks for firing on an hourly interval. 
+    You may need to delete you webhook and create a new one to stop the previous failed webhooks for firing on an hourly interval. 
 
 + **Bug-003:**  Add a product to the basket, delete the product from the website as administator. Website doesn’t load and shows an error “Page not found (404)
 No Product matches the given query.” Problem only resolved when cookies deleted.    
@@ -408,10 +408,10 @@ No Product matches the given query.” Problem only resolved when cookies delete
     variable to prevent basket error.
 
 + **Bug:** Basket quantity selector. Decrement button allows user to put amount below zero. 
-+ **Fix:** The code was allowing for two version of the quantity selector based on screen size, this in turn created duplicate id's which caused a conflict with the script to prevent decement below zero. Added seperate code with seperate id's and doubled up script to listen for id event. 
++ **Fix:** The code was allowing for two version of the quantity selector based on screen size, this in turn created duplicate id's which caused a conflict with the script to prevent decrement below zero. Added separate code with separate id's and doubled up script to listen for id event. 
 
-+ **Bug:** When entering irishcraft.herokuapp.com excluding the https prefeix the google and twitter login links won’t work as the redirect urls have https instead of http   
-+ **Fix:** Added http version of site to allowed urls in google and twitter api's. 
++ **Bug:** When entering irishcraft.herokuapp.com excluding the https prefix the google and twitter login links won’t work as the redirect urls have https instead of http   
++ **Fix:** Added http version of site to 'allowed urls' in google and twitter api's. 
 
 
 
@@ -419,7 +419,7 @@ No Product matches the given query.” Problem only resolved when cookies delete
 Deployment
 ----------
 
-In order to deploy this project you will need set up accounts with the follwoing services.
+In order to deploy this project you will need set up accounts with the following services.
 
 - [Github](https://github.com/)     
 - [Gitpod](https://gitpod.io/)   
@@ -434,9 +434,9 @@ Gitpod can be used to deploy your site locally using the following steps.
 1. Create a Gitpod account. 
 2. Create a Github account. On creating a Github account you will need to login and search for the repository called irishcraft or follow this [link](https://github.com/raymondkeogh/irishcraft) to locate the project. 
 3. Click on the green 'gitpod' button near the top of the screen. This will open a gitpod workspace containing all the files contained in the project. 
-4. Go to the terminal window and install the project requirments with the command 
+4. Go to the terminal window and install the project requirements with the command 
             pip install -r requirements.txt 
-5. In the gitpod workspace you will need to create a file named 'env.py' which will contain the environment variables required to access the various API's and services. Add this file to the .gitignore file to ensure you sensitive data isn't commited to Github. This file can be created inside the irishcraft folder at the same level as settings.py. Within this file you will have the following variables:
+5. In the gitpod workspace you will need to create a file named 'env.py' which will contain the environment variables required to access the various API's and services. Add this file to the .gitignore file to ensure you sensitive data isn't committed to Github. This file can be created inside the irishcraft folder at the same level as settings.py. Within this file you will have the following variables:
 
 - CLOUDINARY_CLOUD_NAME
 - CLOUDINARY_API_KEY
