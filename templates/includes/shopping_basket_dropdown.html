@@ -1,14 +1,13 @@
 {% load static %}
 
 <!-- Basket dropdown menu item -->
-<span class="dropdown-arrow"></span>
-<div class="toast-header bg-white text-black">
+<li class="toast-header bg-white text-black">
    
-    <strong class="mr-auto"><a href="{% url 'view_basket' %}" aria-label="your basket">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
+   <a href="{% url 'view_basket' %}" aria-label="your basket"> <strong class="mr-auto">Your basket {% if grand_total %}({{ product_count }}){% endif %}</strong>
         </a> 
-        <span class="ml-1 close small">Close</span>
-</div>
-<div class="toast-body bg-white">
+        <span class="ml-1 close small ml-auto">Close</span>
+</li>
+<li class="toast-body bg-white">
     {% if grand_total %}
         <div class="basket-notification-wrapper">
             {% for item in basket_items %}
@@ -49,11 +48,11 @@
     {% else %}
         <p class="m-5">Your basket is empty </p>
     {% endif %}
-</div>
+</li>
 
 {% block postloadjs %}
 
-<script type="text/javascript">
+<script>
 // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";

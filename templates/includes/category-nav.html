@@ -2,22 +2,22 @@
 <div class="collapse navbar-collapse">
     <ul class="navbar-nav w-auto mx-auto category-nav">
         <li class="nav-item px-4" {% if not category and on_product_page %} id="current-category" {% endif %}>
-            <a class="logo-font nav-link text-black m-1" href="{% url 'products'%}" id="all-products-link">
+            <a class="logo-font nav-link text-black m-1" href="{% url 'products'%}" id="all-products">
                 All Products
             </a>  
         </li>
         <li class="nav-item px-4" {% if 'textiles' in category %} id="current-category" {% endif %}>
-            <a class="logo-font nav-link text-black m-1" href="{% url 'products' %}?category=textiles" id="textiles-link">
+            <a class="logo-font nav-link text-black m-1" href="{% url 'products' %}?category=textiles">
                 Textiles
             </a>  
         </li>
         <li class="nav-item px-4" {% if 'prints' in category %} id="current-category" {% endif %}>
-            <a class="logo-font nav-link text-black m-1" href="{% url 'products' %}?category=prints" id="prints-link">
+            <a class="logo-font nav-link text-black m-1" href="{% url 'products' %}?category=prints">
                 Prints 
             </a>  
         </li>
         <li class="nav-item px-4" {% if 'glassware' in category %} id="current-category" {% endif %}>
-            <a class="logo-font nav-link text-black m-1" href="{% url 'products' %}?category=glassware" id="glassware-link">
+            <a class="logo-font nav-link text-black m-1" href="{% url 'products' %}?category=glassware">
                 Glassware
             </a>  
         </li>

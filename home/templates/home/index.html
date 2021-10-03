@@ -82,7 +82,7 @@
                         src="{{prints_first.image.url}}" width="300" height="300" aria-label="{{prints_first.name}}" alt="{{prints_first.name}}">
                     </a>
                 {% else %} 
-                    <a href="{% url 'products' %}?category=prints" id="prints-category" aria-label="prints category">
+                    <a href="{% url 'products' %}?category=prints" aria-label="prints category">
                         <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{prints_first.name}}" alt="{{prints_first.name}}"> 
                     </a>
                 {% endif %}
@@ -107,7 +107,7 @@
                         src="{{glassware_first.image.url}}" width="300" height="300" aria-label="{{glassware_first.name}}" alt="{{glassware_first.name}}">
                     </a>
                 {% else %} 
-                    <a href="{% url 'products' %}?category=glassware" id="glassware-category" aria-label="glassware category">
+                    <a href="{% url 'products' %}?category=glassware" aria-label="glassware category">
                     <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{glassware_first.name}}" alt="{{glassware_first.name}}">
                     </a>
                 {% endif %}
@@ -129,7 +129,7 @@
                     src="{{textiles_first.image.url}}" width="300" height="300" aria-label="{{textiles_first.name}}" alt="{{textiles_first.name}}">
                     </a>
                 {% else %} 
-                    <a href="{% url 'products' %}?category=textiles" id="textiles-category" aria-label="textiles category">
+                    <a href="{% url 'products' %}?category=textiles" aria-label="textiles category">
                         <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{textiles_first.name}}"  alt="{{textiles_first.name}}">
                     </a>
                 {% endif %}
@@ -151,7 +151,7 @@
                         src="{{kitchen_first.image.url}}" width="300" height="300" aria-label="{{kitchen_first.name}}" alt="{{kitchen_first.name}}">
                     </a>
                 {% else %} 
-                    <a href="{% url 'products'%}?category=kitchen" id="kitchen-category" aria-label="kitchen category">
+                    <a href="{% url 'products'%}?category=kitchen" aria-label="kitchen category">
                         <img class="card-img-top img-fluid" src="https://demofree.sirv.com/products/123456/123456.jpg?profile=error-example" aria-label="{{kitchen_first.name}}" alt="{{kitchen_first.name}}">
                     </a>
                 {% endif %}
