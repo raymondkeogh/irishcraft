@@ -127,7 +127,7 @@ crossorigin="anonymous"></script>
             
             {% else %}
             <li class="nav-item h-100 basket-dropdown-zone">
-              <a href="#" id="menu-icon">
+              <a href=""  id="menu-icon">
                 <div class="{% if grand_total %}text-info font-weight-bold{% else %}{% endif %} nav-link">
                   <div class="text-center">
                     <i class="fas fa-shopping-bag fa-lg"></i>
@@ -201,6 +201,22 @@ crossorigin="anonymous"></script>
         $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
       });
     });
+
+    // Enable href link for basket when on mobile
+    function resize() {
+      if ($(window).width() < 739){
+          hrefLink = "{% url 'view_basket' %}";
+          $("#menu-icon").attr("href", hrefLink); 
+      }
+      else {
+        hrefLink = "#"
+          $("#menu-icon").attr("href", hrefLink); 
+      }    
+      
+    }
+
+    $(window).on("resize", resize);
+    resize();     
   </script>
     
   <footer>
