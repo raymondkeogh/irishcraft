@@ -90,27 +90,6 @@ User Experience
 
 User Stories sp(readsheets can ben view here on [PDF](static/readme_files/irish_craft_userstories.numbers), [MAC Number](static/readme_files/user_stories/irish_craft_userstories.numbers) and on Microsft Excell [here](static/readme_files/user_stories/irish_craft_userstories.xlsx)
 
-The mockup for this site was done on Balsamiq Wireframes 
-and can be viewed below 
-
-
-- [Desktop Homepage](static/readme_files/wireframes/index_page.png).  
-- [Catagory Page](static/readme_files/wireframes/category_page.png).  
-- [Login Page](static/readme_files/wireframes/login.png).  
-- [Create Account Page](static/readme_files/wireframes/create_account.png).  
-- [Basket Page](static/readme_files/wireframes/basket.png).
-- [Account Page](static/readme_files/wireframes/account.png). 
-- [Review Item Page](static/readme_files/wireframes/review_item.png).   
-- [View Item Page](static/readme_files/wireframes/view_itme.png). 
-- [Admin Edit Item Page](static/readme_files/wireframes/admin_edit_item.png). 
-- [Admin Add Item Page](static/readme_files/wireframes/admin_add_item.png).
-- [Admin Product Activity](static/readme_files/wireframes/admin_product_activity.png). 
-- [Checkout Page](static/readme_files/wireframes/checkout.png). 
-
-
-The full selection of wireframes including mobile layout can be viewed in PDF form [here](static/readme_files/wireframes/irish_craft_wireframes.pdf)
-
-
 
 ----------
 
@@ -168,6 +147,47 @@ The full selection of wireframes including mobile layout can be viewed in PDF fo
 7. The Review page, accessible to the user once they have purchased an item, allows them to add a review and rate a product.
 
 8. (SuperUsers) Add Product page - A simple form to allow the site owner to upload products. 
+
+
+----------
+
+**SKELETON**
+
+----------
+
+**Wireframe:**   
+
+The mockup for this site was done on Balsamiq Wireframes 
+and can be viewed below 
+
+
+- [Desktop Homepage](static/readme_files/wireframes/index_page.png).  
+- [Catagory Page](static/readme_files/wireframes/category_page.png).  
+- [Login Page](static/readme_files/wireframes/login.png).  
+- [Create Account Page](static/readme_files/wireframes/create_account.png).  
+- [Basket Page](static/readme_files/wireframes/basket.png).
+- [Account Page](static/readme_files/wireframes/account.png). 
+- [Review Item Page](static/readme_files/wireframes/review_item.png).   
+- [View Item Page](static/readme_files/wireframes/view_itme.png). 
+- [Admin Edit Item Page](static/readme_files/wireframes/admin_edit_item.png). 
+- [Admin Add Item Page](static/readme_files/wireframes/admin_add_item.png).
+- [Admin Product Activity](static/readme_files/wireframes/admin_product_activity.png). 
+- [Checkout Page](static/readme_files/wireframes/checkout.png). 
+
+
+The full selection of wireframes including mobile layout can be viewed in PDF form [here](static/readme_files/wireframes/irish_craft_wireframes.pdf)
+
+
+**Database:**     
+
+
+The database diagram was developed in [drawSQL](https://drawsql.app/) and used to aid in the creation of the django models.
+The initial database model was developed with a 'Purchase_History' entity but this was removed. The newer iteration of the model now has a 'Review' entity and an updated 'Product_Acticity' entity. 
+
+![img](static/readme_files/database_schema/database_schema.png)
+
+The SQL schema can be viewed [here](static/readme_files/database_schema/database_schema.sql)
+
 
 
 ----------
