@@ -407,12 +407,14 @@ No Product matches the given query.” Problem only resolved when cookies delete
 + **Fix-003:**   Added Check_if_superuser function to check if user is super user and delete session
     variable to prevent basket error.
 
-+ **Bug:** Basket quantity selector. Decrement button allows user to put amount below zero. 
-+ **Fix:** The code was allowing for two version of the quantity selector based on screen size, this in turn created duplicate id's which caused a conflict with the script to prevent decrement below zero. Added separate code with separate id's and doubled up script to listen for id event. 
++ **Bug-004:** Basket quantity selector. Decrement button allows user to put amount below zero. 
++ **Fix-004:** The code was allowing for two version of the quantity selector based on screen size, this in turn created duplicate id's which caused a conflict with the script to prevent decrement below zero. Added separate code with separate id's and doubled up script to listen for id event. 
 
-+ **Bug:** When entering irishcraft.herokuapp.com excluding the https prefix the google and twitter login links won’t work as the redirect urls have https instead of http   
-+ **Fix:** Added http version of site to 'allowed urls' in google and twitter api's. 
++ **Bug-005:** When entering irishcraft.herokuapp.com excluding the https prefix the google and twitter login links won’t work as the redirect urls have https instead of http   
++ **Fix-005:** Added http version of site to 'allowed urls' in google and twitter api's. 
 
++ **Bug-006:** Incorrect reference to item.name should be .product
++ **Fix-006:** Add try catch block to ensure product history is not created for a product that may have be deleted inbetween adding to basket and checking out
 
 
 
@@ -532,11 +534,11 @@ https://1000logos.net/top-30-celtic-symbols-and-their-meaning/
 
 **Content**
 
-No image placeholder -  https://sirv.com/help/articles/customized-error-images/
-Product images - https://unsplash.com/
-Other images on site - artists credited on website
+No image placeholder -  https://sirv.com/help/articles/customized-error-images/.   
+Product images - https://unsplash.com/.  
+Other images on site - Artists credited in description.  
 
 
 **Acknowledgements**
 
-I would like to thank my mentor Maranatha Ilesanmi for his amazing support throughout the past year in the implementation and execution of the 4 Code Institute projects. I would also like to thank the tutor team, Jo, Sheryl, Sean, Alan, Johann, John, Scott and Fatima for their patience and skills helping me debug the debuggable.  
+I would like to thank my mentor Maranatha Ilesanmi for his amazing support throughout the past year in the implementation and execution of the 4 Code Institute projects. I would also like to thank the tutor team, Jo, Sheryl, Sean, Alan, Johann, John, Scott and Fatima for their patience and skills helping me debug the debuggable. And finally to thank Pamela, Gary, Andy and Sandra for putting the site throught it paces. 
