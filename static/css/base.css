@@ -310,6 +310,11 @@ Center align the text within the three columns below the carousel */
   z-index: -1;
 }
 
+img.robot {
+  height: 300px;
+}
+
+
 /* PRODUCT DETAILS
   -------------------------------------------------- */
 
