@@ -80,13 +80,15 @@ def all_products(request):
 
 
 def product_details(request, product_id):
-    """ A view to show products details """
+    """
+    A view to show products details
+    """
     try:
         product = get_object_or_404(Product, id=product_id)
     except ObjectDoesNotExist:
         product = None
-    # Check for product activity and update the ProductActivity model
 
+    # Check for product activity and update the ProductActivity model
     if product is not None:
         try:
             product_activity = ProductActivity.objects.get(
@@ -106,7 +108,6 @@ def product_details(request, product_id):
     try:
         reviews = Review.objects.filter(
                 product=product.id).order_by('-created')
-
     except ObjectDoesNotExist:
         reviews = None
 
@@ -125,7 +126,9 @@ def product_details(request, product_id):
 # Code Intitute Boutique Ado https://www.youtube.com/watch?v=bQuggmgIEEs
 @login_required
 def add_product(request):
-    """ upoad a product to the site """
+    """
+    upoad a product to the site
+    """
     if not request.user.is_superuser:
         messages.error(
             request, "You must have shop Superuser access in order to"
@@ -157,7 +160,9 @@ def add_product(request):
 # Code Intitute Boutique Ado https://www.youtube.com/watch?v=0rRNZa7BR_Y
 @login_required
 def edit_product(request, product_id):
-    """ A view to edit product details """
+    """
+    A view to edit product details
+    """
     if not request.user.is_superuser:
         messages.error(request, 'You need to have the correct '
                        'permissions to edit product details, please contact'
@@ -190,7 +195,9 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ A view to delete a product from the database """
+    """
+    A view to delete a product from the database
+    """
     if not request.user.is_superuser:
         messages.error(request, 'You need to have the correct '
                        'permissions to edit product details, please contact'

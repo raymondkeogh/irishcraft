@@ -43,7 +43,7 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 
-# checkout funtion from the Code Institue Boutique Ado tutorial
+# checkout function from the Code Institue Boutique Ado tutorial
 def checkout(request):
     """
     A view to show checkout data

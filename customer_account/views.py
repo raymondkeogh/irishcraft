@@ -12,8 +12,9 @@ from .forms import CustomerAccountForm
 
 @login_required
 def customer_account(request):
-    """A view that renders the users account"""
-
+    """
+    A view that renders the users account
+    """
     customer = get_object_or_404(CustomerAccount, user=request.user)
 
     if request.method == 'POST':
@@ -47,8 +48,9 @@ def customer_account(request):
 
 
 def edit_account(request):
-    """A view to allow user to edit their account"""
-
+    """
+    A view to allow user to edit their account
+    """
     customer = get_object_or_404(CustomerAccount, user=request.user)
 
     if request.method == 'POST':
@@ -82,7 +84,9 @@ def edit_account(request):
 
 @login_required
 def view_order(request, order_id):
-    """A view that renders a chosen order"""
+    """
+    A view that renders a chosen order
+    """
     customer = get_object_or_404(CustomerAccount, user=request.user)
     order = get_object_or_404(Order, id=order_id)
     if request.user != order.customer_account.user:

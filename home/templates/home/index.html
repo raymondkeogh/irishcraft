@@ -71,7 +71,7 @@
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Prints</h2>
-                <p class="lead">We have worked with some of the finest artist Ireland has to offer to procure these
+                <p class="lead">We have worked with some of the finest artists Ireland has to offer to procure these
                     pieces. Our featured artist Conor Hamill whose contemporary imagery is the ideal addition to any
                     home. </p>
             </div>
@@ -89,9 +89,6 @@
             </div>
         </div>
         
-
-       
-
         <hr class="featurette-divider mt-4">
 
         <div class="row featurette">
@@ -135,6 +132,7 @@
                 {% endif %}
             </div>
         </div>
+
         <hr class="featurette-divider">
 
         <div class="row featurette">
@@ -143,8 +141,6 @@
                 <p class="lead">Make your kitchen a feast for the senses with some of our kitchenware range. </p>
             </div>
             <div class="col-md-5 order-md-1">
-
-
                 {% if 'No%20Image' not in textiles_first.image.url%}
                     <a href="{% url 'products'%}?category=kitchen" id="kitchen-category" aria-label="kitchen category">
                         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
@@ -161,12 +157,9 @@
     </div><!-- /.container-fluid marketing -->
 </div><!-- /.main container -->
 
-
 {% endblock %}
 
-
 {% block postloadjs %}
-
 <script>
 //    Caroursel
     $(document).ready(function () {

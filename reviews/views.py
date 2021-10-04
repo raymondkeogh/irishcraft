@@ -1,4 +1,6 @@
-# Views for Edit Review, Add Review and Delete Review
+"""
+Views for Edit Review, Add Review and Delete Review
+"""
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -16,7 +18,9 @@ from .forms import ReviewForm
 # https://www.codementor.io/@jadianes/get-started-with-django-building-recommendation-review-app-du107yb1a
 @login_required
 def add_review(request, product_id):
-    """ Review a product """
+    """
+    Review a product
+    """
     product = get_object_or_404(Product, pk=product_id)
     customer = get_object_or_404(CustomerAccount, user=request.user)
     purchased = []
@@ -82,7 +86,9 @@ def add_review(request, product_id):
 
 @login_required
 def edit_review(request, review_id):
-    """ A view to edit review details """
+    """
+    A view to edit review details
+    """
     review = get_object_or_404(Review, pk=review_id)
 
     if request.user != review.user:
@@ -119,7 +125,9 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
-    """ A view to delete a product review """
+    """
+    A view to delete a product review
+    """
     review = get_object_or_404(Review, pk=review_id)
 
     if request.user != review.user:
@@ -136,7 +144,9 @@ def delete_review(request, review_id):
 
 @login_required
 def view_reviews(request):
-    """A view that renders a customer reviews"""
+    """
+    A view that renders a customer reviews
+    """
     user = request.user
     reviews = user.reviews.all().order_by('-created')
     review_paginator = Paginator(reviews, 4)

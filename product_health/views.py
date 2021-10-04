@@ -11,9 +11,9 @@ from .models import ProductActivity
 
 @login_required
 def product_health(request):
-    """A view that renders products that are
-    related to eachother by way of orders"""
-
+    """
+    A view that renders product activity data
+    """
     if not request.user.is_superuser:
         messages.error(
             request, 'You must have adminstrator access this area.')
@@ -32,7 +32,9 @@ def product_health(request):
 
 # https://simpleisbetterthancomplex.com/tutorial/2020/01/19/how-to-use-chart-js-with-django.html
 def product_chart(request):
-    """View to hand json data to product_health template for chart rendering"""
+    """
+    View to hand json data to product_health template for chart rendering
+    """
     labels = []
     data = []
     data2 = []

@@ -11,7 +11,6 @@
     <hr>
     <form method="POST" action="{% url 'edit_review' review.id %}" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
-
         <div class="row">
             <div class="col-12 col-md-6">
                 {{product.name}}
@@ -25,8 +24,6 @@
                     <button class="btn btn-primary" type="submit">Save Changes</button>
                 </div>
             </div>
-
-          
         </div>
     </form>
 </div>

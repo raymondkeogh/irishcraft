@@ -12,7 +12,9 @@ user = settings.AUTH_USER_MODEL
 
 
 class ProductActivity(models.Model):
-    """A model to keep track of product activity on the site"""
+    """
+    A model to keep track of product activity on the site
+    """
     name = models.ForeignKey(
         Product,
         null=True,
