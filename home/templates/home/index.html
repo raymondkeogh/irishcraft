@@ -20,7 +20,7 @@
                                                 alt="{{product.name}}">
                                         </a>
                                     </div>
-                                    <div class="col-md-6 my-auto p-5">
+                                    <div class="d-none d-md-block col-md-6 my-auto p-5">
                                         <h1 class="text-uppercase">{{product.name}}</h1><br>
                                         €{{product.price}}
                                     </div>
@@ -32,11 +32,10 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 my-auto carousel-image">
                                         <a href="{% url 'product_details' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}"
-                                                alt="{{product.name}}">
+                                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{product.name}}">
                                         </a>
                                     </div>
-                                    <div class="col-md-6 my-auto p-5">
+                                    <div class="d-none d-md-block col-md-6 my-auto p-5">
                                         <h1 class="text-uppercase">{{product.name}}</h1><br>
                                         €{{product.price}}
                                     </div>
@@ -117,7 +116,7 @@
             <div class="col-md-7">
                 <h2 class="featurette-heading">Textiles</h2>
                 <p class="lead">Irelands finest contemporary and classical interior fabrics. Our suppliers work with
-                    only the finest materials to produce uniquely beuatiful pieces.</p>
+                    only the finest materials to produce uniquely beautiful pieces.</p>
             </div>
             <div class="col-md-5">
                 {% if 'No%20Image' not in textiles_first.image.url%}
