@@ -311,7 +311,7 @@ Center align the text within the three columns below the carousel */
 }
 
 img.robot {
-  height: 300px;
+  max-height: 200px;
 }
 
 
