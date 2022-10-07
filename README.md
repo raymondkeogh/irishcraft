@@ -45,7 +45,7 @@ Description
 -----------
 
 Irish Craft is an e-commerce website built using Python and Django. 
-The live site can be viewed [here](https://irishcraft.herokuapp.com/).
+
 
 User Experience
 --------------------
