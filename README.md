@@ -163,7 +163,6 @@ User Stories spreadsheets can ben view here on [PDF](static/readme_files/irish_c
 
 The mockup for this site was done on Balsamiq Wireframes 
 and can be viewed below 
-https://github.com/raymondkeogh/irishcraft/blob/main/static/readme_files/wireframes/log%20in%20.png
 
 - [Desktop Homepage](static/readme_files/wireframes/index%20page.png).  
 - [Category Page](static/readme_files/wireframes/category_page.png).  
