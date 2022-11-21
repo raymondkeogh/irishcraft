@@ -1,7 +1,7 @@
 [![homepage][1]][2]
 
 [1]:  static/readme_files/multiscreen-mockup.png
-[2]:  https://irishcraft.herokuapp.com/ "Redirect to homepage"
+[2]:  https://irishcraft.onrender.com/ "Redirect to homepage"
 
 
 **IrishCraft Website**
@@ -44,7 +44,7 @@ Table of contents:
 Description
 -----------
 
-Irish Craft is an e-commerce website built using Python and Django. The live site can be viewed [here](https://irishcraft.herokuapp.com/).
+Irish Craft is an e-commerce website built using Python and Django. The live site can be viewed [here](https://irishcraft.onrender.com/).
 
 
 User Experience
@@ -466,6 +466,8 @@ Once the Endpoint is created you can scroll to the bottom of the page, under the
 
 
 **Heroku Deployment**
+
+(NOTE: The site has since been deployed on Render.com as Heroku have started charging. For information on the Render deployment process click [here](https://code-institute-students.github.io/deployment-docs/40-ms4-pp5/). You're free to use the Heroku deployment outlined below but you will have to pay for the service.)
 
 1. Once you have created an Heroku account you can click 'New' then 'Create New App'. Name the app and in this app you can then click on 'resources'.
 2. Find the add-ons search bar, find Heroku Postgres DB and select the free option to add it to your app. 
