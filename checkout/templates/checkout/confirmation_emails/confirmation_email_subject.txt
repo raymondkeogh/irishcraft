@@ -1,1 +1,1 @@
-trevorkeoghphotography Confirmation for Order Number {{ order.order_number }}
+IrishCraft Confirmation for Order Number {{ order.order_number }}
