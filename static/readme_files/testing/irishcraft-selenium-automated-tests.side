@@ -1,8 +1,8 @@
 {
   "id": "5bdbe97f-6c59-4020-95a2-8813395d6e7f",
   "version": "2.0",
-  "name": "irishcraft",
-  "url": "https://irishcraft.herokuapp.com/",
+  "name": "trevorkeoghphotography",
+  "url": "https://trevorkeoghphotography.herokuapp.com/",
   "tests": [{
     "id": "b9c3fec2-930f-4a25-a0c8-1750d56a9915",
     "name": "Test Case 1.1",
@@ -10,7 +10,7 @@
       "id": "36d182a6-a50a-4659-93f6-661c868c8686",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -54,7 +54,7 @@
       "id": "d20ed08e-e6d6-42e6-8595-9a4825be6236",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -97,7 +97,7 @@
       "id": "bf4c30eb-0b3d-4611-bc5f-6197ce819135",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -221,7 +221,7 @@
       "id": "751f666e-6e7e-4132-b3dd-506ab5606e47",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -295,7 +295,7 @@
       "id": "df9cbc16-8a61-4906-8b84-43d07cf67162",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -339,7 +339,7 @@
       "id": "951df789-3141-40c2-8b22-2257cbe52218",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -383,7 +383,7 @@
       "id": "836e01b6-319b-4c0a-81f7-d92c8a0f87f1",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -434,7 +434,7 @@
       "id": "9f69f726-1237-4ac3-9b91-18a75e5f3ccd",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -667,7 +667,7 @@
       "id": "e859ff03-bbc8-46f1-bd29-6370fd68800c",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -810,7 +810,7 @@
       "id": "3a75e9d6-ae27-466e-926f-eddf27ae7166",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -917,7 +917,7 @@
       "id": "40587c17-0950-45c9-bb9f-2612ef50c42c",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -1013,7 +1013,7 @@
       "id": "218d65ec-632c-441b-be33-57d1c64781d1",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -1130,7 +1130,7 @@
       "id": "67f719e8-e99e-43fb-ba7b-be67d9062cfc",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/#",
+      "target": "https://trevorkeoghphotography.herokuapp.com/#",
       "targets": [],
       "value": ""
     }, {
@@ -1439,7 +1439,7 @@
       "id": "ed96758f-a552-4072-8ce7-6d50ddfaeda4",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -1574,7 +1574,7 @@
       "id": "b4e86795-57e5-4909-8c39-3f29db52190a",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -1706,7 +1706,7 @@
       "id": "5113a98c-e4ed-43db-9ec9-e7a70fb39e71",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -1907,7 +1907,7 @@
       "id": "affc102d-30f3-4a3c-8dee-a2f552bdf43f",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -2064,7 +2064,7 @@
       "id": "42e29936-8975-423d-9435-d146d5be7161",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -2156,7 +2156,7 @@
       "id": "91355f82-552e-4657-94e8-5e798a8555de",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -3194,7 +3194,7 @@
       "id": "4c213470-8454-4429-80ac-4d8fe79e0268",
       "comment": "",
       "command": "open",
-      "target": "https://irishcraft.herokuapp.com/",
+      "target": "https://trevorkeoghphotography.herokuapp.com/",
       "targets": [],
       "value": ""
     }, {
@@ -4234,6 +4234,6 @@
     "timeout": 300,
     "tests": ["b9c3fec2-930f-4a25-a0c8-1750d56a9915"]
   }],
-  "urls": ["https://irishcraft.herokuapp.com/", "https://irishcraft.herokuapp.com/basket/"],
+  "urls": ["https://trevorkeoghphotography.herokuapp.com/", "https://trevorkeoghphotography.herokuapp.com/basket/"],
   "plugins": []
 }

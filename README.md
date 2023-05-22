@@ -1,10 +1,10 @@
 [![homepage][1]][2]
 
 [1]:  static/readme_files/multiscreen-mockup.png
-[2]:  https://irishcraft.onrender.com/ "Redirect to homepage"
+[2]:  https://trevorkeoghphotography.onrender.com/ "Redirect to homepage"
 
 
-**IrishCraft Website**
+**trevorkeoghphotography Website**
 ==================
 Table of contents:
 -----------------
@@ -44,7 +44,7 @@ Table of contents:
 Description
 -----------
 
-Irish Craft is an e-commerce website built using Python and Django. The live site can be viewed [here](https://irishcraft.onrender.com/).
+Irish Craft is an e-commerce website built using Python and Django. The live site can be viewed [here](https://trevorkeoghphotography.onrender.com/).
 
 
 User Experience
@@ -370,7 +370,7 @@ Step 3: Click on the option shown in the below screen.
 Step 4: Click on the "Add to Chrome" option.   
 Step 5: Click on "Add extension."   
 Step 6: Restart the Chrome browser once the above is complete. A more detailed version of the Selenium IDE installation instructions can be found [here](https://dzone.com/articles/selenium-ide-from-chrome).    
-Step 7: Open Selenium IDE from Chrome then click on 'Open an Existing Project' using this Selenium test file [static/readme_files/testing/irishcraft-selenium-automated-tests.side](static/readme_files/testing/irishcraft-selenium-automated-tests.side).   
+Step 7: Open Selenium IDE from Chrome then click on 'Open an Existing Project' using this Selenium test file [static/readme_files/testing/trevorkeoghphotography-selenium-automated-tests.side](static/readme_files/testing/trevorkeoghphotography-selenium-automated-tests.side).   
 
 Step 8: You will need to edit the values in Test Case 8.1, 8.2 and 9.1 replacing the test email and passwords with your own (n.b. remove the parenthesis and the contents). Be sure to delete the user from the database in the admin panel if you repeat Test Case 8.1. 
 
@@ -409,7 +409,7 @@ No Product matches the given query.” Problem only resolved when cookies delete
 + **Bug-004:** Basket quantity selector. Decrement button allows user to put amount below zero. 
 + **Fix-004:** The code was allowing for two version of the quantity selector based on screen size, this in turn created duplicate id's which caused a conflict with the script to prevent decrement below zero. Added separate code with separate id's and doubled up script to listen for id event. 
 
-+ **Bug-005:** When entering irishcraft.herokuapp.com excluding the https prefix the google and twitter login links won’t work as the redirect urls have https instead of http   
++ **Bug-005:** When entering trevorkeoghphotography.herokuapp.com excluding the https prefix the google and twitter login links won’t work as the redirect urls have https instead of http   
 + **Fix-005:** Added http version of site to 'allowed urls' in google and twitter api's. 
 
 + **Bug-006:** Incorrect reference to item.name should be .product
@@ -433,11 +433,11 @@ In order to deploy this project you will need set up accounts with the following
 
 Gitpod can be used to deploy your site locally using the following steps. 
 1. Create a Gitpod account. 
-2. Create a Github account. On creating a Github account you will need to login and search for the repository called irishcraft or follow this [link](https://github.com/raymondkeogh/irishcraft) to locate the project. 
+2. Create a Github account. On creating a Github account you will need to login and search for the repository called trevorkeoghphotography or follow this [link](https://github.com/raymondkeogh/trevorkeoghphotography) to locate the project. 
 3. Click on the green 'gitpod' button near the top of the screen. This will open a gitpod workspace containing all the files contained in the project. 
 4. Go to the terminal window and install the project requirements with the command 
             pip install -r requirements.txt 
-5. In the gitpod workspace you will need to create a file named 'env.py' which will contain the environment variables required to access the various API's and services. Add this file to the .gitignore file to ensure you sensitive data isn't committed to Github. This file can be created inside the irishcraft folder at the same level as settings.py. Within this file you will have the following variables:
+5. In the gitpod workspace you will need to create a file named 'env.py' which will contain the environment variables required to access the various API's and services. Add this file to the .gitignore file to ensure you sensitive data isn't committed to Github. This file can be created inside the trevorkeoghphotography folder at the same level as settings.py. Within this file you will have the following variables:
 
 - CLOUDINARY_CLOUD_NAME
 - CLOUDINARY_API_KEY
@@ -504,7 +504,7 @@ Once the Endpoint is created you can scroll to the bottom of the page, under the
 
 8. In Settings.py in ALLOWED_HOSTS add
 
-        ALLOWED_HOSTS = ['irishcraft.herokuapp.com', 'localhost']
+        ALLOWED_HOSTS = ['trevorkeoghphotography.herokuapp.com', 'localhost']
 
 9. Push to Heroku using the following command: git push heroku master
 
